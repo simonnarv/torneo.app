@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">APLICACION</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <!--elemento de nav teams-->
+        <li class="nav-item">
+          <!--<a class="nav-link" href="/teams">Teams</a>-->
+          <a class="nav-link" routerLink="/teams" routerlinkActive="active">
+            <i class="fas fa-gamepad"></i>
+            Teams
+          </a>
+        </li>
+        <!--elemento de nav addteams-->
+        <li class="nav-item">
+          <!--<a class="nav-link" href="/teams/add">Add Teams</a>-->
+          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
+            <i class="fas fa-plus-circle"></i>
+            Add Teams
+          </a>
+        </li>
+        <!--nuevo elemento de nav-->
+        <li class="nav-item">
+          <!--<a class="nav-link" href="/teams/add">clasificacion</a>-->
+          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
+            <i class="fas fa-plus-circle"></i>
+            Fixture
+          </a>
+        </li>
+        <!--nuevo elemento de nav-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
+            <i class="fas fa-plus-circle"></i>
+            Clasificacion
+          </a>
+        </li>
+        <!--nuevo elemento de nav DROPDOWN USUARIO-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Users
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">Log In</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">my tournaments</a>
+            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">my teams</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,19 @@
+<div class="cold-md-4" *ngFor="let team of teams">
+    <div class="card text-center">
+        <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+            {{team.name}}{{team.team_id}}
+            <!--borrar un equipo-->
+            <button class="btn btb-danger" (click)="deleteTeam(team.team_id)">
+                <i class="far fa-trash-alt"></i>
+            </button>
+        </div>
+        <!--<img [src]="team.img == ''? '/assets/noImg.png' : team.img" class="card-img-top">-->
+        <div class="card-body">
+            <p>{{team.description}}</p>
+            <!--router link nos mueve a una ruta de angular sin hacer peticion al server-->
+            <a [routerLink]="['/teams/edit',team.team_id]" class="btn btn-info btn-block">
+                EDIT TEAM
+            </a>
+        </div>
+    </div>
+</div>
