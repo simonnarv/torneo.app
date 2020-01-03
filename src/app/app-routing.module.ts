@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import { MyTeamsListComponent } from './components/my-teams-list/my-teams-list.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'teams',
-    component: TeamListComponent
+    component: HomeFormComponent
   },
   {
     path: 'teams/add',

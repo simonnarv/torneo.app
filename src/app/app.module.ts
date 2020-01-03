@@ -14,6 +14,7 @@ import { TeamsService } from './services/teams.service';
 import { TournamentLeagueComponent } from './components/tournament-league/tournament-league.component';
 import { TournamentFixtureComponent } from './components/tournament-fixture/tournament-fixture.component';
 import { MyTeamsListComponent } from './components/my-teams-list/my-teams-list.component';
+import { HomeFormComponent } from './components/home-form/home-form.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MyTeamsListComponent } from './components/my-teams-list/my-teams-list.c
     TournamentBracketComponent,
     TournamentLeagueComponent,
     TournamentFixtureComponent,
-    MyTeamsListComponent
+    MyTeamsListComponent,
+    HomeFormComponent
   ],
   imports: [
     BrowserModule,
