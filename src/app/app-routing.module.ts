@@ -1,10 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TeamListComponent } from './components/team-list/team-list.component';
 import { TeamFormComponent } from './components/team-form/team-form.component';
 import { MyTeamsListComponent } from './components/my-teams-list/my-teams-list.component';
 import { HomeFormComponent } from './components/home-form/home-form.component';
+import { FixtureFormComponent } from './components/fixture-form/fixture-form.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { LoginUserComponent } from './components/login-user/login-user.component';
+import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 
 const routes: Routes = [
   {
@@ -17,19 +20,36 @@ const routes: Routes = [
     component: HomeFormComponent
   },
   {
-    path: 'teams/add',
+    path: 'teams/add',//sin implementar
     component: TeamFormComponent
   },
   {
-    path: 'teams/edit/:id',
+    path: 'teams/edit/:id',//sin implementar
     component: TeamFormComponent
   },
   {
     path: 'teams/allTeams',
     component: MyTeamsListComponent
-  },{
+  },
+  {
     path: 'teams/edit/:id',
     component: MyTeamsListComponent
+  },
+  {
+    path: 'teams/fixtures',
+    component: FixtureFormComponent
+  },
+  {
+    path: 'teams/user/register',
+    component: RegisterUserComponent
+  },
+  {
+    path: 'teams/user/LogIn',
+    component: LoginUserComponent
+  },
+  {
+    path: 'teams/tournament',
+    component: CreateTournamentComponent
   }
 ];
 

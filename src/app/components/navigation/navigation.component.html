@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">APLICACION</a>
+    <a class="navbar-brand" routerLink="/">TorneoApp</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -9,37 +9,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <!--elemento de nav teams-->
-        <li class="nav-item">
-          <!--<a class="nav-link" href="/teams">Teams</a>-->
-          <a class="nav-link" routerLink="/teams" routerlinkActive="active">
-            <i class="fas fa-gamepad"></i>
-            Teams
-          </a>
-        </li>
-        <!--elemento de nav addteams-->
-        <li class="nav-item">
-          <!--<a class="nav-link" href="/teams/add">Add Teams</a>-->
-          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
-            <i class="fas fa-plus-circle"></i>
-            Add Teams
-          </a>
+          <a class="nav-link" href="#">
+            Home 
+            <span class="sr-only">(current)</span></a>
         </li>
         <!--nuevo elemento de nav-->
         <li class="nav-item">
-          <!--<a class="nav-link" href="/teams/add">clasificacion</a>-->
-          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
-            <i class="fas fa-plus-circle"></i>
+          <a class="nav-link" routerLink="teams/fixtures" routerlinkActive="active">
             Fixture
-          </a>
-        </li>
-        <!--nuevo elemento de nav-->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/teams/add" routerlinkActive="active">
-            <i class="fas fa-plus-circle"></i>
-            Clasificacion
           </a>
         </li>
         <!--nuevo elemento de nav DROPDOWN USUARIO-->
@@ -48,11 +25,20 @@
             Users
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">Log In</a>
+            <a class="dropdown-item" routerLink="teams/user/LogIn" routerlinkActive="active">Log In</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">my tournaments</a>
-            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">my teams</a>
+            <a class="dropdown-item" href="#">mis torneos</a>
+            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">mis equipos</a>
+            <a class="dropdown-item" routerLink="teams/tournament" routerlinkActive="active">crear torneo</a>
+            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">crear categoria</a>
           </div>
+        </li>
+        <!--Registrar un usuario-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="teams/user/register" routerlinkActive="active">
+            <i class="fas fa-plus-circle"></i>
+            Register
+          </a>
         </li>
       </ul>
     </div>
