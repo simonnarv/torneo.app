@@ -8,7 +8,6 @@ export interface League {
     competitionsStatus?:CompetitionStatus;
 
     groups?: Array<Team>;
-    
 }
 
 enum CompetitionStatus {

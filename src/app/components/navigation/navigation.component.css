@@ -1,19 +1,22 @@
-body{
-    background-color: #F1F1F1;
+.navbar{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(37,134,179);
+    font-family: 'poppins', sans-serif;
 }
 
-.nav-main{
-width: 100%;
-height: 60px;
-background-color: #FFF;
-display: flex;
-flex-wrap: wrap;
-z-index: 1000;
+.logo{
+    color: rgb(233, 230, 230);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
 }
 
-.btn-toggle-nav{
-    width: 60px;
-    height: 100%;
-    background-color: #F98F39;
-    cursor: pointer;
+.nav-links{
+    display: flex;
 }

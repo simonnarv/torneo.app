@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TeamGroup } from '../models/TeamGroup';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -18,8 +19,8 @@ export class TeamGroupsService {
   }
 
   //GET TEAMGROUP BY ID
-  getTeamGroup(id: string) {
-    return this.http.get(this.API_URI + id);
+  getTeamGroup(id: string):Observable<TeamGroup> {
+    return this.http.get<TeamGroup>(this.API_URI + id);
   }
 
   //DELETE TEAMGROUP BY ID

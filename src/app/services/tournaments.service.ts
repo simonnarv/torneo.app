@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Tournament } from '../models/Tournament';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,8 @@ import { Tournament } from '../models/Tournament';
 export class TournamentsService {
 
   API_URI = 'http://localhost:8080/tournaments/';
+
+  API_URI_CATEGORY = 'http://localhost:8080/tournaments/categories/';
 
   constructor(private http: HttpClient) { }
 
@@ -20,7 +23,10 @@ export class TournamentsService {
   getTournament(id: string) {
     return this.http.get(this.API_URI + id);
   }
-
+ 
+  getTournamentsByCategotyId(id: string): Observable<Tournament>{
+    return this.http.get<Tournament>(this.API_URI_CATEGORY + id);
+  }
 
   deleteTournament(id: string) {
     return this.http.delete(this.API_URI + id);

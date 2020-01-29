@@ -1,3 +1,5 @@
+<div class="container">
+
 <table class="table table-striped table-dark">
   <thead>
     <tr>
@@ -9,10 +11,10 @@
   </thead>
   <tbody *ngFor="let team of teams">
     <tr>
-      <th scope="col">{{team.team_id}}</th>
-      <th scope="col">{{team.name}}</th>
-      <th scope="col">position</th>
-      <th scope="col">points</th>
+      <th scope="row">{{team.team_id}}</th>
+      <th scope="row">{{team.name}}</th>
+      <th scope="row">position</th>
+      <th scope="row">points</th>
     </tr>
   </tbody>
 </table>
@@ -21,10 +23,6 @@
 
   <!--formulario-->
   <form>
-    <!-- inputs del formulario de carga equiposs-->
-    <!-- [(ngModel)]="team.name" es la implementacion de data binding
-  ya que le dice al objeto team de nuestro team-form.cotroler 
-  que el imput pertenece a las atributos especificados-->
     <div class="form-group">
       <input type="text" name="name" [(ngModel)]="team.name" placeholder="Name" class="form-control" autofocus>
     </div>
@@ -32,8 +30,6 @@
       <textarea name="desciption" [(ngModel)]="team.desciption" placeholder="Desciption" rows="3"
         class="form-control"></textarea>
     </div>
-
-    <!--cuando ago click ejecuta el metodo save, tambien valida si se esta guardando o se esta actualizando un valor-->
     <button class="btn-success btn-block" (click)="edit ?  updateTeam() : saveNewTeam()">
       SAVE
     </button>
@@ -41,3 +37,6 @@
   <div class="dropdown-divider"></div>
 
 </button>
+
+</div>
+

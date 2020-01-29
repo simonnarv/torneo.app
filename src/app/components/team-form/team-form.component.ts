@@ -16,10 +16,9 @@ export class TeamFormComponent implements OnInit {
 
   //objeto donde se almacena el input del usuario
   team: Team={
-    team_id: 0,
+    id: 0,
     name:"",
-    description:"",
-    img:""
+    description:""
   }
 
   edit: boolean = false;
@@ -47,7 +46,7 @@ export class TeamFormComponent implements OnInit {
   //metodo q se ejecuta para guardar los equipos en form
   saveNewTeam(){
     //nos permite borrar propiedades que no queremos mandar ej:
-    delete this.team.img;
+    //delete this.team.img;
     //delete this.team.description;
     
     //console.log(this.team);
@@ -65,9 +64,9 @@ export class TeamFormComponent implements OnInit {
     //console.log(this.team);
 
     //nos permite borrar propiedades que no queremos mandar ej:
-    delete this.team.img;
+    //delete this.team.img;
 
-    this.teamService.updateTeam(this.team.team_id.toString(),this.team)
+    this.teamService.updateTeam(this.team.id.toString(),this.team)
     .subscribe(
       res=>{
         console.log(res)

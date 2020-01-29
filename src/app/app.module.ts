@@ -14,16 +14,21 @@ import { MyTeamsListComponent } from './components/my-teams-list/my-teams-list.c
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { FixtureFormComponent } from './components/fixture-form/fixture-form.component';
+import { FormCategoryComponent } from './components/form-category/form-category.component';
+import { FormFilterComponent } from './components/form-filter/form-filter.component';
+import { FormFixtureComponent } from './components/form-fixture/form-fixture.component';
 
 //Prime ng
-import {InputTextModule} from 'primeng/inputtext';
+import { InputTextModule } from 'primeng/inputtext';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
 //services
-import {TournamentsService} from './services/tournaments.service';
-import {MatchesService} from './services/matches.service';
+import { TournamentsService } from './services/tournaments.service';
+import { MatchesService } from './services/matches.service';
 import { TeamsService } from './services/teams.service';
-import {TeamGroupsService} from './services/team-groups.service';
+import { TeamGroupsService } from './services/team-groups.service';
+import { CategoryService } from './services/category.service';
+import { ScoresheetService } from './services/scoresheet.service';
 
 
 @NgModule({
@@ -38,7 +43,10 @@ import {TeamGroupsService} from './services/team-groups.service';
     RegisterUserComponent,
     FixtureFormComponent,
     LoginUserComponent,
-    CreateTournamentComponent
+    CreateTournamentComponent,
+    FormCategoryComponent,
+    FormFilterComponent,
+    FormFixtureComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +59,9 @@ import {TeamGroupsService} from './services/team-groups.service';
     TeamsService,
     TournamentsService,
     MatchesService,
-    TeamGroupsService
+    TeamGroupsService,
+    CategoryService,
+    ScoresheetService
   ],
   bootstrap: [AppComponent]
 })

@@ -8,6 +8,9 @@ import { FixtureFormComponent } from './components/fixture-form/fixture-form.com
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { LoginUserComponent } from './components/login-user/login-user.component';
 import { CreateTournamentComponent } from './components/create-tournament/create-tournament.component';
+import { FormCategoryComponent } from './components/form-category/form-category.component';
+import { FormFilterComponent } from './components/form-filter/form-filter.component';
+import { FormFixtureComponent } from './components/form-fixture/form-fixture.component';
 
 const routes: Routes = [
   {
@@ -50,6 +53,22 @@ const routes: Routes = [
   {
     path: 'teams/tournament',
     component: CreateTournamentComponent
+  },
+  {
+    path: 'futbol/category',
+    component: FormCategoryComponent
+  },
+  {
+    path: 'futbol/filter/:id',
+    component: FormFilterComponent
+  },
+  {
+    path: 'futbol/fixture',
+    component: FormFixtureComponent
+  },
+  {
+    path: 'futbol/fixture/:id',
+    component: FormFixtureComponent
   }
 ];
 

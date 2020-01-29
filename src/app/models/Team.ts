@@ -1,6 +1,5 @@
 export interface Team {
-    team_id?: number;
+    id?: number;
     name?: string;
     description?: string;
-    img?: string;
 }
