@@ -1,79 +1,28 @@
-<nav class="navbar navbar-expand-md">
-  <div class="logo container">
+<nav class="navbar navbar-expand-lg navbar-light navbar-toggleable-md">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/icono-pelota.jpg" width="30" height="30" alt="Logo Torneo">
+      Morenitos
+    </a>
 
-    <button class="navbar-toggler float-xs-left" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <a class="navbar-brand" routerLink="/">TorneoApp</a>
-
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="nav-links navbar-nav mr-auto mt-2 mt-lg-0">
-
-
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Home
-            <span class="sr-only">(current)</span></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="nav navbar-nav ml-auto">
+        <li class="nav-item active"><a class="nav-link" href="#">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="futbol/category" routerlinkActive="active">
-            Categoria
-          </a>
+        <li class="nav-item active"><a class="nav-link" routerLink="futbol/category"
+            routerlinkActive="active">Categoria</a></li>
+        <li class="nav-item active"><a class="nav-link" routerLink="futbol/filter" routerlinkActive="active">Filtro</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="futbol/filter" routerlinkActive="active">
-            Filtro
-          </a>
+        <li class="nav-item active"><a class="nav-link" routerLink="futbol/fixture"
+            routerlinkActive="active">Fixture</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="futbol/fixture" routerlinkActive="active">
-            Fixture
-          </a>
-        </li>
-
-        <!--DROPDOWN USUARIO-->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Users
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="teams/user/LogIn" routerlinkActive="active">Log In</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">mis torneos</a>
-            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">mis equipos</a>
-            <a class="dropdown-item" routerLink="teams/tournament" routerlinkActive="active">crear torneo</a>
-            <a class="dropdown-item" routerLink="teams/allTeams" routerlinkActive="active">crear categoria</a>
-          </div>
-        </li>
-       
       </ul>
     </div>
   </div>
 </nav>
-
-<!--
-body{
-    background-color:rgb(37,134,179);
-}
-
-.nav-main{
-width: 100%;
-height: 60px;
-background-color: rgb(37,134,179);
-display: flex;
-flex-wrap: wrap;
-z-index: 1000;
-}
-
-.btn-toggle-nav{
-    width: 60px;
-    height: 100%;
-    background-color: rgb(37,134,179);
-    cursor: pointer;
-}
-
--->

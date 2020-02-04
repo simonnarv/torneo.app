@@ -1,57 +1,12 @@
-<div class="container div-style">
-    <h2 class="col-12 h2-style">Categorias</h2>
-
-    <p>
-        {{categories?.tournament}} algo
-    </p>
-
-    <ul class="col-12 ul-style" *ngFor="let category of categories">
-        <div *ngIf="categories.tournament">
-            <a [routerLink]="['/futbol/filter/',category.id]"
-                class="list-group-item list-group-item-action text-center">
-                Categoria {{category?.name}}
-                {{category?.tournament.name}}
-            </a>
-        </div>
-        <div *ngIf="!categories.tournament">
-            <a class="list-group-item list-group-item-action text-center">
-                Categoria {{category?.name}}
-                sin torneo
-            </a>
-        </div>
-    </ul>
+<div class="row div-style">
+    <h2 class="col-md-4 offset-md-4 h2-style">Categorias</h2>
 
     <!--<img src="../../../assets/ShirtIcon48.png">-->
 
-    <!--<ul class="col-12 ul-style" *ngFor="let category of categories">
-            <a [routerLink]="['/futbol/filter/',category?.id]"
-                class="list-group-item list-group-item-action text-center">
+   <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
+        <a [routerLink]="['/futbol/filter/',category?.id]" class="list-group-item list-group-item-action text-center">
             Categoria {{category?.name}}
             </a>
-    </ul>-->
+    </ul>
 
-
-
-    <style>
-        .div-style {
-            padding-left: 0em;
-            padding-right: 0em;
-            margin: 0em;
-            padding: 0em;
-            background: #4f80db;
-        }
-
-        .ul-style a {
-            background-color: #4f80db;
-            color: #ffffff;
-
-        }
-
-        .h2-style {
-            padding: 25px;
-            text-align: center;
-            background: #4f80db;
-            color: #ffffff;
-        }
-    </style>
 </div>

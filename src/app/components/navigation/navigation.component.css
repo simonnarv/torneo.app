@@ -1,4 +1,56 @@
 .navbar{
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(37,134,179);
+    font-family: 'poppins', sans-serif;
+    display: flex;
+}
+
+/*navbar brand logo*/
+.navbar-brand{
+    color: rgb(214, 214, 214);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 22px;
+}
+
+/*nav-links*/
+.navbar-nav{
+    justify-content: space-around;
+}
+
+.navbar-nav .nav-link{
+    color: rgb(214, 214, 214);
+    letter-spacing: 3px;
+    padding: 0px 20px;
+}
+
+.navbar-nav li a:hover{
+    color:rgb(15, 15, 15)
+}
+
+.navbar-toggler{
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+    background-color: rgba(37,134,179,1);
+}
+
+.navbar-toggler:hover{
+    background-color: rgba(37,134,179,0);
+}
+/*
+.navbar-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}*/
+
+/*.navbar{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -15,8 +67,36 @@
     text-transform: uppercase;
     letter-spacing: 5px;
     font-size: 20px;
+    font-family: 'poppins', sans-serif;
 }
 
 .nav-links{
-    display: flex;
+    display: flex; 
+    background-color:rgb(37,134,179);
+    justify-content: space-around;
+    width: 30%;
 }
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a{
+    color: rgb(233, 230, 230);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(233, 230, 230);
+    margin: 5px;
+}
+*/

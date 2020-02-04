@@ -8,8 +8,9 @@
     overflow: hidden;
     box-shadow: 0 0 20px rgba(0,0,0,0.15);
 }
+
 .content-table thead tr{
-    background-color: #4f80db;
+    background-color: rgb(37, 134, 179);
     font-weight: bold;
     color: #ffffff;
 }
@@ -24,5 +25,85 @@
 }
 
 .content-table tbody tr:last-of-type{
-    border-bottom: 2px solid  #4f80db;
+    background-color: rgb(37, 134, 179);
 }
+
+.card-body a{
+    text-decoration: none;
+    background-color: rgb(37, 134, 179);
+    color:  rgb(37, 134, 179);
+    font-family: 'poppins', sans-serif;
+}
+
+.card-body{
+
+}
+.card-header{
+    background-color: rgb(37, 134, 179);
+}
+.card-header .btn{
+    color:  rgb(214, 214, 214);
+    text-decoration: none;
+    font-family: 'poppins', sans-serif;
+}
+
+/*
+.navbar-nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}*/
+
+/*.navbar{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 8vh;
+    background-color: rgb(37,134,179);
+    font-family: 'poppins', sans-serif;
+}
+
+.logo{
+    color: rgb(233, 230, 230);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 20px;
+    font-family: 'poppins', sans-serif;
+}
+
+.nav-links{
+    display: flex; 
+    background-color:rgb(37,134,179);
+    justify-content: space-around;
+    width: 30%;
+}
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a{
+    color: rgb(233, 230, 230);
+    text-decoration: none;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.burger{
+    display: none;
+    cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: rgb(233, 230, 230);
+    margin: 5px;
+}
+*/

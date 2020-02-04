@@ -1,0 +1,20 @@
+.div-style {
+    padding-left: 0em;
+    padding-right: 0em;
+    background-color: rgb(37, 134, 179);
+    height: 850px;
+}
+
+.ul-style {}
+
+.ul-style a {
+    background-color: rgb(37, 134, 179);
+    color: rgb(214, 214, 214);
+}
+
+.h2-style {
+    padding: 25px;
+    text-align: center;
+    background-color: rgb(37, 134, 179);
+    color: rgb(214, 214, 214);
+}

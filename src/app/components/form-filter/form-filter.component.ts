@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentsService } from 'src/app/services/tournaments.service'
 import { Tournament } from 'src/app/models/Tournament';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
+import { ScoreSheet } from 'src/app/models/ScoreSheet';
 
 
 @Component({
@@ -12,9 +13,10 @@ import { ScoresheetService } from 'src/app/services/scoresheet.service';
 })
 export class FormFilterComponent implements OnInit {
 
-  tournament;
-  scores: any = [];
-  id: number;//added 
+  //@HostBinding('class') classes = 'row';
+
+  tournament: Tournament;
+  scores: Array<ScoreSheet> = [];
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -23,29 +25,29 @@ export class FormFilterComponent implements OnInit {
 
   ngOnInit() {
     this.getTournament(this.actRoute.snapshot.params.id);
-
     this.getScore('5');
+    //this.order();//prueba
   }
 
+  //como ago para que extraer el id del torneo --- hacer un metodo para encontrar un scoresheet by category id ?
   getTournament(id: string) {
     this.tournamentService.getTournamentsByCategotyId(id)
       .subscribe((tournament: Tournament) => {
-        console.log(tournament.id);
         this.tournament = tournament;
-        console.log(this.tournament);
       })
   }
 
-
   getScore(id: string) {
     this.scoreService.getScoreSheetsByTournament(id)
-      .subscribe((response) => { this.scores = response; })
+      .subscribe((response: ScoreSheet[]) => { 
+        this.scores = response; 
+      })
   }
 
-  getAllScores() {
-    this.scoreService.getScoreSheets()
-      .subscribe(
-        (response) => { this.scores = response; console.log(response); }
-      )
+  //this.data.sort((a, b) => new Date(b.CREATE_TS).getTime() - new Date(a.CREATE_TS).getTime());
+  order(){
+    this.scores.sort(
+      (a, b) => a.points - b.points
+    )
   }
 }
