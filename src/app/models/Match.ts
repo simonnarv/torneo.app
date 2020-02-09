@@ -5,8 +5,8 @@ export interface Match {
     id?: number;
     groupId?: number;
     pitch?: string;
-    homescore?: number;
-    awayscore?: number;
+    homeScore?: number;
+    awayScore?: number;
     homeTeam?: Team;
     awayTeam?: Team;
     matchStatus?: MatchStatus;

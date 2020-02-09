@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormFilterComponent } from './form-filter.component';
+import { FormAddTeamComponent } from './form-add-team.component';
 
-describe('FormFilterComponent', () => {
-  let component: FormFilterComponent;
-  let fixture: ComponentFixture<FormFilterComponent>;
+describe('FormAddTeamComponent', () => {
+  let component: FormAddTeamComponent;
+  let fixture: ComponentFixture<FormAddTeamComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormFilterComponent ]
+      declarations: [ FormAddTeamComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FormFilterComponent);
+    fixture = TestBed.createComponent(FormAddTeamComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

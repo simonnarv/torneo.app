@@ -3,8 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { FormCategoryComponent } from './components/form-category/form-category.component';
-import { FormFilterComponent } from './components/form-filter/form-filter.component';
+import { FormGroupComponent } from './components/form-group/form-group.component';
 import { FormFixtureComponent } from './components/form-fixture/form-fixture.component';
+import { FormAddCategoryComponent } from './components/form-add-category/form-add-category.component';
+import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
+import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
 
 const routes: Routes = [
   {
@@ -21,8 +24,8 @@ const routes: Routes = [
     component: FormCategoryComponent
   },
   {
-    path: 'futbol/filter/:id',
-    component: FormFilterComponent
+    path: 'futbol/group/:id',
+    component: FormGroupComponent
   },
   {
     path: 'futbol/fixture',
@@ -31,6 +34,23 @@ const routes: Routes = [
   {
     path: 'futbol/fixture/:id',
     component: FormFixtureComponent
+  },
+  {
+    path: 'futbol/add/category',
+    component: FormAddCategoryComponent
+  },
+  {
+    path: 'futbol/category/:id/add/group',
+    component: FormAddGroupComponent
+  },
+  {
+    path: 'futbol/add/team',
+    component: FormAddTeamComponent
+  }
+  ,
+  {
+    path: 'futbol/competiton/:id/group/:id/add/match',
+    component: FormAddTeamComponent
   }
 ];
 

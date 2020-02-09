@@ -18,14 +18,13 @@ export class FormFixtureComponent implements OnInit {
 
   ngOnInit() {
     this.getGroup(this.actRoute.snapshot.params.id);
-    console.log(this.actRoute.snapshot.params.id);
     this.getGroup(this.actRoute.snapshot.params.id);
   }
 
   getGroup(id: string) {
     this.teamgroupService.getTeamGroup(id)
     .subscribe((group: TeamGroup) =>{
-      this.teamgroup=group;
+      this.teamgroup = group;
     })
   }
 }

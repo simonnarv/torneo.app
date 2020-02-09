@@ -1,0 +1,10 @@
+<div>
+    <form>
+        <div class="form-group">
+          <label for="categoryName">Nombre</label>
+          <input [(ngModel)]="category.name" name="name" type="text" class="form-control" id="categoryName" placeholder="Ingrese un nombre" />
+        </div>
+        
+        <button type="submit" class="btn btn-primary" (click)="save()">Guardar</button>
+      </form>
+</div>

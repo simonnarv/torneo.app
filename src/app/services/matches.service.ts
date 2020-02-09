@@ -27,7 +27,7 @@ export class MatchesService {
   }
 
   //SAVE MATCH
-  saveMatch(match: Match) {
+  save(match: Match) {
     return this.http.post(this.API_URI, match);
   }
 

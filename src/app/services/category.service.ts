@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Category } from '../models/Category';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+    // TODO: 'Authorization': 'my-auth-token'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -29,9 +37,18 @@ export class CategoryService {
   }
 
   //SAVE CATEGORY
-  saveTeam(category: Category) {
-    return this.http.post(this.API_URI, category);
+  save(category: Category): Observable<Category> {
+    return this.http.post<Category>(this.API_URI, category, httpOptions)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        console.log(err)
+
+        return throwError(err);
+      })
+    );
   }
+
+ 
 
   //UPDATE CATEGORY
   updateTeam(id: string, updatedCategory: Category) {

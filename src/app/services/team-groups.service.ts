@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TeamGroupsService {
 
-  API_URI = 'http://localhost:8080/teamgroups/';
+  API_URI = 'http://localhost:8080/groups/';
 
   constructor(private http: HttpClient) { }
 

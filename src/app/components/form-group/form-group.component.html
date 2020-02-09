@@ -39,6 +39,10 @@
             
             </div>
         </div>
+        <div class="row" *ngIf="hasAdminPermission()" >
+            <a [routerLink]="['/futbol/category', categoryId, 'add', 'group']" class="btn btn-link btn-block" role="button">Agregar</a>
+            <!-- <button class="offset-4 col-md-4">Agregar</button>   'futbol/category/:id/add/group'-->
+        </div>
     </div>
     <!--Collapse de Copa Oro-->
     <div class="row card">

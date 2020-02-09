@@ -7,16 +7,18 @@ import { ScoreSheet } from 'src/app/models/ScoreSheet';
 
 
 @Component({
-  selector: 'app-form-filter',
-  templateUrl: './form-filter.component.html',
-  styleUrls: ['./form-filter.component.css']
+  selector: 'app-form-group',
+  templateUrl: './form-group.component.html',
+  styleUrls: ['./form-group.component.css']
 })
-export class FormFilterComponent implements OnInit {
+export class FormGroupComponent implements OnInit {
 
   //@HostBinding('class') classes = 'row';
 
   tournament: Tournament;
   scores: Array<ScoreSheet> = [];
+
+  categoryId;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -24,8 +26,9 @@ export class FormFilterComponent implements OnInit {
     private scoreService: ScoresheetService) { }
 
   ngOnInit() {
-    this.getTournament(this.actRoute.snapshot.params.id);
-    this.getScore('5');
+    this.categoryId = this.actRoute.snapshot.params.id;
+    this.getTournament(this.categoryId);
+    //this.getScore('5');
     //this.order();//prueba
   }
 
@@ -49,5 +52,9 @@ export class FormFilterComponent implements OnInit {
     this.scores.sort(
       (a, b) => a.points - b.points
     )
+  }
+
+  hasAdminPermission() {
+    return true;
   }
 }

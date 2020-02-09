@@ -25,6 +25,11 @@ export class TeamsService {
     return this.http.get(this.API_URI+id);
   }
 
+  //GET TEAMS BY COMPETITION ID
+  getByCompetitionId(id: number) {
+    return this.http.get(this.API_URI + id);
+  }
+
   //DELETE TEAM BY ID
   deleteTeam(id: string) {
     return this.http.delete(this.API_URI+id);

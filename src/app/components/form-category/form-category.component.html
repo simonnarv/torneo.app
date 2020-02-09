@@ -4,9 +4,12 @@
     <!--<img src="../../../assets/ShirtIcon48.png">-->
 
    <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
-        <a [routerLink]="['/futbol/filter/',category?.id]" class="list-group-item list-group-item-action text-center">
+        <a [routerLink]="['/futbol/group/',category?.id]" class="list-group-item list-group-item-action text-center">
             Categoria {{category?.name}}
             </a>
     </ul>
-
+</div>
+<div class="row" *ngIf="hasAdminPermission()" >
+    <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>
+    <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/team']">Agregar Equipo</button>
 </div>
