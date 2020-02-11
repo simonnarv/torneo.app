@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Category } from '../models/Category';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,43 +18,38 @@ const httpOptions = {
 })
 export class CategoryService {
 
-  API_URI = 'http://localhost:8080/categories/';
+  API_URI = environment.apiEndpoint + '/categories/';
 
   constructor(private http: HttpClient) { }
 
   //GET CATEGORY LIST
-  getCategories(): Observable<Category[]> {
+  getAll(): Observable<Category[]> {
     return this.http.get<Category[]>(this.API_URI);
   }
 
   //GET CATEGORY BY ID
-  getCategory(id: string): Observable<Category> {
+  getById(id: number): Observable<Category> {
     return this.http.get<Category>(this.API_URI + id);
   }
 
   //DELETE CATEGORY BY ID
-  deleteCategory(id: string) {
+  delete(id: number) {
     return this.http.delete(this.API_URI + id);
   }
 
   //SAVE CATEGORY
-  save(category: Category): Observable<Category> {
+  create(category: Category): Observable<Category> {
     return this.http.post<Category>(this.API_URI, category, httpOptions)
     .pipe(
       catchError((err: HttpErrorResponse) => {
         console.log(err)
-
         return throwError(err);
       })
     );
   }
 
- 
-
   //UPDATE CATEGORY
-  updateTeam(id: string, updatedCategory: Category) {
+  update(id: number, updatedCategory: Category) {
     return this.http.put(this.API_URI + id, updatedCategory);
   }
-
-
 }

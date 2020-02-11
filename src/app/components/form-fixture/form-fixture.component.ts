@@ -21,8 +21,8 @@ export class FormFixtureComponent implements OnInit {
     this.getGroup(this.actRoute.snapshot.params.id);
   }
 
-  getGroup(id: string) {
-    this.teamgroupService.getTeamGroup(id)
+  getGroup(id: number) {
+    this.teamgroupService.getById(id)
     .subscribe((group: TeamGroup) =>{
       this.teamgroup = group;
     })

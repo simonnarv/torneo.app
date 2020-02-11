@@ -32,16 +32,16 @@ export class FormGroupComponent implements OnInit {
     //this.order();//prueba
   }
 
-  //como ago para que extraer el id del torneo --- hacer un metodo para encontrar un scoresheet by category id ?
-  getTournament(id: string) {
-    this.tournamentService.getTournamentsByCategotyId(id)
+  //como hago para que extraer el id del torneo --- hacer un metodo para encontrar un scoresheet by category id ?
+  getTournament(id: number) {
+    this.tournamentService.getByCategotyId(id)
       .subscribe((tournament: Tournament) => {
         this.tournament = tournament;
       })
   }
 
-  getScore(id: string) {
-    this.scoreService.getScoreSheetsByTournament(id)
+  getScore(id: number) {
+    this.scoreService.getByTournamentId(id)
       .subscribe((response: ScoreSheet[]) => { 
         this.scores = response; 
       })

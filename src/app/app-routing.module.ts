@@ -40,7 +40,7 @@ const routes: Routes = [
     component: FormAddCategoryComponent
   },
   {
-    path: 'futbol/category/:id/add/group',
+    path: 'futbol/category/:competitionId/add/group',
     component: FormAddGroupComponent
   },
   {

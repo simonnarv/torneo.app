@@ -39,6 +39,6 @@ export class FormAddMatchComponent implements OnInit {
   }
 
   save() {
-    this.matchService.save(this.match).subscribe();
+    this.matchService.create(this.match).subscribe();
   }
 }

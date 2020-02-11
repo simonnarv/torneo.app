@@ -16,14 +16,27 @@ export class FormAddCategoryComponent implements OnInit {
   }
 
   constructor(private categoryService: CategoryService,
+    private actRoute: ActivatedRoute,
     private router: Router) { }
 
   ngOnInit() {
+   var categoryId = this.actRoute.snapshot.params.id;
 
-  }
+   if (categoryId) {
+     // EDIT
+    this.getCategory(categoryId);
+   }
+  };
 
   save() {
-    this.categoryService.save(this.category).subscribe();
-  }
+    !this.category.id
+      ? this.categoryService.create(this.category).subscribe()
+      : this.categoryService.update(this.category.id, this.category).subscribe();
+  };
 
+  private getCategory(categoryId: number) {
+    this.categoryService.getById(categoryId).subscribe(
+      (category : Category) => { this.category = category }
+      );
+  };
 }

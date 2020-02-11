@@ -20,10 +20,24 @@ export class FormAddTeamComponent implements OnInit {
     private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    var id = this.actRoute.snapshot.params.id;
+
+    if (id) {
+      // EDIT
+     this.getTeam(id);
+    }
   }
 
   save() {
-    this.teamService.saveTeam(this.team).subscribe();
+    !this.team.id
+    ? this.teamService.create(this.team).subscribe()
+    : this.teamService.update(this.team.id, this.team).subscribe();
   }
 
+  private getTeam(teamId: number) {
+    this.teamService.getById(teamId)
+    .subscribe(
+      (team : Team) => { this.team = team }
+    );
+  };
 }

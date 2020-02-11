@@ -23,7 +23,7 @@ export class FormCategoryComponent implements OnInit {
 
   //lista de categories
   getCategories() {
-    this.categoryService.getCategories()
+    this.categoryService.getAll()
     .subscribe(
     (categories : Category[]) => { 
       this.categories = categories;

@@ -16,16 +16,31 @@ export class FormAddGroupComponent implements OnInit {
     competitionId: 0
   }
 
-  constructor(private teamGroupsService: TeamGroupsService,
+  constructor(private groupService: TeamGroupsService,
     private router: Router,
     private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.group.competitionId = this.actRoute.snapshot.params.id;
+    this.group.competitionId = this.actRoute.snapshot.params.competitionId;
+    var id = this.actRoute.snapshot.params.id;
+
+    if (id) {
+      // EDIT
+     this.getGroup(id);
+    }
   }
 
   save() {
-    this.teamGroupsService.saveTeamGroup(this.group).subscribe();
+    !this.group.id
+    ? this.groupService.create(this.group).subscribe()
+    : this.groupService.update(this.group.id, this.group).subscribe();
   }
+
+  private getGroup(groupId: number) {
+    this.groupService.getById(groupId)
+    .subscribe(
+      (group : TeamGroup) => { this.group = group }
+    );
+  };
 
 }

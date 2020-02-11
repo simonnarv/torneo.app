@@ -1,38 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Match } from '../models/Match';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MatchesService {
 
-  API_URI = 'http://localhost:8080/matches/';
+  API_URI = environment.apiEndpoint + '/matches/';
 
   constructor(private http: HttpClient) { }
 
   //GET MATCH LIST
-  getMatches() {
+  getAll() {
     return this.http.get(this.API_URI);
   }
 
   //GET MATCH BY ID
-  getMatch(id: string) {
+  getById(id: number) {
     return this.http.get(this.API_URI+id);
   }
 
   //DELETE MATCH BY ID
-  deleteMatch(id: string) {
+  delete(id: number) {
     return this.http.delete(this.API_URI+id);
   }
 
   //SAVE MATCH
-  save(match: Match) {
+  create(match: Match) {
     return this.http.post(this.API_URI, match);
   }
 
   //UPDATE MATCH
-  updateMatch(id: string, updatedMatch: Match) {
+  update(id: number, updatedMatch: Match) {
     return this.http.put(this.API_URI+id, updatedMatch);
   }
 }
