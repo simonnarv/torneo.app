@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamGroupsService } from 'src/app/services/team-groups.service';
+import { GroupsService } from 'src/app/services/groups.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { TeamGroup } from 'src/app/models/TeamGroup';
+import { Group } from 'src/app/models/Group';
 
 @Component({
   selector: 'app-form-add-group',
@@ -10,13 +10,13 @@ import { TeamGroup } from 'src/app/models/TeamGroup';
 })
 export class FormAddGroupComponent implements OnInit {
 
-  group: TeamGroup = {
+  group: Group = {
     name : "",
     stage : 1,
     competitionId: 0
   }
 
-  constructor(private groupService: TeamGroupsService,
+  constructor(private groupService: GroupsService,
     private router: Router,
     private actRoute: ActivatedRoute) { }
 
@@ -32,14 +32,18 @@ export class FormAddGroupComponent implements OnInit {
 
   save() {
     !this.group.id
-    ? this.groupService.create(this.group).subscribe()
+    ? this.groupService.create(this.group).subscribe(
+      res => {
+        this.router.navigate(['/futbol/group/'+this.actRoute.snapshot.params.competitionId]);
+      }
+    )
     : this.groupService.update(this.group.id, this.group).subscribe();
   }
 
   private getGroup(groupId: number) {
     this.groupService.getById(groupId)
     .subscribe(
-      (group : TeamGroup) => { this.group = group }
+      (group : Group) => { this.group = group }
     );
   };
 

@@ -30,7 +30,11 @@ export class FormAddCategoryComponent implements OnInit {
 
   save() {
     !this.category.id
-      ? this.categoryService.create(this.category).subscribe()
+      ? this.categoryService.create(this.category).subscribe(
+        res=>{
+          this.router.navigate(['futbol/category']);
+        }
+      )
       : this.categoryService.update(this.category.id, this.category).subscribe();
   };
 

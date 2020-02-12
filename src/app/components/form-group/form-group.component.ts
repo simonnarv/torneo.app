@@ -4,6 +4,7 @@ import { TournamentsService } from 'src/app/services/tournaments.service'
 import { Tournament } from 'src/app/models/Tournament';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { ScoreSheet } from 'src/app/models/ScoreSheet';
+import { GroupsService} from '../../services/groups.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class FormGroupComponent implements OnInit {
   constructor(
     private actRoute: ActivatedRoute,
     private tournamentService: TournamentsService,
-    private scoreService: ScoresheetService) { }
+    private scoreService: ScoresheetService,
+    private groupsService: GroupsService) { }
 
   ngOnInit() {
     this.categoryId = this.actRoute.snapshot.params.id;
@@ -56,5 +58,13 @@ export class FormGroupComponent implements OnInit {
 
   hasAdminPermission() {
     return true;
+  }
+
+  delete(id: number) {
+    this.groupsService.delete(id).subscribe(
+      res => {
+        this.getTournament(this.actRoute.snapshot.params.id);
+      } 
+    )
   }
 }

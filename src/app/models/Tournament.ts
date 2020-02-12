@@ -1,4 +1,4 @@
-import { TeamGroup } from './TeamGroup';
+import { Group } from './Group';
 
 
 export interface Tournament {
@@ -6,6 +6,6 @@ export interface Tournament {
     name?: string;
     competitionsStatus?:CompetitionStatus;
     description?: string;
-    groups?: Array<TeamGroup>;
+    groups?: Array<Group>;
     
 }

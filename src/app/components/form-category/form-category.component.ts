@@ -24,15 +24,23 @@ export class FormCategoryComponent implements OnInit {
   //lista de categories
   getCategories() {
     this.categoryService.getAll()
-    .subscribe(
-    (categories : Category[]) => { 
-      this.categories = categories;
-      console.log(categories)
-    });
+      .subscribe(
+        (categories: Category[]) => {
+          this.categories = categories;
+          console.log(categories)
+        });
   }
 
   hasAdminPermission() {
     return true;
+  }
+
+  delete(id: number) {
+    this.categoryService.delete(id).subscribe(
+      res =>{
+        this.getCategories();
+      }
+    );
   }
 
 }

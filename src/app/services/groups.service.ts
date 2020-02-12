@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TeamGroup } from '../models/TeamGroup';
+import { Group } from '../models/Group';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class TeamGroupsService {
+export class GroupsService {
 
   API_URI = environment.apiEndpoint + '/groups/';
 
@@ -20,8 +20,8 @@ export class TeamGroupsService {
   }
 
   //GET TEAMGROUP BY ID
-  getById(id: number):Observable<TeamGroup> {
-    return this.http.get<TeamGroup>(this.API_URI + id);
+  getById(id: number):Observable<Group> {
+    return this.http.get<Group>(this.API_URI + id);
   }
 
   //DELETE TEAMGROUP BY ID
@@ -30,12 +30,12 @@ export class TeamGroupsService {
   }
 
   //SAVE TEAMGROUP
-  create(teamGroup: TeamGroup) {
+  create(teamGroup: Group) {
     return this.http.post(this.API_URI, teamGroup);
   }
 
   //UPDATE TEAMGROUP
-  update(id: number, updatedTeamGroup: TeamGroup) {
+  update(id: number, updatedTeamGroup: Group) {
     return this.http.put(this.API_URI + id, updatedTeamGroup);
   }
 }

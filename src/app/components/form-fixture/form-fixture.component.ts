@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamGroupsService } from '../../services/team-groups.service';
+import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
-import { TeamGroup } from '../../models/TeamGroup'
+import { Group } from '../../models/Group'
 @Component({
   selector: 'app-form-fixture',
   templateUrl: './form-fixture.component.html',
@@ -12,7 +12,7 @@ export class FormFixtureComponent implements OnInit {
   teamgroup;
 
   constructor(
-    private teamgroupService: TeamGroupsService, 
+    private groupService: GroupsService, 
     private actRoute: ActivatedRoute
     ) { }
 
@@ -22,8 +22,8 @@ export class FormFixtureComponent implements OnInit {
   }
 
   getGroup(id: number) {
-    this.teamgroupService.getById(id)
-    .subscribe((group: TeamGroup) =>{
+    this.groupService.getById(id)
+    .subscribe((group: Group) =>{
       this.teamgroup = group;
     })
   }

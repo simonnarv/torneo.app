@@ -3,13 +3,47 @@
 
     <!--<img src="../../../assets/ShirtIcon48.png">-->
 
-   <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
-        <a [routerLink]="['/futbol/group/',category?.id]" class="list-group-item list-group-item-action text-center">
-            Categoria {{category?.name}}
-            </a>
+    <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
+
+        <div class="row"><!--no tengo idea de porque no lo pone todo junto en una fila-->
+
+        <a [routerLink]="['/futbol/group/',category?.id]" class=" col-6 list-group-item list-group-item-action text-center">
+            <p>Categoria {{category?.name}}</p>
+        </a>
+        <button class="offset-7 col-2" *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
+            <img src="../../../assets/trash_icon_32.png" alt="">
+        </button>
+
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Eliminar Categoria</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Esta seguro de eliminar esta categoria?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(category.id)">Eliminar
+                            {{category?.id}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ul>
 </div>
-<div class="row" *ngIf="hasAdminPermission()" >
+
+<div class="row" *ngIf="hasAdminPermission()">
     <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>
     <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/team']">Agregar Equipo</button>
 </div>
+
+

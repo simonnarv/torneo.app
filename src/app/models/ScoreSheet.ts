@@ -1,5 +1,5 @@
 import { Team } from './Team';
-import { TeamGroup } from './TeamGroup';
+import { Group } from './Group';
 
 export interface ScoreSheet{
     id?: number;
@@ -7,6 +7,6 @@ export interface ScoreSheet{
     goalFavor: number;
     goalAgainst: number;
     goalDifference: number;
-    teamGroup: Array<TeamGroup>;
+    teamGroup: Array<Group>;
     teams: Array<Team>;
 }

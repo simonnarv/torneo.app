@@ -49,7 +49,7 @@ const routes: Routes = [
   }
   ,
   {
-    path: 'futbol/competiton/:id/group/:id/add/match',
+    path: 'futbol/competition/:id/group/:id/add/match',
     component: FormAddTeamComponent
   }
 ];
