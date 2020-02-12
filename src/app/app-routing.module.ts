@@ -8,6 +8,7 @@ import { FormFixtureComponent } from './components/form-fixture/form-fixture.com
 import { FormAddCategoryComponent } from './components/form-add-category/form-add-category.component';
 import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 const routes: Routes = [
   {
@@ -46,11 +47,14 @@ const routes: Routes = [
   {
     path: 'futbol/add/team',
     component: FormAddTeamComponent
-  }
-  ,
+  },
   {
-    path: 'futbol/competition/:id/group/:id/add/match',
+    path: 'futbol/competition/:competitionId/group/:id/add/match',
     component: FormAddTeamComponent
+  },
+  {
+    path: 'futbol/login',
+    component: FormLoginComponent
   }
 ];
 
