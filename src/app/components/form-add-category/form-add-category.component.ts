@@ -35,7 +35,10 @@ export class FormAddCategoryComponent implements OnInit {
           this.router.navigate(['futbol/category']);
         }
       )
-      : this.categoryService.update(this.category.id, this.category).subscribe();
+      : this.categoryService.update(this.category.id, this.category).subscribe(  
+        res=>{
+        this.router.navigate(['futbol/category']);
+      });
   };
 
   private getCategory(categoryId: number) {

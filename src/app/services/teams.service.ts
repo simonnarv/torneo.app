@@ -9,8 +9,6 @@ import { environment } from 'src/environments/environment';
 })
 export class TeamsService {
 
-  //API_URI = 'http://localhost:8080/proyecto.torneo';
-
   API_URI = environment.apiEndpoint + '/teams/';
 
   constructor(private http: HttpClient) { }

@@ -4,10 +4,11 @@
 
         <div class="row"><!--no tengo idea de porque no lo pone todo junto en una fila-->
 
-        <a [routerLink]="['/futbol/group/',category?.id]" class=" col-6 list-group-item list-group-item-action text-center">
+        <a [routerLink]="['/futbol/group/',category?.id]" class="offset-2 col-6 list-group-item list-group-item-action text-center">
             <p>Categoria {{category?.name}}</p>
         </a>
-        <button class="offset-7 col-2" *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
+        <button class="col-2" [routerLink]="['/futbol/add/category/', category.id]">Editar</button>
+        <button class="col-2" *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
             <img src="../../../assets/trash_icon_32.png" alt="">
         </button>
 
