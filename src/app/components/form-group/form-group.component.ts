@@ -5,6 +5,7 @@ import { Tournament } from 'src/app/models/Tournament';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { ScoreSheet } from 'src/app/models/ScoreSheet';
 import { GroupsService} from '../../services/groups.service';
+import { LoginService } from 'src/app/services/login.service';
 
 
 @Component({
@@ -25,13 +26,12 @@ export class FormGroupComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private tournamentService: TournamentsService,
     private scoreService: ScoresheetService,
-    private groupsService: GroupsService) { }
+    private groupsService: GroupsService,
+    private loginService: LoginService) { }
 
   ngOnInit() {
     this.categoryId = this.actRoute.snapshot.params.id;
     this.getTournament(this.categoryId);
-    //this.getScore('5');
-    //this.order();//prueba
   }
 
   //como hago para que extraer el id del torneo --- hacer un metodo para encontrar un scoresheet by category id ?
@@ -57,7 +57,7 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return true;
+    return this.loginService.isAdmin();
   }
 
   delete(id: number) {

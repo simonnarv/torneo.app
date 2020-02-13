@@ -42,6 +42,6 @@ export class TeamsService {
 
   //UPDATE TEAM
   update(id: number, updatedTeam: Team) {
-    return this.http.put(this.API_URI+id, updatedTeam);
+    return this.http.put(this.API_URI + id, updatedTeam);
   }
 }

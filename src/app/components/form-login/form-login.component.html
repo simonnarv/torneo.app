@@ -2,15 +2,15 @@
 
     <div class="col-6 offset-3 form-group">
         <label for="formEmail">Email</label>
-        <input type="email" class="form-control" id="formEmail" aria-describedby="emailHelp">
+        <input name="formEmail" [(ngModel)]="user.email" type="email" class="form-control" id="formEmail" aria-describedby="emailHelp">
     </div>
 
     <div class="col-6 offset-3  form-group">
         <label for="formPassword">Password</label>
-        <input type="password" class="form-control" id="formPassword">
+        <input [(ngModel)]="user.password" name="formPassword" type="password" class="form-control" id="formPassword">
     </div>
 
-    <button type="submit" class="offset-8 btn btn-primary">Ingresar</button>
+    <button type="submit" class="offset-8 btn btn-primary" (click)="login()">Ingresar</button>
 
 </form>
 

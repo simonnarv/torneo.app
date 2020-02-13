@@ -1,8 +1,5 @@
 <div class="row div-style">
     <h2 class="col-md-4 offset-md-4 h2-style">Categorias</h2>
-
-    <!--<img src="../../../assets/ShirtIcon48.png">-->
-
     <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
 
         <div class="row"><!--no tengo idea de porque no lo pone todo junto en una fila-->
@@ -40,6 +37,8 @@
         </div>
     </ul>
 </div>
+
+<button class="offset-4 col-md-4" [routerLink]="['/futbol/login']">Login</button>
 
 <div class="row" *ngIf="hasAdminPermission()">
     <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>

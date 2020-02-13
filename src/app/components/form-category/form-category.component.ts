@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { Category } from 'src/app/models/Category';
 import { CategoryService } from '../../services/category.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Tournament } from 'src/app/models/Tournament';
+import { Router } from '@angular/router';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-form-category',
@@ -15,7 +15,8 @@ export class FormCategoryComponent implements OnInit {
   categories;
 
   constructor(private categoryService: CategoryService,
-    private router: Router) { }
+              private loginService: LoginService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getCategories();
@@ -32,7 +33,7 @@ export class FormCategoryComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return true;
+    return this.loginService.isAdmin();
   }
 
   delete(id: number) {

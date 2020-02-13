@@ -5,11 +5,12 @@ import { Category } from '../models/Category';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { LoginService } from './login.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-    // TODO: 'Authorization': 'my-auth-token'
+    'Content-Type':  'application/json',
+    'Authorization': 'Bearer ' + LoginService.getToken()
   })
 };
 
@@ -20,7 +21,9 @@ export class CategoryService {
 
   API_URI = environment.apiEndpoint + '/categories/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private loginService: LoginService) { 
+      httpOptions.headers.append('Authorization Bearer', LoginService.getToken());
+  }
 
   //GET CATEGORY LIST
   getAll(): Observable<Category[]> {
