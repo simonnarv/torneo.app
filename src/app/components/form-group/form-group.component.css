@@ -42,11 +42,15 @@
     background-color: rgb(37, 134, 179);
 }
 .card-header .btn{
-    color:  rgb(214, 214, 214);
+    color:  #fff;
     text-decoration: none;
     font-family: 'poppins', sans-serif;
 }
 
+.btn-delete{
+    color: aquamarine;
+    background-color: red;
+}
 /*
 .navbar-nav{
     display: flex;

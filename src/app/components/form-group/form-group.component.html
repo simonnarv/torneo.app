@@ -13,7 +13,7 @@
                 
                 <div class="col-md-4" *ngFor="let group of tournament?.groups">
                     <a [routerLink]="['/futbol/fixture/',group.id]">
-                        <h3>{{group.name}}</h3>
+                        <h3 class="h1-gp-name">{{group.name}}</h3>
                         <table class="col-12 content-table">
                             <thead>
                                 <tr>
@@ -35,7 +35,7 @@
                             </tbody>
                         </table>
                     </a>
-                    <button (click)="delete(group.id)">
+                    <button class="btn-delete btn btn-block" (click)="delete(group.id)">
                         borrar grupo
                     </button>
                 </div>
