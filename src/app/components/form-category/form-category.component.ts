@@ -31,9 +31,10 @@ export class FormCategoryComponent implements OnInit {
           console.log(categories)
         });
   }
-
+  //cambiar despues de poder ingresar usuario al sistema
   hasAdminPermission() {
-    return this.loginService.isAdmin();
+    return true;
+    //return this.loginService.isAdmin();
   }
 
   delete(id: number) {

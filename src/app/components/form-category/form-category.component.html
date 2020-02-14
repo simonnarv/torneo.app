@@ -1,18 +1,22 @@
-<div class="row div-style">
-    <h2 class="col-md-4 offset-md-4 h2-style">Categorias</h2>
-    <ul class="col-md-4 offset-md-4 ul-style" *ngFor="let category of categories">
+<div class="col-8 offset-2 div-style">
+    <h2 class="h2-style col-4 offset-4 col-md-4 offset-md-4">Categorias</h2>
+    <ul class="ul-style row" *ngFor="let category of categories">
 
-        <div class="row"><!--no tengo idea de porque no lo pone todo junto en una fila-->
-
-        <a [routerLink]="['/futbol/group/',category?.id]" class="offset-2 col-6 list-group-item list-group-item-action text-center">
+        <a [routerLink]="['/futbol/group/',category?.id]"
+            class="col-8 list-group-item list-group-item-action text-center">
             <p>Categoria {{category?.name}}</p>
         </a>
-        <button class="col-2" [routerLink]="['/futbol/add/category/', category.id]">Editar</button>
-        <button class="col-2" *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
+
+        <button class="col-2 btn-edit btn btn-success" [routerLink]="['/futbol/add/category/', category.id]">
+            <img src="../../../assets/edit_icon_32.png">
+        </button>
+
+        <button class="col-2 btn-delete btn btn-danger" *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
             <img src="../../../assets/trash_icon_32.png" alt="">
         </button>
 
-        </div>
+
+        
 
         <!-- Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
@@ -30,8 +34,9 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger" (click)="delete(category.id)">Eliminar
-                            {{category?.id}}</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(category.id)">
+                            Eliminar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -39,11 +44,10 @@
     </ul>
 </div>
 
-<button class="offset-4 col-md-4" [routerLink]="['/futbol/login']">Login</button>
 
-<div class="row" *ngIf="hasAdminPermission()">
-    <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>
-    <button class="offset-4 col-md-4" [routerLink]="['/futbol/add/team']">Agregar Equipo</button>
+<!--<button class="offset-md-4 col-md-4" [routerLink]="['/futbol/login']">Login</button>-->
+
+<div *ngIf="hasAdminPermission()">
+    <button class="btn-add-cat btn col-8 offset-2" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>
+    <button class="btn-add-team btn col-8 offset-2" [routerLink]="['/futbol/add/team']">Agregar Equipo</button>
 </div>
-
-

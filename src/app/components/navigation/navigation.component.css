@@ -2,26 +2,27 @@
     justify-content: space-around;
     align-items: center;
     min-height: 8vh;
-    background-color: rgb(37,134,179);
     font-family: 'poppins', sans-serif;
     display: flex;
+    padding: 50px;
 }
 
 /*navbar brand logo*/
 .navbar-brand{
-    color: rgb(214, 214, 214);
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 22px;
+    font-size: 23px;
 }
 
 /*nav-links*/
 .navbar-nav{
     justify-content: space-around;
+    font-size: 18px;
 }
 
 .navbar-nav .nav-link{
-    color: rgb(214, 214, 214);
+    color: #fff;
     letter-spacing: 3px;
     padding: 0px 20px;
 }
@@ -34,7 +35,6 @@
     border: none;
     cursor: pointer;
     transition: all 0.4s ease 0s;
-    background-color: rgba(37,134,179,1);
 }
 
 .navbar-toggler:hover{
