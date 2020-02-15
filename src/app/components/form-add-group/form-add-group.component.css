@@ -1,0 +1,31 @@
+.btn-save {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: 2087b3;
+    color: #ffffff;
+    border-radius: 5%;
+    background: #2087b3;
+    font-size: 22px;
+    font-family: 'poppins', sans-serif;
+}
+.h1-cat {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    text-align: center;
+    font-family: 'poppins', sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.lab{
+    color: #fff;
+    font-family: 'poppins', sans-serif;
+    font-weight: bold;
+}
+.div-form {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5%;
+    color: #fff;
+    margin-top: 50px;
+}

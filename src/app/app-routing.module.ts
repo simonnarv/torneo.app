@@ -4,11 +4,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { FormCategoryComponent } from './components/form-category/form-category.component';
 import { FormGroupComponent } from './components/form-group/form-group.component';
-import { FormFixtureComponent } from './components/form-fixture/form-fixture.component';
+import { FormMatchComponent } from './components/form-match/form-match.component';
 import { FormAddCategoryComponent } from './components/form-add-category/form-add-category.component';
 import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
+import { FormAddMatchComponent } from './components/form-add-match/form-add-match.component';
 
 const routes: Routes = [
   {
@@ -29,12 +30,12 @@ const routes: Routes = [
     component: FormGroupComponent
   },
   {
-    path: 'futbol/fixture',
-    component: FormFixtureComponent
+    path: 'futbol/matches',
+    component: FormMatchComponent
   },
   {
-    path: 'futbol/fixture/:id',
-    component: FormFixtureComponent
+    path: 'futbol/matches/:id',
+    component: FormMatchComponent
   },
   {
     path: 'futbol/add/category',
@@ -54,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'futbol/competition/:competitionId/group/:id/add/match',
-    component: FormAddTeamComponent
+    component: FormAddMatchComponent
   },
   {
     path: 'futbol/login',

@@ -17,7 +17,7 @@ export class FormAddMatchComponent implements OnInit {
     groupId: 0,
     homeScore: 0,
     awayScore: 0,
-    matchStatus: MatchStatus.PENDING
+    //matchStatus: MatchStatus.PENDING
   };
 
   teams;

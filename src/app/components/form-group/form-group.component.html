@@ -1,20 +1,24 @@
 <div class="col-12 accordion" id="accordionFilter">
     <div class="row card">
-        <div class="card-header" id="gruposId">
-            <h2 class="mb-0">
+        <div class="card-header row" id="gruposId">
+            <h2 class="col-md-4">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGrupo"
                     aria-expanded="true" aria-controls="collapseOne">
                     Grupos
                 </button>
             </h2>
+            <a [routerLink]="['/futbol/category', categoryId, 'add', 'group']" class="btn btn-plus col-md-4 offset-md-4"
+                role="button" *ngIf="hasAdminPermission()">
+                <img src="../../../assets/plus_icon.png">
+            </a>
         </div>
         <div id="collapseGrupo" class="collapse show" aria-labelledby="gruposId" data-parent="#accordionFilter">
             <div class="row card-body">
-                
-                <div class="col-md-4" *ngFor="let group of tournament?.groups">
-                    <a [routerLink]="['/futbol/fixture/',group.id]">
-                        <h3 class="h1-gp-name">{{group.name}}</h3>
-                        <table class="col-12 content-table">
+
+                <div class="col-md-6" *ngFor="let group of tournament?.groups">
+                    <a [routerLink]="['/futbol/matches/',group.id]">
+                        <h3 class="group-name">{{group.name}}</h3>
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th scope="col">equipo</th>
@@ -36,16 +40,13 @@
                         </table>
                     </a>
                     <button class="btn-delete btn btn-block" (click)="delete(group.id)">
-                        borrar grupo
+                        Eliminar Grupo
                     </button>
                 </div>
-            
+
             </div>
         </div>
-        <div class="row" *ngIf="hasAdminPermission()" >
-            <a [routerLink]="['/futbol/category', categoryId, 'add', 'group']" class="btn btn-link btn-block" role="button">Agregar</a>
-            <!-- <button class="offset-4 col-md-4">Agregar</button>   'futbol/category/:id/add/group'-->
-        </div>
+       
     </div>
     <!--Collapse de Copa Oro-->
     <div class="row card">
@@ -60,8 +61,49 @@
         <div id="collapseOro" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
             <div class="card-body">
 
-                oro
-               
+                <div class="col-md-4" *ngFor="let group of tournament?.groups">
+                    <a [routerLink]="['/futbol/matches/',group.id]">
+                        <h3>{{group.name}}</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">equipo</th>
+                                    <th scope="col">PTs</th>
+                                    <th scope="col">GF</th>
+                                    <th scope="col">GA</th>
+                                    <th scope="col">GD</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">equipodemo</th>
+                                    <td>9</td>
+                                    <td>7</td>
+                                    <td>4</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">equipodemo</th>
+                                    <td>9</td>
+                                    <td>7</td>
+                                    <td>4</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">equipodemo</th>
+                                    <td>9</td>
+                                    <td>7</td>
+                                    <td>4</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </a>
+                    <button class="btn-delete btn btn-block" (click)="delete(group.id)">
+                        Eliminar Grupo
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>

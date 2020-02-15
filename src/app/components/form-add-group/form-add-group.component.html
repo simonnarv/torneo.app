@@ -1,11 +1,12 @@
-<div>
+<div class="div-form col-6 offset-3">
     <form>
+      <h1 class="h1-cat">Crear Grupo</h1>
         <div class="form-group">
-          <label for="groupName">Nombre</label>
+          <label class="lab" for="groupName">Nombre</label>
           <input [(ngModel)]="group.name" name="name" type="text" class="form-control" id="groupName" placeholder="Ingrese un nombre" />
         </div>
         
-        <button type="submit" class="btn btn-primary" (click)="save()">Guardar</button>
+        <button type="submit"class="btn btn-save btn-block" (click)="save()">Guardar</button>
       </form>
 </div>
 

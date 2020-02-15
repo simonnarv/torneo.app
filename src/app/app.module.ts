@@ -10,7 +10,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { HomeFormComponent } from './components/home-form/home-form.component';
 import { FormCategoryComponent } from './components/form-category/form-category.component';
 import { FormGroupComponent } from './components/form-group/form-group.component';
-import { FormFixtureComponent } from './components/form-fixture/form-fixture.component';
+import { FormMatchComponent } from './components/form-match/form-match.component';
 import { FormAddCategoryComponent } from './components/form-add-category/form-add-category.component';
 import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
@@ -35,7 +35,7 @@ import { FormLoginComponent } from './components/form-login/form-login.component
     HomeFormComponent,
     FormCategoryComponent,
     FormGroupComponent,
-    FormFixtureComponent,
+    FormMatchComponent,
     FormAddCategoryComponent,
     FormAddGroupComponent,
     FormAddTeamComponent,

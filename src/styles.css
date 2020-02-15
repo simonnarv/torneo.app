@@ -5,6 +5,6 @@ body, html{
 }
 
 body{
-    background: url('../src/assets/bg.svg') no-repeat;
+    background: url('../src/assets/bg1.svg') no-repeat;
     background-size: cover;
 }

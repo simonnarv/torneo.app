@@ -1,0 +1,29 @@
+<div class="col-12" *ngFor="let match of group?.matches">
+  <div class="col-md-4 card text-center">
+    <div class="card-header">
+      Partido
+    </div>
+    <div class="row card-body">
+      <p class="col-3 card-text">{{match.homeTeam.name}}</p>
+      <p class="col-3 card-text">{{match.homeScore}}</p>
+      <p class="col-3 card-text">{{match.awayScore}}</p>
+      <p class="col-3 card-text">{{match.awayTeam.name}}</p>
+      </div>
+  </div>
+</div>
+
+<button class="btn-add btn offset-md-4 col-md-4" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">Agregar Partido</button>
+
+<style>
+.btn-add{
+  margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: 2087b3;
+    color: #ffffff;
+    border-radius: 5%;
+    background: #2087b3;
+    font-size: 22px;
+    font-family: 'poppins', sans-serif;
+}
+
+</style>

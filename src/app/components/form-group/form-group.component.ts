@@ -57,7 +57,8 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return this.loginService.isAdmin();
+    //return this.loginService.isAdmin();
+    return true;
   }
 
   delete(id: number) {

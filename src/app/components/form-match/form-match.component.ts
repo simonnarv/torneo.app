@@ -3,11 +3,11 @@ import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../models/Group'
 @Component({
-  selector: 'app-form-fixture',
-  templateUrl: './form-fixture.component.html',
-  styleUrls: ['./form-fixture.component.css']
+  selector: 'app-form-match',
+  templateUrl: './form-match.component.html',
+  styleUrls: ['./form-match.component.css']
 })
-export class FormFixtureComponent implements OnInit {
+export class FormMatchComponent implements OnInit {
 
   group: Group;
   
@@ -18,7 +18,7 @@ export class FormFixtureComponent implements OnInit {
 
   ngOnInit() {
     this.getGroup(this.actRoute.snapshot.params.id);
-    //this.getGroup(this.actRoute.snapshot.params.id);
+    this.getGroup(this.actRoute.snapshot.params.id);
   }
 
   getGroup(id: number) {
