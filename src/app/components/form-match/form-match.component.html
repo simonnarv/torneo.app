@@ -12,18 +12,15 @@
   </div>
 </div>
 
-<button class="btn-add btn offset-md-4 col-md-4" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">Agregar Partido</button>
+<button class="btn btn-success" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">
+  Agregar Partido
+</button>
 
 <style>
 .btn-add{
   margin-top: 30px;
-    margin-bottom: 30px;
-    background-color: 2087b3;
-    color: #ffffff;
-    border-radius: 5%;
-    background: #2087b3;
-    font-size: 22px;
-    font-family: 'poppins', sans-serif;
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-family: 'poppins', sans-serif;
 }
-
 </style>

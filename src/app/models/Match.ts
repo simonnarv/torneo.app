@@ -1,5 +1,5 @@
-import { Team } from "./Team"
-
+import { Team } from './team';
+import { MatchStatus } from './enums/match-status';
 
 export interface Match {
     id?: number;

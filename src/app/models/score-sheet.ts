@@ -1,5 +1,5 @@
-import { Team } from './Team';
-import { Group } from './Group';
+import { Team } from './team';
+import { Group } from './group';
 
 export interface ScoreSheet{
     id?: number;

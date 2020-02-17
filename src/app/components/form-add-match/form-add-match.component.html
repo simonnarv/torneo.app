@@ -6,8 +6,9 @@
         <div class="form-group">
             <label class="lab" for="homeTeam">Local</label>
             <select [(ngModel)]="match.homeTeam" name="homeTeam">
-                <option *ngFor="let team of teams" [value]="team.id" [selected]="match.homeTeam.id == team.id">
-                    {{team.name}}</option>
+                <!--<option *ngFor="let team of teams" [value]="team.id" [selected]="match.homeTeam.id == team.id">
+                    {{team.name}}
+                </option>-->
             </select>
         </div>
 
@@ -15,8 +16,9 @@
             <label class="lab" for="awayTeam">Visitante</label>
 
             <select [(ngModel)]="match.awayTeam" name="awayTeam">
-                <option *ngFor="let team of teams" [value]="team.id" [selected]="match.awayTeam.id == team.id">
-                    {{team.name}}</option>
+                <!--<option *ngFor="let team of teams" [value]="team.id" [selected]="match.awayTeam.id == team.id">
+                    {{team.name}}
+                </option>-->
             </select>
         </div>
 

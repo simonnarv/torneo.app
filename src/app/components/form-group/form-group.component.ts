@@ -1,9 +1,9 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentsService } from 'src/app/services/tournaments.service'
-import { Tournament } from 'src/app/models/Tournament';
+import { Tournament } from 'src/app/models/tournament';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
-import { ScoreSheet } from 'src/app/models/ScoreSheet';
+import { ScoreSheet } from 'src/app/models/score-sheet';
 import { GroupsService} from '../../services/groups.service';
 import { LoginService } from 'src/app/services/login.service';
 
@@ -34,7 +34,6 @@ export class FormGroupComponent implements OnInit {
     this.getTournament(this.categoryId);
   }
 
-  //como hago para que extraer el id del torneo --- hacer un metodo para encontrar un scoresheet by category id ?
   getTournament(id: number) {
     this.tournamentService.getByCategotyId(id)
       .subscribe((tournament: Tournament) => {
@@ -57,8 +56,7 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    //return this.loginService.isAdmin();
-    return true;
+    return this.loginService.isAdmin();
   }
 
   delete(id: number) {

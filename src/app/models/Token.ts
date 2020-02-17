@@ -1,4 +1,4 @@
 
-export class Token {
+export interface Token {
     token: string
 }

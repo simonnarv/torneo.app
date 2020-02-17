@@ -21,7 +21,7 @@ export class FormAddTeamComponent implements OnInit {
 
   ngOnInit() {
     var id = this.actRoute.snapshot.params.id;
-    console.log(id);
+
     if (id) {
       // EDIT
      this.getTeam(id);

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from 'src/app/services/groups.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Group } from 'src/app/models/Group';
+import { Group } from 'src/app/models/group';
+import { TeamsService } from 'src/app/services/teams.service';
+import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-form-add-group',
@@ -16,7 +18,11 @@ export class FormAddGroupComponent implements OnInit {
     competitionId: 0
   }
 
+  currentTeamId : number;
+  teams : Team[];
+
   constructor(private groupService: GroupsService,
+    private teamService: TeamsService,
     private router: Router,
     private actRoute: ActivatedRoute) { }
 
@@ -30,21 +36,44 @@ export class FormAddGroupComponent implements OnInit {
     }
   }
 
+  setTeams() {
+    this.teamService.getAll().subscribe(
+      teams => { 
+        this.teams = teams 
+      }
+    )
+  }
+
+  getGroup(groupId: number) {
+    this.groupService.getById(groupId)
+    .subscribe(
+      (group : Group) => { 
+        this.group = group 
+        this.setTeams();
+      }
+    );
+  };
+
+  addTeam() {
+    var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
+    this.group.teams.push(selectedTeam);
+  }
+
+  removeTeam(teamId: number) {
+    this.group.teams = this.group.teams.filter(team => team.id != teamId);
+  }
+
   save() {
     !this.group.id
     ? this.groupService.create(this.group).subscribe(
       res => {
-        this.router.navigate(['/futbol/group/'+this.actRoute.snapshot.params.competitionId]);
+        this.router.navigate(['/futbol/category/' + this.group.competitionId + '/groups']);
       }
     )
-    : this.groupService.update(this.group.id, this.group).subscribe();
+    : this.groupService.update(this.group.id, this.group).subscribe(
+      res => {
+        this.router.navigate(['/futbol/category/' + this.group.competitionId + '/groups']);
+      }
+    )
   }
-
-  private getGroup(groupId: number) {
-    this.groupService.getById(groupId)
-    .subscribe(
-      (group : Group) => { this.group = group }
-    );
-  };
-
 }

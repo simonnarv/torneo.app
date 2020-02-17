@@ -16,7 +16,7 @@
             <div class="row card-body">
 
                 <div class="col-md-6" *ngFor="let group of tournament?.groups">
-                    <a [routerLink]="['/futbol/matches/',group.id]">
+                    <a [routerLink]="['/futbol/group/', group.id, 'edit']">
                         <h3 class="group-name">{{group.name}}</h3>
                         <table class="table">
                             <thead>

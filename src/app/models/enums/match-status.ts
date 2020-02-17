@@ -1,4 +1,4 @@
-enum MatchStatus {
+export enum MatchStatus {
     PENDING,
     DELAYED,
     PLAYED,

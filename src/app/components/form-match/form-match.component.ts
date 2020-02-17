@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
-import { Group } from '../../models/Group'
+import { Group } from '../../models/group'
 @Component({
   selector: 'app-form-match',
   templateUrl: './form-match.component.html',

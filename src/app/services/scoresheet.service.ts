@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ScoreSheet } from '../models/ScoreSheet';
+import { ScoreSheet } from '../models/score-sheet';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 

@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../models/User';
-import { Token } from '../models/Token';
+import { User } from '../models/user';
+import { Token } from '../models/token';
 import * as jwt_decode from 'jwt-decode';
 
 const httpOptions = {

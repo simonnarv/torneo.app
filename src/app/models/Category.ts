@@ -1,4 +1,4 @@
-import { Tournament } from './Tournament';
+import { Tournament } from './tournament';
 
 export interface Category {
     id?: number;

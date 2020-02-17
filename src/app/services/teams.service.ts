@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { Team } from '../models/Team';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class TeamsService {
   constructor(private http: HttpClient) { }
 
   //GET TEAM LIST
-  getAll() {
-    return this.http.get(this.API_URI);
+  getAll() : Observable<Team[]> {
+    return this.http.get<Team[]>(this.API_URI);
   }
 
   //GET TEAM BY ID
@@ -25,7 +26,7 @@ export class TeamsService {
 
   //GET TEAMS BY COMPETITION ID
   getByCompetitionId(id: number) {
-    return this.http.get(this.API_URI + id);
+    return this.http.get<Team[]>(this.API_URI + 'competitions/'+ id);
   }
 
   //DELETE TEAM BY ID

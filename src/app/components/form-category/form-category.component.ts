@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Category } from 'src/app/models/Category';
+import { Category } from 'src/app/models/category';
 import { CategoryService } from '../../services/category.service';
 import { Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
@@ -28,13 +28,11 @@ export class FormCategoryComponent implements OnInit {
       .subscribe(
         (categories: Category[]) => {
           this.categories = categories;
-          console.log(categories)
         });
   }
-  //cambiar despues de poder ingresar usuario al sistema
+
   hasAdminPermission() {
-    return true;
-    //return this.loginService.isAdmin();
+    return this.loginService.isAdmin();
   }
 
   delete(id: number) {

@@ -1,4 +1,4 @@
-import { Match } from "./Match";
+import { Match } from "./match";
 import { Team } from "./Team";
 
 export interface Group {

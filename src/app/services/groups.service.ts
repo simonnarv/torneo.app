@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Group } from '../models/Group';
+import { Group } from '../models/group';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
