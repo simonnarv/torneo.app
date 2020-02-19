@@ -1,21 +1,36 @@
 <div class="col-md-8 offset-md-2 col-sm-12 div-style">
-    <h2 class="h2-style col-md-4 offset-md-4 col-sm-12 ">Categorias</h2>
+    <h2 class="h2-style col-md-8 offset-md-2">Categorias</h2>
     <ul class="ul-style row" *ngFor="let category of categories">
 
         <a [routerLink]="['/futbol/category',category?.id, 'groups']"
             class="col-8 list-group-item list-group-item-action text-center">
-            <p>Categoria {{category?.name}}</p>
+            Categoria {{category?.name}}
         </a>
 
-        <button class="col-2 btn-edit btn " [routerLink]="['/futbol/add/category/', category.id]">
+        <button class="col-2 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
             <img src="../../../assets/edit_icon_32.png">
         </button>
 
-        <button class="col-2 btn-delete btn " *ngIf="hasAdminPermission()" data-toggle="modal" data-target="#deleteModal">
+        <button class="col-2 btn-delete btn" *ngIf="hasAdminPermission()" data-toggle="modal"
+            data-target="#deleteModal">
             <img src="../../../assets/trash_icon_32.png" alt="">
         </button>
 
-        <!-- Modal -->
+        <!--temporal-->
+        <a [routerLink]="['/futbol/category',category?.id, 'groups']"
+            class="offset-md-3 col-md-6 list-group-item list-group-item-action text-center">
+            Categoria {{category?.name}}
+        </a>
+        <!--toggle-->
+        <button (click)="toggle()" class="btn col-3 btn-edit btn">{{btnText}}</button>
+        <!--div-->
+        <div *ngIf="btnText === 'Show'">
+            <button class="col-3 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
+                <img src="../../../assets/edit_icon_32.png">
+            </button>
+        </div>
+
+        <!--Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -31,19 +46,106 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger" (click)="delete(category.id)">
+                        <button type="button" class="btn btn-danger" (click)="delete(category.id)" data-dismiss="modal">
                             Eliminar
                         </button>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!--final ul-->
     </ul>
 </div>
 
-<!--<button class="offset-md-4 col-md-4" [routerLink]="['/futbol/login']">Login</button>-->
-
 <div *ngIf="hasAdminPermission()">
-    <button class="btn-add-cat btn col-md-8 offset-md-2 col-sm-12" [routerLink]="['/futbol/add/category']">Agregar Categoria</button>
-    <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" [routerLink]="['/futbol/add/team']">Agregar Equipo</button>
+    <!--<button class="btn-add-cat btn col-md-8 offset-md-2 col-sm-12" 
+        [routerLink]="['/futbol/add/category']">
+        Agregar Categoria
+    </button>-->
+    <button class="btn-add-cat btn col-md-8 offset-md-2 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
+        data-target="#createCategory">
+        Agregar Categoria
+    </button>
+    <!--
+    <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" [routerLink]="['/futbol/add/team']">
+        Agregar Equipo
+    </button>
+    -->
+    <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
+        data-target="#createTeam">
+        Agregar Equipo
+    </button>
+</div>
+
+<!--Create Category-->
+<div class="modal fade" id="createCategory" tabindex="-1" role="dialog" aria-labelledby="createCategoryLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createCategoryLabel">AGREGAR CATEGORIA</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-name" class="col-form-label">Nombre</label>
+                        <input [(ngModel)]="categ.name" name="name" type="text" class="form-control" id="category-name"
+                            placeholder="Ingrese un nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descripción:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger col-md-4 mr-auto" data-dismiss="modal">
+                    CANCELAR
+                </button>
+                <button type="button" class="btn btn-primary col-md-4" (click)="saveCategory()" data-dismiss="modal">
+                    ACEPTAR
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Create Team-->
+<div class="modal fade" id="createTeam" tabindex="-1" role="dialog" aria-labelledby="createTeamLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createTeamLabel">AGREGAR EQUIPO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="category-name" class="col-form-label">Nombre</label>
+                        <input [(ngModel)]="team.name" name="name" type="text" class="form-control" id="category-name"
+                            placeholder="Ingrese un nombre">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descripción:</label>
+                        <textarea [(ngModel)]="team.description" name="description" class="form-control"
+                            id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger col-md-4 mr-auto" data-dismiss="modal">
+                    Cerrar
+                </button>
+                <button type="button" class="btn btn-primary col-md-4" (click)="saveTeam()" data-dismiss="modal">
+                    Crear
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>

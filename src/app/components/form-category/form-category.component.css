@@ -13,23 +13,16 @@
     background-color: #063758;
 }
 
-/*
-.div-style {
-    color: #fff;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 3%;
-}
-*/
-
+/*CATEGORY LIST CSS*/
 .ul-style {
     padding-left: 5px;
     padding-right: 5px;
 }
 
 .ul-style a {
-    color: rgb(214, 214, 214);
+    color: #ffffff;
     font-family: 'poppins', sans-serif;
+    background: rgb(37, 171, 48);
 }
 
 .h2-style {
@@ -38,10 +31,18 @@
     color: #ffffff;
     font-weight: bold;
     font-family: 'poppins', sans-serif;
+
+    border: #ffffff;
+    border-style: solid;
+    border-top: springgreen;
+
+    padding: 20px;
+    margin-bottom: 35px;
 }
 
+/*Modal CSS*/
 .modal-content{
-    background-color: #299bcc;
+    background-color: rgb(0, 156, 11);
 }
 
 .modal-body{
@@ -54,4 +55,9 @@
 .modal-header{
     color: #ffffff;
     font-family: 'poppins', sans-serif;
+    border: none;
 }
+.modal-footer{
+    border: none;
+}
+
