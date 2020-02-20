@@ -22,15 +22,15 @@ export class FormCategoryComponent implements OnInit {
   }
 
   team: Team = {
-    name : "",
-    description : ""
+    name: "",
+    description: ""
   }
 
   //variable button toggle
-  Show : string = 'Show';
-  Hide : string = 'Hide';
+  Show: string = 'Show';
+  Hide: string = 'Hide';
   btnText: string = this.Show;
-  
+
 
   constructor(private teamService: TeamsService,
     private categoryService: CategoryService,
@@ -42,10 +42,10 @@ export class FormCategoryComponent implements OnInit {
   }
 
   //toggle button method
-  toggle(): void{
-    if (this.btnText === this.Show){
+  toggle(): void {
+    if (this.btnText === this.Show) {
       this.btnText = this.Hide;
-    } else{
+    } else {
       this.btnText = this.Show;
     }
   }
@@ -62,23 +62,40 @@ export class FormCategoryComponent implements OnInit {
     return this.loginService.isAdmin();
   }
 
+  /*
   saveCategory() {
     !this.categ.id
       ? this.categoryService.create(this.categ).subscribe(
-        res=>{
+        res => {
           this.getCategories();
         }
       )
-      : this.categoryService.update(this.categ.id, this.categ).subscribe(  
-        res=>{
+      : this.categoryService.update(this.categ.id, this.categ).subscribe(
+        res => {
           this.getCategories();
+        });
+  };*/
+
+  saveCategory() {
+    this.categoryService.create(this.categ).subscribe(
+      res => {
+        this.getCategories();
+      }
+    )
+  };
+
+  updateCategory(id: number) {
+    this.categoryService.update(id, this.categ).subscribe(
+      res => {
+        this.getCategories();
       });
   };
 
+
   saveTeam() {
     !this.team.id
-    ? this.teamService.create(this.team).subscribe()
-    : this.teamService.update(this.team.id, this.team).subscribe();
+      ? this.teamService.create(this.team).subscribe()
+      : this.teamService.update(this.team.id, this.team).subscribe();
   }
 
 

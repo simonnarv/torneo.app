@@ -6,8 +6,12 @@
             class="offset-md-2 col-md-8 list-group-item list-group-item-action text-center">
             Categoria {{category?.name}}
         </a>
-
+        <!--
         <button class="col-1 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
+            <img src="../../../assets/edit_icon_32.png">
+        </button>-->
+        <button class="col-1 btn-edit btn" *ngIf="hasAdminPermission()" data-toggle="modal" 
+            data-target="#editCategory">
             <img src="../../../assets/edit_icon_32.png">
         </button>
 
@@ -38,7 +42,8 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">Eliminar Categoria</h5>
+                        <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">Eliminar
+                            Categoria</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -47,8 +52,10 @@
                         Esta seguro de eliminar esta categoria?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger col-md-4" (click)="delete(category.id)" data-dismiss="modal">
+                        <button type="button" class="btn btn-secondary col-md-4 mr-auto"
+                            data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger col-md-4" (click)="delete(category.id)"
+                            data-dismiss="modal">
                             Eliminar
                         </button>
                     </div>
@@ -56,6 +63,41 @@
             </div>
         </div>
 
+        <!--Edit Category-->
+        <div class="modal fade" id="editCategory" tabindex="-1" role="dialog" aria-labelledby="editCategoryLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center col-md-8 offset-md-2" id="editCategoryLabel">
+                            EDITAR CATEGORIA
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="category-name" class="col-form-label">Nombre</label>
+                                <input [(ngModel)]="categ.name" name="name" type="text" class="form-control"
+                                    id="category-name" placeholder="Ingrese un nombre">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Descripción:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger col-md-4 mr-auto" data-dismiss="modal">
+                            CANCELAR
+                        </button>
+                        <button type="button" class="btn btn-primary col-md-4" (click)="updateCategory(category.id)"
+                            data-dismiss="modal">
+                            ACEPTAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!--final ul-->
     </ul>
 </div>
@@ -66,7 +108,7 @@
         data-target="#createCategory">
         Agregar Categoria
     </button>-->
-    <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
+    <button class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
         data-target="#createTeam">
         Agregar Equipo
     </button>
@@ -143,7 +185,7 @@
     </div>
 </div>
 
-<button *ngIf="hasAdminPermission()" class="btn_add col-md-4 offset-md-4 fixed-bottom" data-toggle="modal" data-target="#createCategory">
+<button *ngIf="hasAdminPermission()" class="btn_add col-md-4 offset-md-4 fixed-bottom" data-toggle="modal"
+    data-target="#createCategory">
     <img src="../../../assets/btn_add.svg">
 </button>
-

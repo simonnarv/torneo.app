@@ -16,13 +16,17 @@ export class HomeFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  downloadPdf() {
-    const pdfUrl = './assets/sample.pdf';
-    const pdfName = 'your_pdf_file';
+  getReglamentoPDF() {
+    const pdfUrl = '../../../assets/REGLAMENTO.pdf';
+    const pdfName = 'REGLAMENTO';
     FileSaver.saveAs(pdfUrl, pdfName);
   }
- 
+  getListaBuenaFePDF(){
+    const pdfUrl = '../../../assets/Lista\ de\ buena\ fe.pdf';
+    const pdfName = 'Lista de buena fe';
+    FileSaver.saveAs(pdfUrl, pdfName);
+  }
 
-
+  
 
 }

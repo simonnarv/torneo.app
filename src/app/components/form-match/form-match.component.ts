@@ -11,6 +11,9 @@ export class FormMatchComponent implements OnInit {
 
   group: Group;
   
+  val : boolean;
+
+
   constructor(
     private groupService: GroupsService, 
     private actRoute: ActivatedRoute
@@ -18,7 +21,11 @@ export class FormMatchComponent implements OnInit {
 
   ngOnInit() {
     this.getGroup(this.actRoute.snapshot.params.id);
-    this.getGroup(this.actRoute.snapshot.params.id);
+
+    if(!this.group.matches)
+    {
+      this.val = true;
+    }
   }
 
   getGroup(id: number) {

@@ -12,7 +12,13 @@
   </div>
 </div>
 
-<button class="btn btn-success" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">
+
+
+<div *ngIf="valor" class="default-div offset-md-2 col-md-8">
+  <p class="default-msj col-md-4 offset-md-4 text-center">no hay partidos disponibles</p>
+</div>
+
+<button class="offset-md-3 col-md-6 btn btn-add btn-success" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">
   Agregar Partido
 </button>
 
@@ -20,7 +26,12 @@
 .btn-add{
   margin-top: 30px;
   margin-bottom: 30px;
-  font-size: 22px;
+  font-size: 18px;
+  font-family: 'poppins', sans-serif;
+}
+.default-msj{
+  color: #ffffff;
+  font-size: 18px;
   font-family: 'poppins', sans-serif;
 }
 </style>
