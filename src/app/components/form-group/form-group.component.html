@@ -7,7 +7,7 @@
                     Grupos
                 </button>
             </h2>
-            <a [routerLink]="['/futbol/category', categoryId, 'add', 'group']" class="btn btn-plus col-md-4 offset-md-4"
+            <a [routerLink]="['/futbol/category', categoryId, 'add', 'group']" class="btn btn-plus col-md-2 ml-auto"
                 role="button" *ngIf="hasAdminPermission()">
                 <img src="../../../assets/plus_icon.png">
             </a>
@@ -16,8 +16,9 @@
             <div class="row card-body">
 
                 <div class="col-md-6" *ngFor="let group of tournament?.groups">
-                    <a [routerLink]="['/futbol/group/', group.id, 'edit']">
-                        <h3 class="group-name">{{group.name}}</h3>
+                    <a [routerLink]="['/futbol/matches/', group.id]">
+                        <!--'futbol/matches/:id'-->
+                        <h3 class="group-name text-center">{{group.name}}</h3>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -39,14 +40,50 @@
                             </tbody>
                         </table>
                     </a>
-                    <button class="btn-delete btn btn-block" (click)="delete(group.id)">
-                        Eliminar Grupo
-                    </button>
+                    <div class="btn-edit" *ngIf="hasAdminPermission()">
+                        <button class="btn-delete btn btn-block" data-toggle="modal" data-target="#deleteModal">
+                            Eliminar
+                        </button>
+                        <!--mover edicion por la visibilidad de los botones-->
+                        <a [routerLink]="['/futbol/group/', group.id, 'edit']" class="btn btn-block" role="button">
+                            Editar
+                        </a>
+                    </div>
+
+
+
+                    <!--Delete Modal -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                        aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">
+                                        Eliminar Categoria</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    Esta seguro de eliminar este grupo?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">
+                                        Cancelar
+                                    </button>
+                                    <button type="button" class="btn btn-danger col-md-4 "
+                                        ((click)="delete(group.id)" data-dismiss="modal">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
-       
+
     </div>
     <!--Collapse de Copa Oro-->
     <div class="row card">

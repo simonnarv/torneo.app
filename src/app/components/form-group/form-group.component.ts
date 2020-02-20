@@ -15,8 +15,6 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class FormGroupComponent implements OnInit {
 
-  //@HostBinding('class') classes = 'row';
-
   tournament: Tournament;
   scores: Array<ScoreSheet> = [];
 

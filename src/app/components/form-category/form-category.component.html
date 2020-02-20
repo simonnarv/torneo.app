@@ -3,40 +3,42 @@
     <ul class="ul-style row" *ngFor="let category of categories">
 
         <a [routerLink]="['/futbol/category',category?.id, 'groups']"
-            class="col-8 list-group-item list-group-item-action text-center">
+            class="offset-md-2 col-md-8 list-group-item list-group-item-action text-center">
             Categoria {{category?.name}}
         </a>
 
-        <button class="col-2 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
+        <button class="col-1 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
             <img src="../../../assets/edit_icon_32.png">
         </button>
 
-        <button class="col-2 btn-delete btn" *ngIf="hasAdminPermission()" data-toggle="modal"
+        <button class="col-1 btn-delete btn" *ngIf="hasAdminPermission()" data-toggle="modal"
             data-target="#deleteModal">
-            <img src="../../../assets/trash_icon_32.png" alt="">
+            <img src="../../../assets/trash_icon_32.png">
         </button>
 
-        <!--temporal-->
+        <!--temporal
         <a [routerLink]="['/futbol/category',category?.id, 'groups']"
             class="offset-md-3 col-md-6 list-group-item list-group-item-action text-center">
             Categoria {{category?.name}}
         </a>
-        <!--toggle-->
-        <button (click)="toggle()" class="btn col-3 btn-edit btn">{{btnText}}</button>
-        <!--div-->
+        
+        <button (click)="toggle()" class="btn col-3 btn-edit btn">
+            <img src="../../../assets/hamburger_icon.png">
+        </button>
+        
         <div *ngIf="btnText === 'Show'">
             <button class="col-3 btn-edit btn" [routerLink]="['/futbol/add/category/', category.id]">
                 <img src="../../../assets/edit_icon_32.png">
             </button>
-        </div>
+        </div>-->
 
         <!--Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Eliminar Categoria</h5>
+                        <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">Eliminar Categoria</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -45,8 +47,8 @@
                         Esta seguro de eliminar esta categoria?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-danger" (click)="delete(category.id)" data-dismiss="modal">
+                        <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger col-md-4" (click)="delete(category.id)" data-dismiss="modal">
                             Eliminar
                         </button>
                     </div>
@@ -59,19 +61,11 @@
 </div>
 
 <div *ngIf="hasAdminPermission()">
-    <!--<button class="btn-add-cat btn col-md-8 offset-md-2 col-sm-12" 
-        [routerLink]="['/futbol/add/category']">
-        Agregar Categoria
-    </button>-->
+    <!--
     <button class="btn-add-cat btn col-md-8 offset-md-2 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
         data-target="#createCategory">
         Agregar Categoria
-    </button>
-    <!--
-    <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" [routerLink]="['/futbol/add/team']">
-        Agregar Equipo
-    </button>
-    -->
+    </button>-->
     <button class="btn-add-team btn col-md-8 offset-md-2 col-sm-12" *ngIf="hasAdminPermission()" data-toggle="modal"
         data-target="#createTeam">
         Agregar Equipo
@@ -145,7 +139,11 @@
                     Crear
                 </button>
             </div>
-
         </div>
     </div>
 </div>
+
+<button *ngIf="hasAdminPermission()" class="btn_add col-md-4 offset-md-4 fixed-bottom" data-toggle="modal" data-target="#createCategory">
+    <img src="../../../assets/btn_add.svg">
+</button>
+

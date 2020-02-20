@@ -1,3 +1,8 @@
+.btn_add {
+    background: none;
+    border: none;
+}
+
 .btn-add-team {
     font-family: 'poppins', sans-serif;
     color: #ffffff;
@@ -22,7 +27,7 @@
 .ul-style a {
     color: #ffffff;
     font-family: 'poppins', sans-serif;
-    background: rgb(37, 171, 48);
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .h2-style {
@@ -37,7 +42,7 @@
     border-top: springgreen;
 
     padding: 20px;
-    margin-bottom: 35px;
+    margin-bottom: 50px;
 }
 
 /*Modal CSS*/

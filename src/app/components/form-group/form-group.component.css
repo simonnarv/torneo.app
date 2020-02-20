@@ -26,17 +26,18 @@
     background-color: rgb(37, 134, 179);
 }*/
 
-
-
+.card{
+    border-color: black;
+}
 
 .card-body a{
     text-decoration: none;
-    background-color: rgb(37, 134, 179);
+    background-color:  rgb(0, 156, 11);
     color:  rgb(37, 134, 179);
     font-family: 'poppins', sans-serif;
 }
 .card-header{
-    background-color: rgb(37, 134, 179);
+    background-color:  rgb(0, 156, 11);
 }
 .card-header .btn{
     color:  #fff;
@@ -44,7 +45,30 @@
     font-family: 'poppins', sans-serif;
 }
 
-.btn-delete{
-    color:  #fff;
+.btn-edit a, .btn-delete{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'poppins', sans-serif;
     background-color: rgb(37, 134, 179);
+}
+
+/*Modal CSS*/
+.modal-content{
+    background-color: rgb(0, 156, 11);
+}
+
+.modal-body{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-header{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+.modal-footer{
+    border: none;
 }

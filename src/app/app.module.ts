@@ -15,6 +15,7 @@ import { FormAddCategoryComponent } from './components/form-add-category/form-ad
 import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
 import { FormAddMatchComponent } from './components/form-add-match/form-add-match.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 
 //Prime ng
 import { InputTextModule } from 'primeng/inputtext';
@@ -25,7 +26,7 @@ import { TeamsService } from './services/teams.service';
 import { GroupsService } from './services/groups.service';
 import { CategoryService } from './services/category.service';
 import { ScoresheetService } from './services/scoresheet.service';
-import { FormLoginComponent } from './components/form-login/form-login.component';
+
 
 
 @NgModule({
