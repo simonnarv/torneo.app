@@ -9,7 +9,7 @@
 
 /*navbar brand logo*/
 .navbar-brand{
-    color: #fff;
+    color: black;
     text-transform: uppercase;
     letter-spacing: 4px;
     font-size: 20px;
@@ -22,7 +22,7 @@
 }
 
 .navbar-nav .nav-link{
-    color: #fff;
+    color: grey;
     letter-spacing: 3px;
     padding: 0px 20px;
 }

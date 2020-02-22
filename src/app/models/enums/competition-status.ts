@@ -1,4 +1,4 @@
-enum CompetitionStatus {
+export enum CompetitionStatus {
     PENDING,
     ACTIVE,
     CANCELLED,

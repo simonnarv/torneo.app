@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TournamentsService } from 'src/app/services/tournaments.service'
-import { Tournament } from 'src/app/models/tournament';
+import { CompetitionService } from 'src/app/services/competition.service'
+import { Competition } from 'src/app/models/competition';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { ScoreSheet } from 'src/app/models/score-sheet';
 import { GroupsService} from '../../services/groups.service';
@@ -15,29 +15,29 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class FormGroupComponent implements OnInit {
 
-  tournament: Tournament;
+  competition: Competition;
   scores: Array<ScoreSheet> = [];
 
-  categoryId;
+  competitionId;
 
   constructor(
     private actRoute: ActivatedRoute,
-    private tournamentService: TournamentsService,
+    private competitionService: CompetitionService,
     private scoreService: ScoresheetService,
     private groupsService: GroupsService,
     private loginService: LoginService) { }
 
   ngOnInit() {
-    this.categoryId = this.actRoute.snapshot.params.id;
-    this.getTournament(this.categoryId);
+    this.competitionId = this.actRoute.snapshot.params.id;
+    //this.getTournament(this.competitionId);
   }
 
-  getTournament(id: number) {
+  /* getTournament(id: number) {
     this.tournamentService.getByCategotyId(id)
       .subscribe((tournament: Tournament) => {
         this.tournament = tournament;
       })
-  }
+  }*/
 
   getScore(id: number) {
     this.scoreService.getByTournamentId(id)
@@ -54,13 +54,13 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return this.loginService.isAdmin();
+    return true; //this.loginService.isAdmin();
   }
 
   delete(id: number) {
     this.groupsService.delete(id).subscribe(
       res => {
-        this.getTournament(this.actRoute.snapshot.params.id);
+        //this.getTournament(this.actRoute.snapshot.params.id);
       } 
     )
   }

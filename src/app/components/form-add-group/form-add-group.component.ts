@@ -19,7 +19,7 @@ export class FormAddGroupComponent implements OnInit {
   }
 
   currentTeamId : number;
-  teams : Team[];
+  //teams : Team[];
 
   constructor(private groupService: GroupsService,
     private teamService: TeamsService,
@@ -36,43 +36,43 @@ export class FormAddGroupComponent implements OnInit {
     }
   }
 
-  setTeams() {
+  /* setTeams() {
     this.teamService.getAll().subscribe(
       teams => { 
         this.teams = teams 
       }
     )
-  }
+  } */
 
   getGroup(groupId: number) {
     this.groupService.getById(groupId)
     .subscribe(
       (group : Group) => { 
         this.group = group 
-        this.setTeams();
+        // this.setTeams();
       }
     );
   };
 
-  addTeam() {
+  /* addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
     this.group.teams.push(selectedTeam);
   }
 
   removeTeam(teamId: number) {
     this.group.teams = this.group.teams.filter(team => team.id != teamId);
-  }
+  } */
 
   save() {
     !this.group.id
     ? this.groupService.create(this.group).subscribe(
       res => {
-        this.router.navigate(['/futbol/category/' + this.group.competitionId + '/groups']);
+        this.router.navigate(['/futbol/competition/' + this.group.competitionId + '/groups']);
       }
     )
     : this.groupService.update(this.group.id, this.group).subscribe(
       res => {
-        this.router.navigate(['/futbol/category/' + this.group.competitionId + '/groups']);
+        this.router.navigate(['/futbol/competition/' + this.group.competitionId + '/groups']);
       }
     )
   }

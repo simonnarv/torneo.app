@@ -8,11 +8,13 @@
     font-size: 22px;
     font-family: 'poppins', sans-serif;
 }
+
 .lab{
     font-family: 'poppins', sans-serif;
     font-weight: bold;
     text-shadow: -1px 0 black,1px 0 black,-1px 0 black,1px 0 black ; 
 }
+
 .h1-cat {
     margin: 0;
     padding: 0;
@@ -22,6 +24,7 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
 .div-form {
     border-width: 1px;
     border-style: solid;

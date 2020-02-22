@@ -1,78 +1,27 @@
-<div class="publicity">
+<div class="publicity col-md-12">
 
-    <div class="div-header col-md-6 offset-md-3">
-        <h3 class="text-center">3 EDICION</h3>
-        <h1 class="text-center">LOS MORENITOS</h1>
-        <h5 class="text-right">15 DE MARZO 2020</h5>
-    </div>
-
-    <p class="col-md-6 offset-md-3 text-left">
-        <img src="../../../assets/direction_icon.png">
-        La Capital, ruta 12 y Dorrego | Paraná, Entre Ríos
-    </p>
-
-    <div class="p-categories col-md-6 offset-md-3 text-left">
-        <p>CATEGORÍA 2008: 11 JUGADORES Y 5 SUPLENTES</p>
-        <p>CATEGORÍA 2009 A 2013: 9 JUGADORES Y 5 SUPLENTES</p>
-        <p>CATEGORÍA 2014: 9 JUGADORES Y 5 SUPLENTES -MODO ENCUENTRO-</p>
-    </div>
-
-    <div class="col-md-6 offset-md-3">
-        <div class="row text-center">
-            <p class="col-md-4"> Mas de 100 equipos</p>
-            <p class="col-md-4 offset-md-4">trofeos para todos</p>
+    <div class="row">
+        <div class="col-md-12">
+            <img style="width: 100%; " src="../../../assets/LosMorenitos.jpeg" />    
         </div>
-        <div class="row text-center">
-            <p class="col-md-4">14 campos de juego</p>
-            <p class="col-md-4 offset-md-4">4 partidos minimo</p>
-        </div>
-        <p class="text-center">Trofeos grupales para el primer y segundo puesto</p>
-        <p class="text-center">Ambulancia presente</p>
-        <p class="text-center">Cantina y estacionamiento privado</p>
     </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            <img style="width: 100%; " src="../../../assets/morenitos_22.jpg" />    
+        </div>
+    </div>
 
-
-    <p class="pdf-link col-md-6 offset-md-1 text-left">
-        Consulta nuestro Reglamento
-        <a class="btn btn-primary btn-sm" (click)="getReglamentoPDF()">
-            aqui!
-        </a>
-    </p>
-
-    <p class="pdf-link col-md-6 offset-md-1 text-left">
-        Tambien a nuestra lista de buena Fe
-        <a class="btn btn-primary btn-sm" (click)="getListaBuenaFePDF()">
-            aqui!
-        </a>
-    </p>
-
+    <div class="row add-padding">
+        <div class="col-md-6 col-s-12 text-center">
+            <a class="btn btn-info" (click)="getReglamentoPDF()">
+               DESCARGAR REGLAMENTO
+            </a>
+        </div>
+        <div class="col-md-6 col-s-12 text-center">
+            <a class="btn btn-info" (click)="getListaBuenaFePDF()">
+                DESCARGAR LISTA DE BUENA FE
+            </a>
+        </div>
+    </div>
 </div>
-
-<style>
-    .publicity {
-        color: #ffffff;
-        background: rgba(255, 255, 255, 0.2);
-        font-family: 'poppins', sans-serif;
-    }
-    .div-header{
-        border-style: solid;
-        border-color: #ffffff;
-        border-top: springgreen;
-        padding-top: 20px;
-        margin-bottom: 20px;
-    }
-    .p-categories {
-        border: #ffffff;
-        border-style: dotted;
-        padding-top: 16px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-weight: bold;
-    }
-
-    .pdf-link {
-        font-size: medium;
-        font-weight: bold;
-    }
-</style>

@@ -1,5 +1,5 @@
 import { Match } from "./match";
-import { Team } from "./Team";
+import { ScoreSheet } from './score-sheet';
 
 export interface Group {
     id?:number;
@@ -7,6 +7,6 @@ export interface Group {
     name?: string;
     stage?: number;
     versus?: Group;
-    teams?: Array<Team>;
+    scoreSheets?: Array<ScoreSheet>;
     matches?: Array<Match>;
 }

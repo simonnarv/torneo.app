@@ -2,10 +2,10 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HomeFormComponent } from './components/home-form/home-form.component';
-import { FormCategoryComponent } from './components/form-category/form-category.component';
+import { FormCompetitionComponent } from './components/form-competition/form-competition.component';
 import { FormGroupComponent } from './components/form-group/form-group.component';
 import { FormMatchComponent } from './components/form-match/form-match.component';
-import { FormAddCategoryComponent } from './components/form-add-category/form-add-category.component';
+import { FormAddCompetitionComponent } from './components/form-add-competition/form-add-competition.component';
 import { FormAddGroupComponent } from './components/form-add-group/form-add-group.component';
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
@@ -22,11 +22,11 @@ const routes: Routes = [
     component: HomeFormComponent
   },
   {
-    path: 'futbol/category',
-    component: FormCategoryComponent
+    path: 'futbol/competition',
+    component: FormCompetitionComponent
   },
   {
-    path: 'futbol/category/:id/groups',
+    path: 'futbol/competition/:id/groups',
     component: FormGroupComponent
   },
   {
@@ -38,19 +38,19 @@ const routes: Routes = [
     component: FormMatchComponent
   },
   {
-    path: 'futbol/add/category',
-    component: FormAddCategoryComponent
+    path: 'futbol/add/competition',
+    component: FormAddCompetitionComponent
   },
   {
-    path: 'futbol/add/category/:id',
-    component: FormAddCategoryComponent
+    path: 'futbol/add/competition/:id',
+    component: FormAddCompetitionComponent
   },
   {
     path: 'futbol/group/:id/edit',
     component: FormAddGroupComponent
   },
   {
-    path: 'futbol/category/:competitionId/add/group',
+    path: 'futbol/competition/:competitionId/add/group',
     component: FormAddGroupComponent
   },
   {

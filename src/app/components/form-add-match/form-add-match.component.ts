@@ -46,7 +46,7 @@ export class FormAddMatchComponent implements OnInit {
   save() {
     this.matchService.create(this.match).subscribe(
       res=>{
-        this.router.navigate(['futbol/category']);
+        this.router.navigate(['futbol/competition']);
       }
     );
   }

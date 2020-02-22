@@ -3,10 +3,11 @@ import { Group } from './group';
 
 export interface ScoreSheet{
     id?: number;
+    groupId: number;
     points: number;
     goalFavor: number;
     goalAgainst: number;
     goalDifference: number;
-    teamGroup: Array<Group>;
-    teams: Array<Team>;
+    group: Group;
+    team: Team;
 }
