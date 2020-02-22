@@ -1,0 +1,84 @@
+.page-container {
+    background: url('../../../assets/grass_bg.jpg');
+    height: 100%;
+    background-size: 450;
+    background-repeat: repeat;
+    font-family: 'poppins', sans-serif;
+    padding-bottom: 10rem;
+    min-height: 100vh;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.btn_add {
+    background: none;
+    border: none;
+}
+
+.btn-add-team {
+    font-family: 'poppins', sans-serif;
+    color: #ffffff;
+    background-color: #2087b3;
+    margin-top: 20px;
+}
+
+.btn-add-cat {
+    font-family: 'poppins', sans-serif;
+    color: #ffffff;
+    /*background-color: #2087b3;*/
+    margin-top: 20px;
+    background-color: #063758;
+}
+
+/*CATEGORY LIST CSS*/
+
+.card-row {
+    padding-top: 20px;
+}
+
+.card {
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 80px;
+    padding-top: 50px;
+}
+
+.h2-title {
+    padding: 25px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'poppins', sans-serif;
+    letter-spacing: 3px;
+
+    border-bottom: white;
+
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/*Modal CSS*/
+.modal-content {
+    background-color: white;
+}
+
+.modal-header{
+    background-color: #86c038ff;
+    color: #F4F4F4;
+    letter-spacing: 1px;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+
+.modal-body {
+    color: #B8B5AE;
+    font-family: 'poppins', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-footer{
+    background-color: #86c038ff;
+    border: none;
+}
+
