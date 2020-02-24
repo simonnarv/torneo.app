@@ -40,7 +40,6 @@ export class LoginService {
 
       return rol == 'ROLE_ADMIN'; // Role.ROLE_ADMIN;
     }
-
     return false;
   }
 }

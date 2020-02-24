@@ -1,4 +1,4 @@
-<button class="btn btn-back" routerLink="/futbol/category">
+<button class="btn btn-back" routerLink="/futbol/competition">
     <img src="../../../assets/left_arrow_icon.png">
 </button>
 
@@ -12,18 +12,25 @@
                     Grupos
                 </button>
             </h2>
-            <a [routerLink]="['/futbol/competition', competitionId, 'add', 'group']" class="btn btn-plus col-md-2 ml-auto"
+            <!--
+            <a [routerLink]="['/futbol/competition', competitionId, 'add', 'group']" class="btn btn-plus col-md-1 ml-auto"
                 role="button" *ngIf="hasAdminPermission()">
                 <img src="../../../assets/plus_icon.png">
             </a>
+            -->
+            <!--GROUP MODAL-->
+            <button *ngIf="hasAdminPermission()" class="btn btn-plus col-md-1 ml-auto" data-toggle="modal"
+                data-target="#createGroup">
+                <img src="../../../assets/plus_icon.png">
+            </button>
         </div>
+
         <div id="collapseGrupo" class="collapse show" aria-labelledby="gruposId" data-parent="#accordionFilter">
             <div class="row card-body">
 
-                <div class="col-md-6" *ngFor="let group of tournament?.groups">
+                <div class="col-md-6" *ngFor="let group of competition?.groups">
                     <a [routerLink]="['/futbol/matches/', group.id]">
-                        <!--'futbol/matches/:id'-->
-                        <h3 class="group-name text-center">{{group.name}}</h3>
+                        <h3 class="group-name text-center">{{group?.name}}</h3>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -54,9 +61,6 @@
                             Editar
                         </a>
                     </div>
-
-
-
                     <!--Delete Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
                         aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -73,11 +77,12 @@
                                     Esta seguro de eliminar este grupo?
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">
+                                    <button type="button" class="btn btn-secondary col-md-4 mr-auto"
+                                        data-dismiss="modal">
                                         Cancelar
                                     </button>
-                                    <button type="button" class="btn btn-danger col-md-4 "
-                                        ((click)="delete(group.id)" data-dismiss="modal">
+                                    <button type="button" class="btn btn-danger col-md-4 " ((click)="deleteGroup(group.id)"
+                                        data-dismiss="modal">
                                         Eliminar
                                     </button>
                                 </div>
@@ -103,49 +108,6 @@
         <div id="collapseOro" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
             <div class="card-body">
 
-                <div class="col-md-4" *ngFor="let group of tournament?.groups">
-                    <a [routerLink]="['/futbol/matches/',group.id]">
-                        <h3>{{group.name}}</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">equipo</th>
-                                    <th scope="col">PTs</th>
-                                    <th scope="col">GF</th>
-                                    <th scope="col">GA</th>
-                                    <th scope="col">GD</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">equipodemo</th>
-                                    <td>9</td>
-                                    <td>7</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">equipodemo</th>
-                                    <td>9</td>
-                                    <td>7</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">equipodemo</th>
-                                    <td>9</td>
-                                    <td>7</td>
-                                    <td>4</td>
-                                    <td>3</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </a>
-                    <button class="btn-delete btn btn-block" (click)="delete(group.id)">
-                        Eliminar Grupo
-                    </button>
-                </div>
-
             </div>
         </div>
     </div>
@@ -163,6 +125,69 @@
         <div id="collapsePlata" class="collapse" aria-labelledby="plataId" data-parent="#accordionFilter">
             <div class="card-body">
                 Copa Oro
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Create Group-->
+<div class="modal fade" id="createGroup" tabindex="-1" role="dialog" aria-labelledby="createGroupLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createGroupLabel">
+                    {{ group.id ? "EDITAR GRUPO" : "AGREGAR GRUPO" }}</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="competition-name" class="col-form-label">Nombre</label>
+                        <input [(ngModel)]="group.name" name="name" type="text" class="form-control"
+                            id="competition-name" placeholder="Ingrese un nombre">
+                    </div>
+                    <!--team-->
+                    <div class="col-md-12" *ngIf="group.id">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Equipos</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let team of group.teams">
+                                <th 
+                                scope="row">{{team.name}} <button (click)="removeTeam(team.id)">Eliminar</button>
+                                </th>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="form-group">
+                            <label class="lab" for="team">Equipo</label>
+                            <select [(ngModel)]="currentTeamId" name="team">
+                                <option *ngFor="let team of teams" [value]="team.id">
+                                    {{team.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <button type="button" class="btn btn-secondary" (click)="addTeam()">Agregar</button>
+                    </div>
+
+                    <!--team-->
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Descripción:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
+                    CANCELAR
+                </button>
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveGroupTEST()" data-dismiss="modal">
+                    ACEPTAR
+                </button>
             </div>
         </div>
     </div>

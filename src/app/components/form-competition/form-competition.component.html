@@ -7,6 +7,7 @@
                 {{competition ? competition?.name : "Presione agregar..."}}
             </a>
         </div>
+
         <div class="col-md-1" *ngIf="hasAdminPermission() && !isMenuOpened()" (click)="optionsClick()">
             <i class="fas fa-ellipsis-v"></i>
         </div>
@@ -30,7 +31,7 @@
         </button>
     </div>
 
-    <button *ngIf="hasAdminPermission()" class="btn_add col-md-4 offset-md-4 fixed-bottom" data-toggle="modal"
+    <button *ngIf="hasAdminPermission()" class="btn_add_category col-md-4 offset-md-4 fixed-bottom" data-toggle="modal"
             data-target="#createCompetition" (click)="createCompetition()">
         <img src="../../../assets/btn_add.png">
     </button>
@@ -42,7 +43,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createCompetitionLabel">{{ competition.id ? "EDITAR CATEGORIO" : "AGREGAR CATEGORIA" }}</h5>
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createCompetitionLabel">{{ competition.id ? "EDITAR CATEGORIA" : "AGREGAR CATEGORIA" }}</h5>
             </div>
             <div class="modal-body">
                 <form>
@@ -58,10 +59,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn col-md-4 mr-auto" style="color: white" data-dismiss="modal">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-light col-md-4" style="color: #86c038ff" (click)="saveCompetition()" data-dismiss="modal">
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveCompetition()" data-dismiss="modal">
                     ACEPTAR
                 </button>
             </div>
@@ -96,10 +97,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" style="color: white"  class="btn col-md-4 mr-auto" data-dismiss="modal">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
                     CANCELAR
                 </button>
-                <button type="button" style="color: #86c038ff" class="btn btn-light col-md-4" (click)="saveTeam()" data-dismiss="modal">
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam()" data-dismiss="modal">
                     ACEPTAR
                 </button>
             </div>
@@ -108,21 +109,22 @@
 </div>
 
 <!--Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCompetition" tabindex="-1" role="dialog" aria-labelledby="deleteCompetitionLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">Eliminar
-                    Categoria</h5>
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteCompetitionLabel">
+                    Eliminar Categoria
+                </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Esta seguro de eliminar esta competencia?
+                Esta seguro de eliminar esta categoria?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary col-md-4 mr-auto"
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto"
                     data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-danger col-md-4" (click)="delete(competition.id)"
                     data-dismiss="modal">

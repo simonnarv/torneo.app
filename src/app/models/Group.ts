@@ -1,5 +1,6 @@
 import { Match } from "./match";
 import { ScoreSheet } from './score-sheet';
+import { Competition } from './competition';
 
 export interface Group {
     id?:number;

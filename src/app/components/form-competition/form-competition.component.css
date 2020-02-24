@@ -10,7 +10,7 @@
     padding-right: 0px;
 }
 
-.btn_add {
+.btn_add_category {
     background: none;
     border: none;
 }
@@ -21,14 +21,14 @@
     background-color: #2087b3;
     margin-top: 20px;
 }
-
+/*
 .btn-add-cat {
     font-family: 'poppins', sans-serif;
     color: #ffffff;
-    /*background-color: #2087b3;*/
+    /*background-color: #2087b3;
     margin-top: 20px;
     background-color: #063758;
-}
+}*/
 
 /*CATEGORY LIST CSS*/
 
@@ -60,6 +60,7 @@
 /*Modal CSS*/
 .modal-content {
     background-color: white;
+    border: none;
 }
 
 .modal-header{
@@ -79,6 +80,16 @@
 
 .modal-footer{
     background-color: #86c038ff;
+    border: none;
+}
+
+.btn-cancel{
+    color: white;
+    background-color: #86c038ff;
+    border: none;
+}
+.btn-accept{
+    color: #86c038ff;
     border: none;
 }
 

@@ -1,6 +1,7 @@
 import { CompetitionStatus } from './enums/competition-status';
 import { CompetitionType } from './enums/competition-type';
 import { Event } from './event';
+import { Group } from './group';
 
 export interface Competition {
     id?: number;
@@ -9,4 +10,5 @@ export interface Competition {
     status: CompetitionStatus;
     type: CompetitionType;
     event: Event;
+    groups?: Array<Group>;
 }

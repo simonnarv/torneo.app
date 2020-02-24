@@ -1,4 +1,4 @@
-<button class="btn btn-back" [routerLink]="['/futbol/category',group.competitionId, 'groups']">
+<button class="btn btn-back" [routerLink]="['/futbol/competition',group.competitionId, 'groups']">
   <img src="../../../assets/left_arrow_icon.png">
 </button>
 
@@ -19,8 +19,11 @@
           </tr>
         </thead>
         <tbody *ngFor="let team of group.teams">
-          <th scope="row">{{team.name}} <button (click)="removeTeam(team.id)">Eliminar</button></th>
-          
+          <th scope="row">{{team.name}}
+            <button (click)="removeTeam(team.id)">
+              Eliminar
+            </button>
+          </th>
         </tbody>
       </table>
     </div>
@@ -29,12 +32,12 @@
       <div class="form-group">
         <label class="lab" for="team">Equipo</label>
         <select [(ngModel)]="currentTeamId" name="team">
-            <option *ngFor="let team of teams" [value]="team.id">
-                {{team.name}}
-            </option>
+          <option *ngFor="let team of teams" [value]="team.id">
+            {{team.name}}
+          </option>
         </select>
-    </div>
-    <button type="button" class="btn btn-secondary" (click)="addTeam()">Agregar</button>
+      </div>
+      <button type="button" class="btn btn-secondary" (click)="addTeam()">Agregar</button>
     </div>
 
     <button type="submit" class="btn btn-save btn-block" (click)="save()">Guardar</button>
