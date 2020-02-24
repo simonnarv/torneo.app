@@ -19,7 +19,6 @@ import { TeamsService } from 'src/app/services/teams.service';
 export class FormGroupComponent implements OnInit {
   //competition
   competition: Competition;
-  scores: Array<ScoreSheet> = [];
   competitionId;
   //group add
   group: Group = {
@@ -30,6 +29,18 @@ export class FormGroupComponent implements OnInit {
   //team add
   currentTeamId: number;
   teams: Team[];
+  //scoresheet
+  scoresheet: ScoreSheet = {
+    groupId: 0,
+    points: 0,
+    goalFavor: 0,
+    goalAgainst: 0,
+    goalDifference: 0,
+    group: null,
+    team: null
+  }
+  scores: Array<ScoreSheet> = [];
+
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -58,12 +69,12 @@ export class FormGroupComponent implements OnInit {
       })
   }
 
-  getScore(id: number) {//cambiar por get by competition id ?
+  /*getScore(id: number) {//cambiar por get by competition id ?
     this.scoreService.getByTournamentId(id)
       .subscribe((response: ScoreSheet[]) => {
         this.scores = response;
       })
-  }
+  }*/
 
   //Group Methods  
   deleteGroup(id: number) {
@@ -75,14 +86,16 @@ export class FormGroupComponent implements OnInit {
 
   //added
   saveGroupTEST(){
+    this.group.scoreSheets= this.scores;
     this.competition.groups.push(this.group);
     this.competitionService.update(this.competitionId,this.competition).subscribe(
         res => {
           this.getCompetition(this.actRoute.snapshot.params.id);
+          //this.competition.groups.find(group => group.id == this.currentTeamId);
         })
   }
 
-  saveGroup() {
+  /*saveGroup() {
     !this.group.id
       ? this.groupsService.create(this.group).subscribe(
         res => {
@@ -94,10 +107,19 @@ export class FormGroupComponent implements OnInit {
           this.getCompetition(this.actRoute.snapshot.params.id);
         }
       )
-  }
+  }*/
+
   //Team Methods
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
+    /*crear y agregar una scoresheet? necesito un modelo de scoresheet
+    el problema es q como no cree todavia el grupo este no tiene id, entonces
+    no le puedo pasar dicha id a scoresheet, ni tampoco el objeto grupo,
+    supongo q cuando le agrego matches y actualizo la scoresheet tambien actualizo
+    esos valores, si es q los necesito al final---
+    --conste q por la forma en q los guardo la tabla relacion entre groups y scoresheets existe*/
+    this.scoresheet.team = selectedTeam;
+    this.scores.push(this.scoresheet);
     //this.group.teams.push(selectedTeam);
   }
 
