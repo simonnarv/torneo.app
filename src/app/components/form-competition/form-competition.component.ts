@@ -22,7 +22,7 @@ export class FormCompetitionComponent implements OnInit {
     name: "",
     type: CompetitionType.TOURNAMENT,
     status: CompetitionStatus.ACTIVE,
-    event: { "id": 129, "name": ""} //crear un evento por postman luego hardcode la id a todas las categorias q se creen 
+    event: { "id": 7, "name": ""} //crear un evento por postman luego hardcode la id a todas las categorias q se creen 
   }
 
   team: Team = {
@@ -66,7 +66,7 @@ export class FormCompetitionComponent implements OnInit {
       name: "",
       type: CompetitionType.TOURNAMENT,
       status: CompetitionStatus.ACTIVE,
-      event: { "id": 129, "name": ""}
+      event: { "id": 7, "name": ""}
     }
   }
 

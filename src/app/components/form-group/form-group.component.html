@@ -34,21 +34,19 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th scope="col">equipo</th>
+                                    <th scope="col">Equipo</th>
                                     <th scope="col">PTs</th>
                                     <th scope="col">GF</th>
                                     <th scope="col">GA</th>
                                     <th scope="col">GD</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let team of group.teams">
-                                <tr *ngFor="let score of scores.scoreSheets;">
-                                    <th scope="row" *ngIf="score.team.id==team.id">{{score.team.name}}</th>
-                                    <td *ngIf="score.team.id==team.id">{{score.points}}</td>
-                                    <td *ngIf="score.team.id==team.id">{{score.goalFavor}}</td>
-                                    <td *ngIf="score.team.id==team.id">{{score.goalAgainst}}</td>
-                                    <td *ngIf="score.team.id==team.id">{{score.goalDifference}}</td>
-                                </tr>
+                            <tbody *ngFor="let score of group.scoreSheets;">
+                                    <th scope="row">{{score.team.name}}</th>
+                                    <td>{{score.points}}</td>
+                                    <td>{{score.goalFavor}}</td>
+                                    <td>{{score.goalAgainst}}</td>
+                                    <td>{{score.goalDifference}}</td>
                             </tbody>
                         </table>
                     </a>

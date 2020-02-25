@@ -29,18 +29,8 @@ export class FormGroupComponent implements OnInit {
   //team add
   currentTeamId: number;
   teams: Team[];
-  //scoresheet
-  scoresheet: ScoreSheet = {
-    groupId: 0,
-    points: 0,
-    goalFavor: 0,
-    goalAgainst: 0,
-    goalDifference: 0,
-    group: null,
-    team: null
-  }
-  scores: Array<ScoreSheet> = [];
 
+  scores: Array<ScoreSheet> = [];
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -118,9 +108,20 @@ export class FormGroupComponent implements OnInit {
     supongo q cuando le agrego matches y actualizo la scoresheet tambien actualizo
     esos valores, si es q los necesito al final---
     --conste q por la forma en q los guardo la tabla relacion entre groups y scoresheets existe*/
-    this.scoresheet.team = selectedTeam;
-    this.scores.push(this.scoresheet);
+    var scoreSheet = this.getScoreSheet(selectedTeam)
+    this.scores.push(scoreSheet);
     //this.group.teams.push(selectedTeam);
+  }
+
+  getScoreSheet(selectedTeam: Team): ScoreSheet {
+    return { 
+      points: 0,
+      goalFavor: 0,
+      goalAgainst: 0,
+      goalDifference: 0,
+      group: null,
+      team: selectedTeam 
+    }
   }
 
   removeTeam(teamId: number) {
