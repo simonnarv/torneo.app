@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../models/group'
+import { LoginService } from 'src/app/services/login.service';
 @Component({
   selector: 'app-form-match',
   templateUrl: './form-match.component.html',
@@ -10,23 +11,20 @@ import { Group } from '../../models/group'
 export class FormMatchComponent implements OnInit {
 
   group: Group;
-  
-  val : boolean;
+  competitionId;
 
 
 
   constructor(
     private groupService: GroupsService, 
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private loginService: LoginService
     ) { }
 
   ngOnInit() {
     this.getGroup(this.actRoute.snapshot.params.id);
-
-    if(!this.group.matches)
-    {
-      this.val = true;
-    }
+    this.competitionId = this.actRoute.snapshot.params.competitionId;
+    
   }
 
   getGroup(id: number) {
@@ -34,5 +32,10 @@ export class FormMatchComponent implements OnInit {
     .subscribe((group: Group) =>{
       this.group = group;
     })
+  }
+
+  
+  hasAdminPermission() {
+    return this.loginService.isAdmin();
   }
 }

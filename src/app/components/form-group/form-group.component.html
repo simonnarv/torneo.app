@@ -6,21 +6,14 @@
 <div class="col-12 accordion" id="accordionFilter">
     <div class="row card">
         <div class="card-header row" id="gruposId">
-            <h2 class="col-md-4">
+            <h2 class="col-md-2 col-2">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGrupo"
                     aria-expanded="true" aria-controls="collapseOne">
                     Grupos
                 </button>
             </h2>
-            <!--
-            <a [routerLink]="['/futbol/competition', competitionId, 'add', 'group']" class="btn btn-plus col-md-1 ml-auto"
-                role="button" *ngIf="hasAdminPermission()">
-                <img src="../../../assets/plus_icon.png">
-            </a>
-            -->
-            <!--GROUP MODAL-->
-            <button *ngIf="hasAdminPermission()" class="btn btn-plus col-md-1 ml-auto" data-toggle="modal"
-                data-target="#createGroup">
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm col-md-1 col-1 offset-8 ml-md-auto"
+                data-toggle="modal" data-target="#createGroup">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -29,9 +22,11 @@
             <div class="row card-body">
 
                 <div class="col-md-6" *ngFor="let group of competition?.groups">
-                    <a [routerLink]="['/futbol/matches/', group.id]">
+
+                    <div class="div-table">
+                        <!--Added-->
                         <h3 class="group-name text-center">{{group?.name}}</h3>
-                        <table class="table">
+                        <table class="table ">
                             <thead>
                                 <tr>
                                     <th scope="col">Equipo</th>
@@ -42,22 +37,27 @@
                                 </tr>
                             </thead>
                             <tbody *ngFor="let score of group.scoreSheets;">
-                                    <th scope="row">{{score.team.name}}</th>
-                                    <td>{{score.points}}</td>
-                                    <td>{{score.goalFavor}}</td>
-                                    <td>{{score.goalAgainst}}</td>
-                                    <td>{{score.goalDifference}}</td>
+                                <th scope="row">{{score.team.name}}</th>
+                                <td>{{score.points}}</td>
+                                <td>{{score.goalFavor}}</td>
+                                <td>{{score.goalAgainst}}</td>
+                                <td>{{score.goalDifference}}</td>
                             </tbody>
                         </table>
-                    </a>
-                    <div class="btn-edit" *ngIf="hasAdminPermission()">
-                        <button class="btn-delete btn btn-block" data-toggle="modal" data-target="#deleteModal">
-                            Eliminar
+
+                        <div class="btn-edit" *ngIf="hasAdminPermission()">
+                            <button class="btn-delete btn btn-block" data-toggle="modal" data-target="#deleteModal">
+                                Eliminar
+                            </button>
+                            <a [routerLink]="['/futbol/competition/',competitionId,'group', group.id, 'edit']"
+                                class="btn btn-block" role="button">
+                                Editar
+                            </a>
+                        </div>
+                        <button [routerLink]="['/futbol/competition/',competitionId,'group', group.id,'matches']"
+                            class="btn btn-fixture btn-block">
+                            Fixture
                         </button>
-                        <!--mover edicion por la visibilidad de los botones-->
-                        <a [routerLink]="['/futbol/group/', group.id, 'edit']" class="btn btn-block" role="button">
-                            Editar
-                        </a>
                     </div>
                     <!--Delete Modal -->
                     <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
@@ -79,8 +79,8 @@
                                         data-dismiss="modal">
                                         Cancelar
                                     </button>
-                                    <button type="button" class="btn btn-danger col-md-4 " ((click)="deleteGroup(group.id)"
-                                        data-dismiss="modal">
+                                    <button type="button" class="btn btn-danger col-md-4 "
+                                        (click)="deleteGroup(group.id)" data-dismiss="modal">
                                         Eliminar
                                     </button>
                                 </div>
@@ -141,49 +141,52 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="competition-name" class="col-form-label">Nombre</label>
+                        <label for="competition-name" class="col-form-label">Nombre:</label>
                         <input [(ngModel)]="group.name" name="name" type="text" class="form-control"
                             id="competition-name" placeholder="Ingrese un nombre">
                     </div>
-                    <!--team-->
-                    <div class="col-md-12" *ngIf="group.id">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Equipos</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let team of group.teams">
-                                <th 
-                                scope="row">{{team.name}} <button (click)="removeTeam(team.id)">Eliminar</button>
-                                </th>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <div class="form-group">
-                            <label class="lab" for="team">Equipo</label>
-                            <select [(ngModel)]="currentTeamId" name="team">
+
+                    <div class="col-md-12">
+                        <div class="row form-group">
+                            <label class="lab col-md-4 col-4 text-center" for="team">Equipo</label>
+                            <select [(ngModel)]="currentTeamId" name="team" class="col-md-4 col-4">
                                 <option *ngFor="let team of teams" [value]="team.id">
                                     {{team.name}}
                                 </option>
                             </select>
+                            <button type="button" class="col-md-4 col-4 btn btn-sm btn-secondary" (click)="addTeam()">
+                                <i class="fas fa-plus"></i>
+                            </button>
                         </div>
-                        <button type="button" class="btn btn-secondary" (click)="addTeam()">Agregar</button>
                     </div>
 
                     <!--team-->
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Descripción:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
+                    <div class="offset-md-2 col-md-8">
+                        <table class="table table-borderless text-left">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Equipos:</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let score of scores">
+                                <th scope="row"><i class="fas fa-asterisk"></i> {{score.team.name}}
+                                    <button class="btn" (click)="removeTeam(score.id)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </th>
+                            </tbody>
+                        </table>
                     </div>
+                    <!--team-->
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal"
+                    (click)="CleanModal()">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveGroupTEST()" data-dismiss="modal">
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveGroupTEST()"
+                    data-dismiss="modal">
                     ACEPTAR
                 </button>
             </div>

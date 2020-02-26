@@ -59,13 +59,6 @@ export class FormGroupComponent implements OnInit {
       })
   }
 
-  /*getScore(id: number) {//cambiar por get by competition id ?
-    this.scoreService.getByTournamentId(id)
-      .subscribe((response: ScoreSheet[]) => {
-        this.scores = response;
-      })
-  }*/
-
   //Group Methods  
   deleteGroup(id: number) {
     this.groupsService.delete(id).subscribe(
@@ -74,7 +67,6 @@ export class FormGroupComponent implements OnInit {
       })
   }
 
-  //added
   saveGroupTEST(){
     this.group.scoreSheets= this.scores;
     this.competition.groups.push(this.group);
@@ -83,6 +75,7 @@ export class FormGroupComponent implements OnInit {
           this.getCompetition(this.actRoute.snapshot.params.id);
           //this.competition.groups.find(group => group.id == this.currentTeamId);
         })
+        this.CleanModal()//added
   }
 
   /*saveGroup() {
@@ -102,12 +95,6 @@ export class FormGroupComponent implements OnInit {
   //Team Methods
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
-    /*crear y agregar una scoresheet? necesito un modelo de scoresheet
-    el problema es q como no cree todavia el grupo este no tiene id, entonces
-    no le puedo pasar dicha id a scoresheet, ni tampoco el objeto grupo,
-    supongo q cuando le agrego matches y actualizo la scoresheet tambien actualizo
-    esos valores, si es q los necesito al final---
-    --conste q por la forma en q los guardo la tabla relacion entre groups y scoresheets existe*/
     var scoreSheet = this.getScoreSheet(selectedTeam)
     this.scores.push(scoreSheet);
     //this.group.teams.push(selectedTeam);
@@ -124,8 +111,31 @@ export class FormGroupComponent implements OnInit {
     }
   }
 
-  removeTeam(teamId: number) {
+  /*elimina los elementos del array asi no aparecen cuando se abre 
+  la pantalla modal para cargar un nuevo group*/
+  CleanModal(){
+    while(this.scores.length > 0)
+    this.scores.pop(); 
+    this.group.name="";
+  }
+
+  removeTeam(scoreId: number) {
     //this.group.teams = this.group.teams.filter(team => team.id != teamId);
+    this.group.scoreSheets.slice(this.getScoreIndex(scoreId), 1);
+    location.reload();//added no me parece lo optimo
+  }
+
+  /*difierente a cuando edito un grupo porque todavia no se han creado 
+  los scoresheets entonces no tienen id, elijo hacer la busqueda por el 
+  nombre del team pero queda a*/
+  getScoreIndex(id: number) {
+    var indice = -1;
+    this.group.scoreSheets.filter(function (score, i) {
+      if (score.id === id) {
+        indice = i;
+      }
+    });
+    return indice;
   }
 
   setTeams() {

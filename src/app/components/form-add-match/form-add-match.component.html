@@ -1,27 +1,42 @@
+<button class="btn btn-back" [routerLink]="['/futbol/competition/',competitionId,'group', groupId,'matches']">
+    <img src="../../../assets/left_arrow_icon.png">
+</button>
+
 <div class="div-form col-md-6 offset-md-3">
     <form>
 
         <h1 class="h1-cat">Crear Partido</h1>
 
-        <div class="form-group">
-            <label class="lab" for="homeTeam">Local</label>
-            <select [(ngModel)]="match.homeTeam" name="homeTeam">
-                <!--<option *ngFor="let team of teams" [value]="team.id" [selected]="match.homeTeam.id == team.id">
-                    {{team.name}}
-                </option>-->
-            </select>
+        <!--homeTeam-->
+        <div class="col-md-12">
+            <div class="row form-group">
+                <label class="lab col-md-4 col-4 text-center" for="team">Local</label>
+                <select [(ngModel)]="match.homeTeam" name="team" class="col-md-4 col-4">
+                    <option *ngFor="let team of teams" [value]="team">
+                        {{team.name}}
+                    </option>
+                </select>
+                <button type="button" class="col-md-4 col-4 btn btn-sm btn-secondary" (click)="addTeam()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label class="lab" for="awayTeam">Visitante</label>
-
-            <select [(ngModel)]="match.awayTeam" name="awayTeam">
-                <!--<option *ngFor="let team of teams" [value]="team.id" [selected]="match.awayTeam.id == team.id">
-                    {{team.name}}
-                </option>-->
-            </select>
+        <!--awayTeam-->
+        <div class="col-md-12">
+            <div class="row form-group">
+                <label class="lab col-md-4 col-4 text-center" for="team">Visitante</label>
+                <select [(ngModel)]="match.awayTeam" name="team" class="col-md-4 col-4">
+                    <option *ngFor="let team of teams" [value]="team">
+                        {{team.name}}
+                    </option>
+                </select>
+                <button type="button" class="col-md-4 col-4 btn btn-sm btn-secondary" (click)="addTeam()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
-
+        <!--resultado-->
         <div class="form-group">
             <label class="lab" for="homeScore">Resultado Local</label>
             <input [(ngModel)]="match.homeScore" name="homeScore" type="text" class="form-control" id="homeScore" />
@@ -31,9 +46,30 @@
             <label class="lab" for="awayScore">Resultado Visitante</label>
             <input [(ngModel)]="match.awayScore" name="awayScore" type="text" class="form-control" id="awayScore" />
         </div>
+        <!--cancha-->
+        <div class="form-group">
+            <label class="lab" for="pitch">cancha</label>
+            <input [(ngModel)]="match.pitch" name="pitch" type="text" class="form-control" id="pitch" />
+        </div>
+
+        <!--Match Status-->
+        <div class="col-md-12">
+            <div class="row form-group">
+                <label class="lab col-md-4 col-4 text-center" for="team">Estado</label>
+                <select [(ngModel)]="match.matchStatus" name="team" class="col-md-4 col-4">
+                    <option *ngFor="let key of keys; index as i" [value]="i+1" [label]="matchStatus[key]"></option>
+                </select>
+            </div>
+        </div>
+
 
         <button type="submit" class="btn btn-save btn-block" (click)="save()">Guardar</button>
     </form>
 </div>
 
 
+<style>
+    .div-form {
+        color: black;
+    }
+</style>

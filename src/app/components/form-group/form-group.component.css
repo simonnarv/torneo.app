@@ -2,14 +2,15 @@
     border-color: black;
 }
 
-.card-body a{
+.card-body {
     text-decoration: none;
-    background-color:  rgb(0, 156, 11);
-    color:  rgb(37, 134, 179);
+    /*background-color:  rgb(0, 156, 11);
+    color:  rgb(37, 134, 179);*/
+    background-color:  #caefb3;/*ADDED*/
     font-family: 'poppins', sans-serif;
 }
 .card-header{
-    background-color:  rgb(0, 156, 11);
+    background-color:   #86c038ff;;
 }
 .card-header .btn{
     color:  #fff;
@@ -23,10 +24,33 @@
     font-family: 'poppins', sans-serif;
     background-color: rgb(37, 134, 179);
 }
+.btn-fixture{
+    margin-top: 8px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'poppins', sans-serif;
+    background-color: rgb(37, 134, 179);
+}
+/*Table scores*/
+.div-table{
+    margin-top: 8px;
+    /*background-color: rgb(127, 199, 132);*/
+    background-color: rgba(255,255,255,0.5);
+}
+
+.table{
+    color: black;
+}
+
+.group-name{
+    padding-top: 5px;
+    color: black;
+    margin-bottom: 8px;
+}
 
 /*Modal CSS*/
 .modal-content{
-    background-color: rgb(0, 156, 11);
+    background-color: #86c038ff;
 }
 
 .modal-body{
@@ -34,6 +58,9 @@
     font-family: 'poppins', sans-serif;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+.modal-body table{
+    color: #ffffff;
 }
 
 .modal-header{
@@ -43,4 +70,14 @@
 }
 .modal-footer{
     border: none;
+}
+.btn-cancel{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+.btn-accept{
+    font-family: 'poppins', sans-serif;
+    border: none;
+    color:  #86c038ff;
 }

@@ -34,31 +34,31 @@ const routes: Routes = [
     component: FormMatchComponent
   },
   {
-    path: 'futbol/matches/:id',
+    path: 'futbol/competition/:competitionId/group/:id/matches',
     component: FormMatchComponent
   },
-  {
+  {//no se usa
     path: 'futbol/add/competition',
     component: FormAddCompetitionComponent
   },
-  {
+  {//no se usa
     path: 'futbol/add/competition/:id',
     component: FormAddCompetitionComponent
   },
-  {
-    path: 'futbol/group/:id/edit',
+  {//editar un grupo
+    path: 'futbol/competition/:competitionId/group/:id/edit',
     component: FormAddGroupComponent
   },
-  {
+  {//no se usa
     path: 'futbol/competition/:competitionId/add/group',
     component: FormAddGroupComponent
   },
-  {
+  {//no se usa
     path: 'futbol/add/team',
     component: FormAddTeamComponent
   },
   {
-    path: 'futbol/competition/:competitionId/group/:id/add/match',
+    path: 'futbol/competition/:competitionId/group/:id/matches/add',
     component: FormAddMatchComponent
   },
   {

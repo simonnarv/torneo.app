@@ -1,4 +1,4 @@
-<button class="btn btn-back ml-auto" [routerLink]="['/futbol/competition',group.competitionId, 'groups']">
+<button class="btn btn-back ml-auto" [routerLink]="['/futbol/competition',competitionId, 'groups']">
   <img src="../../../assets/left_arrow_icon.png">
 </button>
 
@@ -17,13 +17,13 @@
   </div>
 </div>
 
-<div *ngIf="valor" class="default-div offset-md-2 col-md-8">
-  <p class="default-msj col-md-4 offset-md-4 text-center">no hay partidos disponibles</p>
-</div>
-
-<button class="offset-md-3 col-md-6 btn btn-add btn-success" [routerLink]="['/futbol/competition/', group?.competitionId, 'group', group?.id, 'add','match']">
+<button class="offset-md-3 col-md-6 btn btn-add btn-success" [routerLink]="['/futbol/competition/', competitionId, 'group', group?.id,'matches','add']">
   Agregar Partido
 </button>
+
+
+
+
 
 <style>
 .btn-add{

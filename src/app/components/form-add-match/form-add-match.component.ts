@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Match } from 'src/app/models/match';
 import { TeamsService } from 'src/app/services/teams.service';
 import { MatchStatus } from 'src/app/models/enums/match-status';
+import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-form-add-match',
@@ -13,14 +14,24 @@ import { MatchStatus } from 'src/app/models/enums/match-status';
 export class FormAddMatchComponent implements OnInit {
 
   match: Match = {
-    homeTeam: { id: null },
-    awayTeam: { id: null },
+    homeTeam: null,
+    awayTeam: null,
     groupId: 0,
     homeScore: 0,
     awayScore: 0,
-    matchStatus: MatchStatus.PENDING
+    matchStatus: MatchStatus.PENDING,
+    pitch: ""
   };
 
+  matchStatus = MatchStatus;
+  keys = [];
+  //status : MatchStatus[] = (MatchStatus.DELAYED,MatchStatus.PENDING)
+
+  homeTeamId : number;
+  awayTeamId : number;
+
+  groupId;
+  competitionId;
   teams;
 
   constructor(private matchService: MatchesService,
@@ -29,23 +40,25 @@ export class FormAddMatchComponent implements OnInit {
     private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.match.groupId = this.actRoute.snapshot.params.groupId;
-    var competitionId  = this.actRoute.snapshot.params.competitionId;
-
-    this.setTeams(competitionId);
+    this.groupId = this.actRoute.snapshot.params.id;
+    this.competitionId = this.actRoute.snapshot.params.competitionId;
+    this.match.groupId = this.actRoute.snapshot.params.id;
+    
+    this.setTeams();
+    //setear el enum
+    this.keys = Object.keys(this.matchStatus);
   }
 
-  setTeams(competitionId: number) {
-    this.teams = this.teamService.getByCompetitionId(competitionId).subscribe(
-      teams => { 
-        this.teams = teams 
-      }
-    )
+  setTeams() {
+    this.teamService.getAll()
+    .subscribe((response: Team[]) => {
+        this.teams = response
+      })
   }
 
   save() {
     this.matchService.create(this.match).subscribe(
-      res=>{
+      res => {
         this.router.navigate(['futbol/competition']);
       }
     );
