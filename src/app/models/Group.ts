@@ -11,5 +11,5 @@ export interface Group {
     versus?: Group;
     scoreSheets?: Array<ScoreSheet>;
     matches?: Array<Match>;
-    status: GroupStatus;
+    status?: GroupStatus;
 }

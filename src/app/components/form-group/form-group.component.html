@@ -48,12 +48,12 @@
                             <button class="btn-delete btn btn-block" data-toggle="modal" data-target="#deleteModal">
                                 Eliminar
                             </button>
-                            <a [routerLink]="['/futbol/competition/',competitionId,'group', group.id, 'edit']"
+                            <a [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']"
                                 class="btn btn-block" role="button">
                                 Editar
                             </a>
                         </div>
-                        <button [routerLink]="['/futbol/competition/',competitionId,'group', group.id,'matches']"
+                        <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
                             class="btn btn-fixture btn-block">
                             Fixture
                         </button>

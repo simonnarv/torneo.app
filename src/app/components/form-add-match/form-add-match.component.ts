@@ -42,10 +42,10 @@ export class FormAddMatchComponent implements OnInit {
   ngOnInit() {
     this.groupId = this.actRoute.snapshot.params.id;
     this.competitionId = this.actRoute.snapshot.params.competitionId;
-    this.match.groupId = this.actRoute.snapshot.params.id;
+    this.match.groupId = this.groupId;
     
     this.setTeams();
-    //setear el enum
+    // setear el enum
     this.keys = Object.keys(this.matchStatus);
   }
 
