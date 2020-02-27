@@ -8,6 +8,7 @@ import { Team } from 'src/app/models/team';
 import { TeamsService } from 'src/app/services/teams.service';
 import { CompetitionType } from 'src/app/models/enums/competition-type';
 import { CompetitionStatus } from 'src/app/models/enums/competition-status';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-form-competition',
@@ -22,7 +23,7 @@ export class FormCompetitionComponent implements OnInit {
     name: "",
     type: CompetitionType.TOURNAMENT,
     status: CompetitionStatus.ACTIVE,
-    event: { "id": 7, "name": ""} //crear un evento por postman luego hardcode la id a todas las categorias q se creen 
+    event: { "id": environment.eventId, "name": ""} 
   }
 
   team: Team = {
@@ -66,7 +67,7 @@ export class FormCompetitionComponent implements OnInit {
       name: "",
       type: CompetitionType.TOURNAMENT,
       status: CompetitionStatus.ACTIVE,
-      event: { "id": 7, "name": ""}
+      event: { "id": environment.eventId }
     }
   }
 

@@ -1,13 +1,15 @@
 import { Match } from "./match";
 import { ScoreSheet } from './score-sheet';
 import { Competition } from './competition';
+import { GroupStatus } from './enums/group-status';
 
 export interface Group {
-    id?:number;
-    competitionId?:number;
+    id?: number;
+    competition?: Competition;
     name?: string;
     stage?: number;
     versus?: Group;
     scoreSheets?: Array<ScoreSheet>;
     matches?: Array<Match>;
+    status: GroupStatus;
 }

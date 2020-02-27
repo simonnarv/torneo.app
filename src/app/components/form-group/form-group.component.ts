@@ -9,6 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { Group } from 'src/app/models/group';
 import { Team } from 'src/app/models/team';
 import { TeamsService } from 'src/app/services/teams.service';
+import { CompetitionStatus } from 'src/app/models/enums/competition-status';
+import { GroupStatus } from 'src/app/models/enums/group-status';
 
 
 @Component({
@@ -17,19 +19,13 @@ import { TeamsService } from 'src/app/services/teams.service';
   styleUrls: ['./form-group.component.css']
 })
 export class FormGroupComponent implements OnInit {
-  //competition
+  
   competition: Competition;
-  competitionId;
-  //group add
-  group: Group = {
-    name: "",
-    stage: 1,
-    competitionId: 0
-  }
+  group: Group;
+
   //team add
   currentTeamId: number;
   teams: Team[];
-
   scores: Array<ScoreSheet> = [];
 
   constructor(
@@ -41,19 +37,19 @@ export class FormGroupComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit() {
-    this.group.competitionId = this.actRoute.snapshot.params.id;//set group competitionId
-    this.competitionId = this.actRoute.snapshot.params.id; 
-    this.getCompetition(this.competitionId);
+    this.competition = new Competition(this.actRoute.snapshot.params.id); // set group competitionId
+    this.group = this.newGroup();
+    this.getCompetition();
     this.setTeams();
   }
 
   hasAdminPermission() {
-    return this.loginService.isAdmin();
+    return true //this.loginService.isAdmin();
   }
 
   //Competition Methods
-  getCompetition(id: number) {
-    this.competitionService.getById(id)
+  getCompetition() {
+    this.competitionService.getById(this.competition.id)
       .subscribe((response: Competition) => {
         this.competition = response;
       })
@@ -63,11 +59,15 @@ export class FormGroupComponent implements OnInit {
   deleteGroup(id: number) {
     this.groupsService.delete(id).subscribe(
       res => {
-        this.getCompetition(this.actRoute.snapshot.params.id);
+        this.getCompetition();
       })
   }
 
-  saveGroupTEST(){
+  createGroup() {
+    this.group = this.newGroup();
+  }
+
+   /* saveGroup(){
     this.group.scoreSheets= this.scores;
     this.competition.groups.push(this.group);
     this.competitionService.update(this.competitionId,this.competition).subscribe(
@@ -76,31 +76,41 @@ export class FormGroupComponent implements OnInit {
           //this.competition.groups.find(group => group.id == this.currentTeamId);
         })
         this.CleanModal()//added
-  }
+  }*/ 
 
-  /*saveGroup() {
+  saveGroup() {
     !this.group.id
       ? this.groupsService.create(this.group).subscribe(
         res => {
-          this.getCompetition(this.actRoute.snapshot.params.id);
+          this.getCompetition();
         }
       )
       : this.groupsService.update(this.group.id, this.group).subscribe(
         res => {
-          this.getCompetition(this.actRoute.snapshot.params.id);
+          this.getCompetition();
         }
       )
-  }*/
+  }
 
   //Team Methods
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
-    var scoreSheet = this.getScoreSheet(selectedTeam)
-    this.scores.push(scoreSheet);
-    //this.group.teams.push(selectedTeam);
+
+    // var scoreSheet;
+    if (!this.group.scoreSheets) {
+      this.group.scoreSheets = [];
+    }
+
+    var scoreSheet = this.group.scoreSheets.find(sc => sc.team.id == this.currentTeamId);
+
+    if (!scoreSheet) {
+      scoreSheet = this.newScoreSheet(selectedTeam)
+    }
+
+    this.group.scoreSheets.push(scoreSheet);
   }
 
-  getScoreSheet(selectedTeam: Team): ScoreSheet {
+  newScoreSheet(selectedTeam: Team): ScoreSheet {
     return { 
       points: 0,
       goalFavor: 0,
@@ -111,11 +121,22 @@ export class FormGroupComponent implements OnInit {
     }
   }
 
+  newGroup() : Group {
+    return {
+      name: "",
+      stage: 1,
+      competition: this.competition,
+      status: GroupStatus.ACTIVE
+    }
+  }
+
   /*elimina los elementos del array asi no aparecen cuando se abre 
   la pantalla modal para cargar un nuevo group*/
   CleanModal(){
-    while(this.scores.length > 0)
-    this.scores.pop(); 
+    while (this.scores.length > 0) {
+      this.scores.pop(); 
+    }
+    
     this.group.name="";
   }
 

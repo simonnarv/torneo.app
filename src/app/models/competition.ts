@@ -3,7 +3,7 @@ import { CompetitionType } from './enums/competition-type';
 import { Event } from './event';
 import { Group } from './group';
 
-export interface Competition {
+export class Competition {
     id?: number;
     name?: string;
     description?: string;
@@ -11,4 +11,8 @@ export interface Competition {
     type: CompetitionType;
     event: Event;
     groups?: Array<Group>;
+
+    constructor(id: number) {
+        this.id = id
+    }
 }

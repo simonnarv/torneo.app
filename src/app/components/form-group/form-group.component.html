@@ -2,7 +2,6 @@
     <img src="../../../assets/left_arrow_icon.png">
 </button>
 
-
 <div class="col-12 accordion" id="accordionFilter">
     <div class="row card">
         <div class="card-header row" id="gruposId">
@@ -13,7 +12,7 @@
                 </button>
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm col-md-1 col-1 offset-8 ml-md-auto"
-                data-toggle="modal" data-target="#createGroup">
+                data-toggle="modal" data-target="#createGroup" (click)="createGroup()">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -37,7 +36,7 @@
                                 </tr>
                             </thead>
                             <tbody *ngFor="let score of group.scoreSheets;">
-                                <th scope="row">{{score.team.name}}</th>
+                                <th scope="row">{{score.team?.name}}</th>
                                 <td>{{score.points}}</td>
                                 <td>{{score.goalFavor}}</td>
                                 <td>{{score.goalAgainst}}</td>
@@ -59,40 +58,13 @@
                             Fixture
                         </button>
                     </div>
-                    <!--Delete Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-                        aria-labelledby="deleteModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">
-                                        Eliminar Categoria</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    Esta seguro de eliminar este grupo?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary col-md-4 mr-auto"
-                                        data-dismiss="modal">
-                                        Cancelar
-                                    </button>
-                                    <button type="button" class="btn btn-danger col-md-4 "
-                                        (click)="deleteGroup(group.id)" data-dismiss="modal">
-                                        Eliminar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
         </div>
 
     </div>
+
     <!--Collapse de Copa Oro-->
     <div class="row card">
         <div class="card-header" id="oroId">
@@ -128,10 +100,8 @@
     </div>
 </div>
 
-
 <!--Create Group-->
-<div class="modal fade" id="createGroup" tabindex="-1" role="dialog" aria-labelledby="createGroupLabel"
-    aria-hidden="true">
+<div class="modal fade" id="createGroup" tabindex="-1" role="dialog" aria-labelledby="createGroupLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -151,7 +121,7 @@
                             <label class="lab col-md-4 col-4 text-center" for="team">Equipo</label>
                             <select [(ngModel)]="currentTeamId" name="team" class="col-md-4 col-4">
                                 <option *ngFor="let team of teams" [value]="team.id">
-                                    {{team.name}}
+                                    {{team?.name}}
                                 </option>
                             </select>
                             <button type="button" class="col-md-4 col-4 btn btn-sm btn-secondary" (click)="addTeam()">
@@ -168,8 +138,8 @@
                                     <th scope="col">Equipos:</th>
                                 </tr>
                             </thead>
-                            <tbody *ngFor="let score of scores">
-                                <th scope="row"><i class="fas fa-asterisk"></i> {{score.team.name}}
+                            <tbody *ngFor="let score of group.scoreSheets">
+                                <th scope="row"><i class="fas fa-asterisk"></i> {{score?.team?.name}}
                                     <button class="btn" (click)="removeTeam(score.id)">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
@@ -185,9 +155,38 @@
                     (click)="CleanModal()">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveGroupTEST()"
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveGroup()"
                     data-dismiss="modal">
                     ACEPTAR
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteModalLabel">
+                    Eliminar Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Esta seguro de eliminar este grupo?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary col-md-4 mr-auto"
+                    data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-danger col-md-4 "
+                    (click)="deleteGroup(group.id)" data-dismiss="modal">
+                    Eliminar
                 </button>
             </div>
         </div>

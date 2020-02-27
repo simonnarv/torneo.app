@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Competition } from 'src/app/models/competition';
 import { CompetitionService } from '../../services/competition.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormsModule } from '@angular/forms';
 import { CompetitionStatus } from 'src/app/models/enums/competition-status';
 import { CompetitionType } from 'src/app/models/enums/competition-type';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-form-add-competition',
@@ -17,7 +17,7 @@ export class FormAddCompetitionComponent implements OnInit {
     name:"",
     status: CompetitionStatus.ACTIVE,
     type: CompetitionType.TOURNAMENT,
-    event: { "id": 7, "name": "" }
+    event: { "id": environment.eventId, "name": "" }
   }
 
   constructor(private competitionService: CompetitionService,
