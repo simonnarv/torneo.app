@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Match } from '../models/match';
 import { environment } from 'src/environments/environment';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+    //'Authorization': 'Bearer ' + LoginService.getToken()
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -12,28 +21,29 @@ export class MatchesService {
 
   constructor(private http: HttpClient) { }
 
-  //GET MATCH LIST
   getAll() {
     return this.http.get(this.API_URI);
   }
 
-  //GET MATCH BY ID
   getById(id: number) {
-    return this.http.get(this.API_URI+id);
+    return this.http.get(this.API_URI + id);
   }
 
-  //DELETE MATCH BY ID
   delete(id: number) {
-    return this.http.delete(this.API_URI+id);
+    return this.http.delete(this.API_URI + id);
   }
 
-  //SAVE MATCH
-  create(match: Match) {
-    return this.http.post(this.API_URI, match);
+  create(match: Match): Observable<Match> {
+    return this.http.post<Match>(this.API_URI, match,httpOptions)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        console.log(err)
+        return throwError(err);
+      })
+    );
   }
 
-  //UPDATE MATCH
   update(id: number, updatedMatch: Match) {
-    return this.http.put(this.API_URI+id, updatedMatch);
+    return this.http.put(this.API_URI + id, updatedMatch);
   }
 }

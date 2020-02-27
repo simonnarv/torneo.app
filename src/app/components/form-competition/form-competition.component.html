@@ -26,8 +26,13 @@
     </div>
 
     <div *ngIf="hasAdminPermission()">
-        <button *ngIf="hasAdminPermission()" class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" data-toggle="modal" data-target="#createTeam">
+        <button class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" data-toggle="modal" data-target="#createTeam">
             Agregar Equipo
+        </button>
+    </div>
+    <div>
+        <button class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" data-toggle="modal" data-target="#WatchTeam" (click)="getTeams()">
+            Ver Equipos
         </button>
     </div>
 
@@ -35,6 +40,30 @@
             data-target="#createCompetition" (click)="createCompetition()">
         <img src="../../../assets/btn_add.png">
     </button>
+</div>
+
+<!--List of Teams-->
+<div class="modal fade" id="WatchTeam" tabindex="-1" role="dialog" aria-labelledby="WatchTeamLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="WatchTeamLabel">Mis Equipos</h5>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div *ngFor="let team of teams">
+                        <p>{{team.name}}</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-accept btn-light btn-block" data-dismiss="modal">
+                    ACEPTAR
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--Create Competition-->
@@ -97,10 +126,10 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal" (click)="CleanTeamModal()">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam()" data-dismiss="modal">
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam()" data-dismiss="modal" >
                     ACEPTAR
                 </button>
             </div>

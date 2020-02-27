@@ -42,8 +42,7 @@ export class FormAddGroupComponent implements OnInit {
     this.teamService.getAll().subscribe(
       teams => {
         this.teams = teams
-      }
-    )
+      });
   }
 
   getGroup(groupId: number) {
@@ -51,9 +50,8 @@ export class FormAddGroupComponent implements OnInit {
       .subscribe(
         (group: Group) => {
           this.group = group
-        }
-      );
-  };
+        });
+  }
 
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);

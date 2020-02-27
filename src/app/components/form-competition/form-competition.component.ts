@@ -31,6 +31,8 @@ export class FormCompetitionComponent implements OnInit {
     description: ""
   }
 
+  teams;
+
   menuIsOpened = false;
 
   constructor(private teamService: TeamsService,
@@ -40,6 +42,7 @@ export class FormCompetitionComponent implements OnInit {
 
   ngOnInit() {
     this.getCompetitions();
+    this.getTeams();
   }
 
   optionsClick() {
@@ -59,7 +62,7 @@ export class FormCompetitionComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return true; //this.loginService.isAdmin();
+    return this.loginService.isAdmin();
   }
 
   createCompetition() {
@@ -112,6 +115,7 @@ export class FormCompetitionComponent implements OnInit {
     !this.team.id
       ? this.teamService.create(this.team).subscribe()
       : this.teamService.update(this.team.id, this.team).subscribe();
+      this.CleanTeamModal();
   }
 
   delete(id: number) {
@@ -120,6 +124,19 @@ export class FormCompetitionComponent implements OnInit {
         this.getCompetitions();
       }
     );
+  }
+
+  getTeams(){
+    this.teamService.getAll()
+      .subscribe(
+        (result: Competition[]) => {
+          this.teams = result;
+        });
+  }
+
+  CleanTeamModal(){
+    this.team.description="";
+    this.team.name="";
   }
 
 }
