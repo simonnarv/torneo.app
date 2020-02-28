@@ -88,6 +88,7 @@ export class FormAddMatchComponent implements OnInit {
 
   save() {
     this.setTeams();
+    //console.log(this.match);
     this.matchService.create(this.match).subscribe(
       res => {
         this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);

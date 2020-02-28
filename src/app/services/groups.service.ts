@@ -14,27 +14,22 @@ export class GroupsService {
 
   constructor(private http: HttpClient) { }
 
-  //GET TEAMGROUP LIST
-  getAll() {
-    return this.http.get(this.API_URI);
+  getAll(): Observable<Group[]> {
+    return this.http.get<Group[]>(this.API_URI);
   }
 
-  //GET TEAMGROUP BY ID
   getById(id: number):Observable<Group> {
     return this.http.get<Group>(this.API_URI + id);
   }
 
-  //DELETE TEAMGROUP BY ID
   delete(id: number) {
     return this.http.delete(this.API_URI + id);
   }
 
-  //SAVE TEAMGROUP
   create(teamGroup: Group) {
     return this.http.post(this.API_URI, teamGroup);
   }
 
-  //UPDATE TEAMGROUP
   update(id: number, updatedTeamGroup: Group) {
     return this.http.put(this.API_URI + id, updatedTeamGroup);
   }

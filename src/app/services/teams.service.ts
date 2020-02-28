@@ -14,32 +14,26 @@ export class TeamsService {
 
   constructor(private http: HttpClient) { }
 
-  //GET TEAM LIST
   getAll() : Observable<Team[]> {
     return this.http.get<Team[]>(this.API_URI);
   }
 
-  //GET TEAM BY ID
-  getById(id: number) {
-    return this.http.get(this.API_URI+id);
+  getById(id: number): Observable<Team> {
+    return this.http.get<Team>(this.API_URI+id);
   }
 
-  //GET TEAMS BY COMPETITION ID
-  getByCompetitionId(id: number) {
+  getByCompetitionId(id: number): Observable<Team[]> {
     return this.http.get<Team[]>(this.API_URI + 'competitions/'+ id);
   }
 
-  //DELETE TEAM BY ID
   delete(id: number) {
     return this.http.delete(this.API_URI+id);
   }
 
-  //SAVE TEAM
   create(team: Team) {
     return this.http.post(this.API_URI, team);
   }
 
-  //UPDATE TEAM
   update(id: number, updatedTeam: Team) {
     return this.http.put(this.API_URI + id, updatedTeam);
   }

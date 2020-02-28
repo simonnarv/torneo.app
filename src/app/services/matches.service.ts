@@ -30,8 +30,8 @@ export class MatchesService {
     return this.http.get<Match[]>(this.API_URI + id+ "/group");
   }
 
-  getById(id: number) {
-    return this.http.get(this.API_URI + id);
+  getById(id: number): Observable<Match> {
+    return this.http.get<Match>(this.API_URI + id);
   }
 
   delete(id: number) {
