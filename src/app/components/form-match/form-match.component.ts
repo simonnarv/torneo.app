@@ -3,6 +3,9 @@ import { GroupsService } from '../../services/groups.service';
 import { ActivatedRoute } from '@angular/router';
 import { Group } from '../../models/group'
 import { LoginService } from 'src/app/services/login.service';
+import { MatchesService } from 'src/app/services/matches.service';
+import { Match } from 'src/app/models/match';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-form-match',
   templateUrl: './form-match.component.html',
@@ -10,32 +13,35 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class FormMatchComponent implements OnInit {
 
-  group: Group;
   competitionId;
-
-
+  groupId;
+  matches: Match[];
 
   constructor(
     private groupService: GroupsService, 
     private actRoute: ActivatedRoute,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private matchesService: MatchesService
     ) { }
 
   ngOnInit() {
-    this.getGroup(this.actRoute.snapshot.params.id);
     this.competitionId = this.actRoute.snapshot.params.competitionId;
+    this.groupId = this.actRoute.snapshot.params.id;
     
+    this.getMatches(this.actRoute.snapshot.params.id);
   }
 
-  getGroup(id: number) {
-    this.groupService.getById(id)
-    .subscribe((group: Group) =>{
-      this.group = group;
-    })
+  getMatches(id: number){
+    this.matchesService.getByGroupId(id).subscribe(
+      (response: Match[]) =>{
+        this.matches = response;
+      });
   }
 
-  
   hasAdminPermission() {
     return this.loginService.isAdmin();
   }
+
+
+  //falta agregar el update a los partidos 
 }

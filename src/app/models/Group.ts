@@ -10,6 +10,5 @@ export interface Group {
     stage?: number;
     versus?: Group;
     scoreSheets?: Array<ScoreSheet>;
-    matches?: Array<Match>;
     status?: GroupStatus;
 }

@@ -3,21 +3,25 @@
 </button>
 
 
-<div class="col-12" *ngFor="let match of group?.matches">
+<div class="match col-12" *ngFor="let match of matches">
   <div class="col-md-4 card text-center">
     <div class="card-header">
       Partido
     </div>
     <div class="row card-body">
-      <p class="col-3 card-text">{{match.homeTeam.name}}</p>
+      <p class="col-3 card-text">{{match.homeTeam.team.name}}</p>
       <p class="col-3 card-text">{{match.homeScore}}</p>
       <p class="col-3 card-text">{{match.awayScore}}</p>
-      <p class="col-3 card-text">{{match.awayTeam.name}}</p>
+      <p class="col-3 card-text">{{match.awayTeam.team.name}}</p>
       </div>
   </div>
 </div>
 
-<button class="offset-md-3 col-md-6 btn btn-add btn-success" [routerLink]="['/futbol/competition/', competitionId, 'group', group?.id,'matches','add']">
+
+
+
+
+<button class="offset-md-3 col-md-6 btn btn-add btn-success" [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches','add']">
   Agregar Partido
 </button>
 
@@ -36,5 +40,8 @@
   color: #ffffff;
   font-size: 18px;
   font-family: 'poppins', sans-serif;
+}
+.match{
+  color: black;
 }
 </style>

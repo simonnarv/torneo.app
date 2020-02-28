@@ -21,8 +21,13 @@ export class MatchesService {
 
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get(this.API_URI);
+  getAll(): Observable<Match[]> {
+    return this.http.get<Match[]>(this.API_URI);
+  }
+
+  //added
+  getByGroupId(id: number): Observable<Match[]>{
+    return this.http.get<Match[]>(this.API_URI + id+ "/group");
   }
 
   getById(id: number) {

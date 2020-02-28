@@ -12,7 +12,7 @@
             <div class="row form-group">
                 <label class="lab col-md-4 col-4 text-center" for="team">Local</label>
                 <select [(ngModel)]="homeTeamId" name="team" class="col-md-4 col-4">
-                    <option *ngFor="let item of teamScoreSheets" [value]="item.teamId">
+                    <option *ngFor="let item of teamScoreSheets" [value]="item.scoreSheetId">
                         {{item.teamName}} / {{item.groupName}}
                     </option>
                 </select>
@@ -24,7 +24,7 @@
             <div class="row form-group">
                 <label class="lab col-md-4 col-4 text-center" for="team">Visitante</label>
                 <select [(ngModel)]="awayTeamId" name="team" class="col-md-4 col-4">
-                    <option *ngFor="let item of teamScoreSheets" [value]="item.teamId">
+                    <option *ngFor="let item of teamScoreSheets" [value]="item.scoreSheetId">
                         {{item.teamName}} / {{item.groupName}}
                     </option>
                 </select>

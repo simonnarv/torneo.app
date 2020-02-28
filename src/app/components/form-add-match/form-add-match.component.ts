@@ -7,6 +7,8 @@ import { TeamsService } from 'src/app/services/teams.service';
 import { MatchStatus } from 'src/app/models/enums/match-status';
 import { Team } from 'src/app/models/team';
 import { TeamScoreSheet } from 'src/app/models/teamScoreSheet';
+import { ScoresheetService } from 'src/app/services/scoresheet.service';
+import { ScoreSheet } from 'src/app/models/score-sheet';
 
 @Component({
   selector: 'app-form-add-match',
@@ -16,8 +18,6 @@ import { TeamScoreSheet } from 'src/app/models/teamScoreSheet';
 export class FormAddMatchComponent implements OnInit {
 
   match: Match = {
-    homeTeam: null,
-    awayTeam: null,
     homeScore: 0,
     awayScore: 0,
     matchStatus: MatchStatus.PENDING,
@@ -38,13 +38,14 @@ export class FormAddMatchComponent implements OnInit {
   //select array
   teamScoreSheets;
   //teams array
-  teams: Array<Team>;;
+  //teams: Array<Team>;;
 
   constructor(private matchService: MatchesService,
     private teamService: TeamsService,
     private router: Router,
     private actRoute: ActivatedRoute,
-    private competitionService: CompetitionService) { }
+    private competitionService: CompetitionService,
+    private scoreSheetService: ScoresheetService) { }
 
   ngOnInit() {
     this.groupId = this.actRoute.snapshot.params.id;
@@ -52,7 +53,7 @@ export class FormAddMatchComponent implements OnInit {
     //this.match.groupId = this.groupId;
 
     this.setTeamScoreSheets(this.actRoute.snapshot.params.competitionId);
-    this.getTeams();
+    //this.getTeams();
     // setear el enum
     this.keys = Object.keys(this.matchStatus);
   }
@@ -64,21 +65,29 @@ export class FormAddMatchComponent implements OnInit {
       });
   }
 
-  getTeams() {
+  /*getTeams() {
     this.teamService.getAll()
       .subscribe((response: Team[]) => {
         this.teams = response;
       });
-  }
+  }*/
 
   setTeams() {
-    this.match.homeTeam = this.teams.find(X => X.id == this.homeTeamId);
-    this.match.awayTeam = this.teams.find(X => X.id == this.awayTeamId);
+    this.scoreSheetService.getById(this.homeTeamId).subscribe(
+      (homeTeam: ScoreSheet) => {
+        this.match.homeTeam = homeTeam;
+      });
+      
+      this.scoreSheetService.getById(this.awayTeamId).subscribe(
+        (awayTeam: ScoreSheet) => {
+          this.match.awayTeam = awayTeam;
+        });
+    //this.match.homeTeam = this.teams.find(X => X.id == this.homeTeamId);
+    //this.match.awayTeam = this.teams.find(X => X.id == this.awayTeamId);
   }
 
   save() {
     this.setTeams();
-
     this.matchService.create(this.match).subscribe(
       res => {
         this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
