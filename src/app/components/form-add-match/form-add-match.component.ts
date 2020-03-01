@@ -9,6 +9,7 @@ import { Team } from 'src/app/models/team';
 import { TeamScoreSheet } from 'src/app/models/teamScoreSheet';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { ScoreSheet } from 'src/app/models/score-sheet';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-add-match',
@@ -72,26 +73,27 @@ export class FormAddMatchComponent implements OnInit {
       });
   }*/
 
-  setTeams() {
-    this.scoreSheetService.getById(this.homeTeamId).subscribe(
+  save() {
+
+    var awayTeamId = this.awayTeamId;
+
+    this.getScoreSheetById(this.homeTeamId).subscribe(
       (homeTeam: ScoreSheet) => {
         this.match.homeTeam = homeTeam;
-      });
-      
-      this.scoreSheetService.getById(this.awayTeamId).subscribe(
-        (awayTeam: ScoreSheet) => {
+        this.getScoreSheetById(awayTeamId).subscribe(
+          (awayTeam: ScoreSheet) => {
           this.match.awayTeam = awayTeam;
-        });
-    //this.match.homeTeam = this.teams.find(X => X.id == this.homeTeamId);
-    //this.match.awayTeam = this.teams.find(X => X.id == this.awayTeamId);
+          this.matchService.create(this.match).subscribe(
+            res => {
+              this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
+            });
+          }
+        )
+      }
+    )
   }
 
-  save() {
-    this.setTeams();
-    //console.log(this.match);
-    this.matchService.create(this.match).subscribe(
-      res => {
-        this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
-      });
+  getScoreSheetById(teamId: number) : Observable<ScoreSheet> {
+    return this.scoreSheetService.getById(teamId)
   }
 }
