@@ -115,7 +115,6 @@ export class FormCompetitionComponent implements OnInit {
     !this.team.id
       ? this.teamService.create(this.team).subscribe()
       : this.teamService.update(this.team.id, this.team).subscribe();
-      this.CleanTeamModal();
   }
 
   delete(id: number) {
@@ -133,10 +132,4 @@ export class FormCompetitionComponent implements OnInit {
           this.teams = result;
         });
   }
-
-  CleanTeamModal(){
-    this.team.description="";
-    this.team.name="";
-  }
-
 }

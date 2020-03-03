@@ -41,7 +41,12 @@
     font-family: 'poppins', sans-serif;
     background-color: rgba(255, 255, 255, 0.5);
     height: 80px;
-    padding-top: 50px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+}
+.card-modal{
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .h2-title {

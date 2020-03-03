@@ -2,21 +2,23 @@
   <img src="../../../assets/left_arrow_icon.png">
 </button>
 
-<div class="row">
-<div class="match col-md-4 text-left" *ngFor="let match of matches" >
-      <div class="row">
-        <img class="col-3" src="../../../assets/ShirtIcon48.png">
-        <p class="col-4">{{match.homeTeam.team.name}}</p>
-        <p class="col-2">{{match.homeScore}}</p>
-      </div>
-      <div class="row">
-        <img class="col-3" src="../../../assets/ShirtIcon48.png">
-        <p class="col-4">{{match.awayTeam.team.name}}</p>
-        <p class="col-2">{{match.awayScore}}</p>
-      </div>
+<div class="matches row col-md-12">
+  <!--match-->
+  <div class="match offset-md-3 col-md-6 text-left" *ngFor="let match of matches">
+    <div class="row">
+      <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
+      <p class="col-md-6 col-6">{{match.homeTeam.team.name}}</p>
+      <p class="col-md-2 col-2">{{match.homeScore}}</p>
+    </div>
+    <div class="row">
+      <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
+      <p class="col-md-6 col-6">{{match.awayTeam.team.name}}</p>
+      <p class="col-md-2 col-2">{{match.awayScore}}</p>
+    </div>
+  </div>
+  <!--match-->
 </div>
-</div>
-<button class="offset-md-3 col-md-6 btn btn-add btn-success"
+<button class="offset-md-2 col-md-8 btn btn-add btn-success"
   [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches','add']">
   Agregar Partido
 </button>
@@ -36,15 +38,23 @@
   }
 
   .match {
-    color:#ffffff;
+    color: #ffffff;
     background-color: rgba(255, 255, 255, 0.3);
-    margin: 5px;
+    margin-bottom: 5px;
   }
-  .match div p{
+
+  .match div p {
     margin-bottom: 0;
     margin-top: 10px;
   }
-  .match div img{
-    height: fit-content; width: fit-content;
+
+  .match div img {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .matches{
+    padding: 0px;
+    margin: 0px;
   }
 </style>
