@@ -7,3 +7,13 @@ body, html {
     background-image: url('assets/bck.png');
 }
 
+@font-face {
+    font-family: 'aaargh';
+    src: url('../src/assets/fonts/aaargh/aaargh.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'schkorycza';
+    src: url('../src/assets/fonts/schkorycza/schkorycza.otf');
+  }
+

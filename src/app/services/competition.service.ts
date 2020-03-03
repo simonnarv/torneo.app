@@ -6,7 +6,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { LoginService } from './login.service';
-import { TeamScoreSheet } from '../models/teamScoreSheet';
+import { TeamScoreSheet } from '../models/team-score-sheet';
 
 const httpOptions = {
   headers: new HttpHeaders({

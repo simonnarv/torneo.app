@@ -24,7 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/fonts/font-schkorycza.css",
+              "src/assets/fonts/font-aaargh.css"
             ],
             "scripts": []
           },

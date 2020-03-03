@@ -26,8 +26,6 @@ import { GroupsService } from './services/groups.service';
 import { CompetitionService } from './services/competition.service';
 import { ScoresheetService } from './services/scoresheet.service';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

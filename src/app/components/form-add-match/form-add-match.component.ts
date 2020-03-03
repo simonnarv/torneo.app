@@ -6,7 +6,7 @@ import { Match } from 'src/app/models/match';
 import { TeamsService } from 'src/app/services/teams.service';
 import { MatchStatus } from 'src/app/models/enums/match-status';
 import { Team } from 'src/app/models/team';
-import { TeamScoreSheet } from 'src/app/models/teamScoreSheet';
+import { TeamScoreSheet } from 'src/app/models/team-score-sheet';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { ScoreSheet } from 'src/app/models/score-sheet';
 import { Observable } from 'rxjs';
