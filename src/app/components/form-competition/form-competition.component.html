@@ -2,7 +2,7 @@
     <h2 class="h2-title col-md-12">Categorias</h2>
     <div class="row col-md-12 card-row" *ngFor="let competition of competitions">
 
-        <div [ngClass]="hasAdminPermission() ? 'card col-md-6 offset-md-2' : 'card col-md-8 offset-md-2'" >
+        <div class="card col-md-8 offset-md-2 col-8 offset-2">
             <a [routerLink]="['/futbol/competition', competition?.id, 'groups']">
                 {{competition ? competition?.name : "Presione agregar..."}}
             </a>
@@ -11,18 +11,18 @@
         <div class="col-md-1" *ngIf="hasAdminPermission() && !isMenuOpened()" (click)="optionsClick()">
             <i class="fas fa-ellipsis-v"></i>
         </div>
-        
-        <div id="actions" class="card col-md-2 row" *ngIf="hasAdminPermission() && isMenuOpened()">
-
-            <div class="col-md-4" data-toggle="modal" data-target="#createCompetition" (click)="editCompetition(competition)">
+        <!--modal-->
+        <div id="actions" class="card-modal col-md-2 col-2 row" *ngIf="hasAdminPermission() && isMenuOpened()">
+            <div class="col-md-6" data-toggle="modal" data-target="#createCompetition"
+                (click)="editCompetition(competition)">
                 <i class="fas fa-edit"></i>
             </div>
-            <div class="col-md-4" data-toggle="modal" data-target="#deleteCompetition" (click)="deleteCompetition(competition)">
+            <div class="col-md-6" data-toggle="modal" data-target="#deleteCompetition"
+                (click)="deleteCompetition(competition)">
                 <i class="fas fa-trash-alt"></i>
             </div>
         </div>
-
-        <!--final div-->
+        <!--modal-->
     </div>
 
     <div *ngIf="hasAdminPermission()">
@@ -31,20 +31,20 @@
         </button>
     </div>
     <div>
-        <button class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" data-toggle="modal" data-target="#WatchTeam" (click)="getTeams()">
+        <button class="btn-add-team btn col-md-4 offset-md-4 col-sm-12" data-toggle="modal" data-target="#WatchTeam"
+            (click)="getTeams()">
             Ver Equipos
         </button>
     </div>
 
     <button *ngIf="hasAdminPermission()" class="btn_add_category col-md-4 offset-md-4 fixed-bottom" data-toggle="modal"
-            data-target="#createCompetition" (click)="createCompetition()">
+        data-target="#createCompetition" (click)="createCompetition()">
         <img src="../../../assets/btn_add.png">
     </button>
 </div>
 
 <!--List of Teams-->
-<div class="modal fade" id="WatchTeam" tabindex="-1" role="dialog" aria-labelledby="WatchTeamLabel"
-    aria-hidden="true">
+<div class="modal fade" id="WatchTeam" tabindex="-1" role="dialog" aria-labelledby="WatchTeamLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -72,26 +72,35 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createCompetitionLabel">{{ competition.id ? "EDITAR CATEGORIA" : "AGREGAR CATEGORIA" }}</h5>
+                <h5 class="modal-title text-center col-md-8 offset-md-2" id="createCompetitionLabel">
+                    {{ competition.id ? "EDITAR CATEGORIA" : "AGREGAR CATEGORIA" }}</h5>
             </div>
+            <!--validation-->
             <div class="modal-body">
-                <form>
+                <form (ngSubmit)="onSubmit()" #competitionForm="ngForm">
                     <div class="form-group">
                         <label for="competition-name" class="col-form-label">Nombre</label>
-                        <input [(ngModel)]="competition.name" name="name" type="text" class="form-control" id="competition-name"
-                            placeholder="Ingrese un nombre">
+                        <input type="text" class="form-control" id="competition-name" required
+                            [(ngModel)]="competition.name" name="name" placeholder="Ingrese un nombre" #name="ngModel">
+                        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                            se requiere un nombre
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Descripción:</label>
-                        <textarea [(ngModel)]="competition.description" name="description" class="form-control" id="message-text"></textarea>
+                        <textarea [(ngModel)]="competition.description" name="description" class="form-control"
+                            id="message-text"></textarea>
                     </div>
                 </form>
             </div>
+            <!--validation-->
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveCompetition()" data-dismiss="modal">
+                <button type="submit" class="btn btn-accept btn-light col-md-4"
+                    (click)="saveCompetition(); competitionForm.reset()" [disabled]="!competitionForm.form.valid"
+                    data-dismiss="modal">
                     ACEPTAR
                 </button>
             </div>
@@ -111,13 +120,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form #teamForm="ngForm">
                     <div class="form-group">
-                        <label for="competition-name" class="col-form-label">Nombre</label>
-                        <input [(ngModel)]="team.name" name="name" type="text" class="form-control" id="competition-name"
+                        <label for="team-name" class="col-form-label">Nombre</label>
+                        <input [(ngModel)]="team.name" name="name" type="text" class="form-control" id="team-name"
                             placeholder="Ingrese un nombre">
                     </div>
-
                     <div class="form-group">
                         <label for="message-text" class="col-form-label">Descripción:</label>
                         <textarea [(ngModel)]="team.description" name="description" class="form-control"
@@ -126,10 +134,12 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal" (click)="CleanTeamModal()">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal"
+                    (click)="CleanTeamModal()">
                     CANCELAR
                 </button>
-                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam()" data-dismiss="modal" >
+                <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam(); teamForm.reset()"
+                    data-dismiss="modal">
                     ACEPTAR
                 </button>
             </div>
@@ -138,7 +148,8 @@
 </div>
 
 <!--Delete Modal -->
-<div class="modal fade" id="deleteCompetition" tabindex="-1" role="dialog" aria-labelledby="deleteCompetitionLabel" aria-hidden="true">
+<div class="modal fade" id="deleteCompetition" tabindex="-1" role="dialog" aria-labelledby="deleteCompetitionLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -153,8 +164,7 @@
                 Esta seguro de eliminar esta categoria?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel col-md-4 mr-auto"
-                    data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-danger col-md-4" (click)="delete(competition.id)"
                     data-dismiss="modal">
                     Eliminar

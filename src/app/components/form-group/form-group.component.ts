@@ -57,6 +57,7 @@ export class FormGroupComponent implements OnInit {
 
   //Group Methods  
   deleteGroup(id: number) {
+    console.log(id);
     this.groupsService.delete(id).subscribe(
       res => {
         this.getCompetition();

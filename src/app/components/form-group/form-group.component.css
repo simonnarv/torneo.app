@@ -1,16 +1,16 @@
 .card{
     border-color: black;
+    background-color:  #caefb3;
+    border: none;
 }
 
 .card-body {
     text-decoration: none;
-    /*background-color:  rgb(0, 156, 11);
-    color:  rgb(37, 134, 179);*/
-    background-color:  #caefb3;/*ADDED*/
     font-family: 'poppins', sans-serif;
 }
 .card-header{
-    background-color:   #86c038ff;;
+    background-color:   #86c038ff;
+    border-bottom: solid;
 }
 .card-header .btn{
     color:  #fff;
