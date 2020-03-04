@@ -38,7 +38,7 @@ export class FormMatchComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return this.loginService.isAdmin();
+    return true;//this.loginService.isAdmin();
     //return false;
   }
 

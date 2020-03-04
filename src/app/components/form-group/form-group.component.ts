@@ -27,6 +27,7 @@ export class FormGroupComponent implements OnInit {
   currentTeamId: number;
   teams: Team[];
   scores: Array<ScoreSheet> = [];
+  groupsToDisplay: Dictionary<Array<Group>> = {};
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -38,7 +39,7 @@ export class FormGroupComponent implements OnInit {
 
   ngOnInit() {
     this.competition = new Competition(this.actRoute.snapshot.params.id); // set group competitionId
-    this.group = this.newGroup();
+    this.group = this.newGroup(1);
     this.getCompetition();
     this.setTeams();
   }
@@ -52,32 +53,37 @@ export class FormGroupComponent implements OnInit {
     this.competitionService.getById(this.competition.id)
       .subscribe((response: Competition) => {
         this.competition = response;
+
+        if (this.competition.groups) {
+          this.competition.groups.forEach(group => {
+            var groups = this.groupsToDisplay[group.stage];
+            if (!groups) {
+              groups = [];
+            }
+
+            groups.push(group);
+
+            this.groupsToDisplay[group.stage] = groups;
+          });
+        }
       })
+  }
+
+  getGroupsByStage(stage){
+    return this.groupsToDisplay[stage];
   }
 
   //Group Methods  
   deleteGroup(id: number) {
-    console.log(id);
     this.groupsService.delete(id).subscribe(
       res => {
         this.getCompetition();
       })
   }
 
-  createGroup() {
-    this.group = this.newGroup();
+  createGroup(stage: number) {
+    this.group = this.newGroup(stage);
   }
-
-   /* saveGroup(){
-    this.group.scoreSheets= this.scores;
-    this.competition.groups.push(this.group);
-    this.competitionService.update(this.competitionId,this.competition).subscribe(
-        res => {
-          this.getCompetition(this.actRoute.snapshot.params.id);
-          //this.competition.groups.find(group => group.id == this.currentTeamId);
-        })
-        this.CleanModal()//added
-  }*/ 
 
   saveGroup() {
     !this.group.id
@@ -122,10 +128,10 @@ export class FormGroupComponent implements OnInit {
     }
   }
 
-  newGroup() : Group {
+  newGroup(stage: number) : Group {
     return {
       name: "",
-      stage: 1,
+      stage: stage,
       competition: this.competition,
       status: GroupStatus.ACTIVE
     }

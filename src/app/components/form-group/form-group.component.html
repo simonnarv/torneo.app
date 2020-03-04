@@ -12,7 +12,7 @@
                 </button>
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm col-md-1 col-1 offset-8 ml-md-auto"
-                data-toggle="modal" data-target="#createGroup" (click)="createGroup()">
+                data-toggle="modal" data-target="#createGroup" (click)="createGroup('1')">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -20,7 +20,7 @@
         <div id="collapseGrupo" class="collapse show" aria-labelledby="gruposId" data-parent="#accordionFilter">
             <div class="row card-body">
 
-                <div class="col-md-6" *ngFor="let group of competition?.groups">
+                <div class="col-md-6" *ngFor="let group of getGroupsByStage('1')">
 
                     <div class="div-table">
                         <!--Added-->
@@ -43,11 +43,11 @@
                         <table class="table">
                             <thead>
                                 <tr class=table-header>
-                                    <th scope="col">Equipo</th>
-                                    <th scope="col">PTs</th>
-                                    <th scope="col">GF</th>
-                                    <th scope="col">GA</th>
-                                    <th scope="col">GD</th>
+                                    <th scope="col" title="Nombre de equipo">Equipo</th>
+                                    <th scope="col" title="Puntos">PT</th>
+                                    <th scope="col" title="Goles a favor">GF</th>
+                                    <th scope="col" title="Goles en contra">GC</th>
+                                    <th scope="col" title="Diferencia de gol">DG</th>
                                 </tr>
                             </thead>
                             <tbody *ngFor="let score of group.scoreSheets;">
@@ -80,16 +80,72 @@
     <!--Collapse de Copa Oro-->
     <div class="row card">
         <div class="card-header" id="oroId">
-            <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOro"
-                    aria-expanded="false" aria-controls="collapseTwo">
+            <h2 class="col-md-2 col-2">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGrupo"
+                    aria-expanded="true" aria-controls="collapseOne">
                     Copa Oro
                 </button>
             </h2>
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm col-md-1 col-1 offset-8 ml-md-auto"
+                data-toggle="modal" data-target="#createGroup" (click)="createGroup('2')">
+                <img src="../../../assets/plus_icon.png">
+            </button>
         </div>
         <div id="collapseOro" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
-            <div class="card-body">
+            <div class="row card-body">
 
+                <div class="col-md-6" *ngFor="let group of getGroupsByStage('2')">
+
+                    <div class="div-table">
+                        <!--Added-->
+                        <div class="row col-md-12">
+                            <div class="col-md-8">
+                                <h3 class="group-name text-center">{{group?.name}}</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit btn-block">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-block btn-delete" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr class=table-header>
+                                    <th scope="col" title="Nombre de equipo">Equipo</th>
+                                    <th scope="col" title="Puntos">PT</th>
+                                    <th scope="col" title="Goles a favor">GF</th>
+                                    <th scope="col" title="Goles en contra">GC</th>
+                                    <th scope="col" title="Diferencia de gol">DG</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let score of group.scoreSheets;">
+                                <th scope="row">{{score.team?.name}}</th>
+                                <td>{{score.points}}</td>
+                                <td>{{score.goalFavor}}</td>
+                                <td>{{score.goalAgainst}}</td>
+                                <td>{{score.goalDifference}}</td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row col-md-12 btn-fixture center-block">
+                        <div class="col-md-8">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                                Fixture
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button  class="btn btn-outline-success btn-block">
+                                Finalizar
+                            </button>
+                        </div>                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -97,16 +153,72 @@
     <!--Collapse de Copa Plata-->
     <div class="row card">
         <div class="card-header" id="plataId">
-            <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePlata"
-                    aria-expanded="false" aria-controls="collapseThree">
+            <h2 class="col-md-2 col-2">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGrupo"
+                    aria-expanded="true" aria-controls="collapseOne">
                     Copa Plata
                 </button>
             </h2>
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm col-md-1 col-1 offset-8 ml-md-auto"
+                data-toggle="modal" data-target="#createGroup" (click)="createGroup('3')">
+                <img src="../../../assets/plus_icon.png">
+            </button>
         </div>
         <div id="collapsePlata" class="collapse" aria-labelledby="plataId" data-parent="#accordionFilter">
-            <div class="card-body">
-                Copa Oro
+            <div class="row card-body">
+
+                <div class="col-md-6" *ngFor="let group of getGroupsByStage('3')">
+
+                    <div class="div-table">
+                        <!--Added-->
+                        <div class="row col-md-12">
+                            <div class="col-md-8">
+                                <h3 class="group-name text-center">{{group?.name}}</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit btn-block">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-block btn-delete" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <table class="table">
+                            <thead>
+                                <tr class=table-header>
+                                    <th scope="col" title="Nombre de equipo">Equipo</th>
+                                    <th scope="col" title="Puntos">PT</th>
+                                    <th scope="col" title="Goles a favor">GF</th>
+                                    <th scope="col" title="Goles en contra">GC</th>
+                                    <th scope="col" title="Diferencia de gol">DG</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let score of group.scoreSheets;">
+                                <th scope="row">{{score.team?.name}}</th>
+                                <td>{{score.points}}</td>
+                                <td>{{score.goalFavor}}</td>
+                                <td>{{score.goalAgainst}}</td>
+                                <td>{{score.goalDifference}}</td>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row col-md-12 btn-fixture center-block">
+                        <div class="col-md-8">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                                Fixture
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button  class="btn btn-outline-success btn-block">
+                                Finalizar
+                            </button>
+                        </div>                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
