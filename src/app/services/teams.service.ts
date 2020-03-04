@@ -19,15 +19,15 @@ export class TeamsService {
   }
 
   getById(id: number): Observable<Team> {
-    return this.http.get<Team>(this.API_URI+id);
+    return this.http.get<Team>(this.API_URI + id);
   }
 
   getByCompetitionId(id: number): Observable<Team[]> {
-    return this.http.get<Team[]>(this.API_URI + 'competitions/'+ id);
+    return this.http.get<Team[]>(this.API_URI + 'competitions/' + id);
   }
 
   delete(id: number) {
-    return this.http.delete(this.API_URI+id);
+    return this.http.delete(this.API_URI + id);
   }
 
   create(team: Team) {

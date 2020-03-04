@@ -24,10 +24,25 @@
 
                     <div class="div-table">
                         <!--Added-->
-                        <h3 class="group-name text-center">{{group?.name}}</h3>
-                        <table class="table ">
+                        <div class="row col-md-12">
+                            <div class="col-md-8">
+                                <h3 class="group-name text-center">{{group?.name}}</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit btn-block">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-block btn-delete" data-toggle="modal" data-target="#deleteModal">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <table class="table">
                             <thead>
-                                <tr>
+                                <tr class=table-header>
                                     <th scope="col">Equipo</th>
                                     <th scope="col">PTs</th>
                                     <th scope="col">GF</th>
@@ -43,20 +58,18 @@
                                 <td>{{score.goalDifference}}</td>
                             </tbody>
                         </table>
-
-                        <div class="btn-edit" *ngIf="hasAdminPermission()">
-                            <button class="btn-delete btn btn-block" data-toggle="modal" data-target="#deleteModal">
-                                Eliminar
+                    </div>
+                    <div class="row col-md-12 btn-fixture center-block">
+                        <div class="col-md-8">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                                Fixture
                             </button>
-                            <a [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']"
-                                class="btn btn-block" role="button">
-                                Editar
-                            </a>
                         </div>
-                        <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
-                            class="btn btn-fixture btn-block">
-                            Fixture
-                        </button>
+                        <div class="col-md-4">
+                            <button  class="btn btn-outline-success btn-block">
+                                Finalizar
+                            </button>
+                        </div>                        
                     </div>
                 </div>
             </div>
