@@ -21,6 +21,13 @@
     background-color: #2087b3;
     margin-top: 20px;
 }
+.btn-team{
+    font-family: 'poppins', sans-serif;
+    color: #ffffff;
+    background-color: #2087b3;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
 /*
 .btn-add-cat {
     font-family: 'poppins', sans-serif;

@@ -2,23 +2,31 @@
   <img src="../../../assets/left_arrow_icon.png">
 </button>
 
-<div class="matches row col-md-12">
+<div class="div-matches">
   <!--match-->
-  <div class="match offset-md-3 col-md-6 text-left" *ngFor="let match of matches">
-    <div class="row">
-      <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
-      <p class="col-md-6 col-6">{{match.homeTeam.team.name}}</p>
-      <p class="col-md-2 col-2">{{match.homeScore}}</p>
+  <div class="text-left" *ngFor="let match of matches">
+    <div class="offset-md-4 col-md-4 div-match">
+      <div class="row">
+        <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
+        <p class="col-md-6 col-6">{{match.homeTeam.team.name}}</p>
+        <p class="col-md-2 col-2">{{match.homeScore}}</p>
+      </div>
+      <div class="row">
+        <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
+        <p class="col-md-6 col-6">{{match.awayTeam.team.name}}</p>
+        <p class="col-md-2 col-2">{{match.awayScore}}</p>
+      </div>
     </div>
-    <div class="row">
-      <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
-      <p class="col-md-6 col-6">{{match.awayTeam.team.name}}</p>
-      <p class="col-md-2 col-2">{{match.awayScore}}</p>
-    </div>
+    <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-2 btn btn-success">
+      editar
+    </button>
+    <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" (click)="delete(match.id)">
+      eliminar
+    </button>
   </div>
   <!--match-->
 </div>
-<button class="offset-md-2 col-md-8 btn btn-add btn-success"
+<button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-4 btn btn-add btn-success"
   [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches','add']">
   Agregar Partido
 </button>
@@ -37,23 +45,23 @@
     font-family: 'poppins', sans-serif;
   }
 
-  .match {
+  .div-match {
     color: #ffffff;
     background-color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 5px;
+    margin-bottom: 3px;
   }
 
-  .match div p {
+  .div-match div p {
     margin-bottom: 0;
     margin-top: 10px;
   }
 
-  .match div img {
+  .div-match div img {
     height: fit-content;
     width: fit-content;
   }
 
-  .matches{
+  .div-matches {
     padding: 0px;
     margin: 0px;
   }
