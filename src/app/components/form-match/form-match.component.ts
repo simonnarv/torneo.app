@@ -27,7 +27,6 @@ export class FormMatchComponent implements OnInit {
   ngOnInit() {
     this.competitionId = this.actRoute.snapshot.params.competitionId;
     this.groupId = this.actRoute.snapshot.params.id;
-    
     this.getMatches(this.actRoute.snapshot.params.id);
   }
 
@@ -40,8 +39,15 @@ export class FormMatchComponent implements OnInit {
 
   hasAdminPermission() {
     return this.loginService.isAdmin();
+    //return false;
   }
 
-
+  delete(id: number){
+    this.matchesService.delete(id).subscribe(
+      res=>{
+        this.getMatches(this.actRoute.snapshot.params.id);
+      }
+    );
+  }
   //falta agregar el update a los partidos 
 }
