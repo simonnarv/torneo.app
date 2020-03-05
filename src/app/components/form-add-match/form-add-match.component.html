@@ -5,13 +5,13 @@
 <div class="div-form col-md-6 offset-md-3">
     <form>
 
-        <h1 class="h1-cat text-center">Mi Partido</h1>
+        <h1 class="h1-cat text-center">Partido</h1>
 
         <!--homeTeam-->
-        <div class="col-md-12">
+        <div *ngIf="!matchId" class="col-md-12">
             <div class="row form-group">
                 <label class="lab col-md-4 col-4 text-center" for="team">Local</label>
-                <select [(ngModel)]="homeTeamId" name="team" class="col-md-4 col-8">
+                <select [(ngModel)]="homeTeamId" name="team" class="col-md-4 col-6">
                     <option *ngFor="let item of teamScoreSheets" [value]="item.scoreSheetId">
                         {{item.teamName}} / {{item.groupName}}
                     </option>
@@ -20,16 +20,17 @@
         </div>
 
         <!--awayTeam-->
-        <div class="col-md-12">
+        <div *ngIf="!matchId" class="col-md-12">
             <div class="row form-group">
                 <label class="lab col-md-4 col-4 text-center" for="team">Visitante</label>
-                <select [(ngModel)]="awayTeamId" name="team" class="col-md-4 col-8">
+                <select [(ngModel)]="awayTeamId" name="team" class="col-md-4 col-6">
                     <option *ngFor="let item of teamScoreSheets" [value]="item.scoreSheetId">
                         {{item.teamName}} / {{item.groupName}}
                     </option>
                 </select>
             </div>
         </div>
+
         <!--resultado-->
         <div class="form-group row">
             <label class="lab col-md-4 col-4 text-center" for="homeScore">Goles Local</label>
@@ -47,14 +48,16 @@
             <input [(ngModel)]="match.pitch" name="pitch" type="text" class="form-control col-md-4 col-4 " id="pitch" />
         </div>
 
-        <!--Match Status
+        <!--Match Status-->
 
         <div class="row form-group">
             <label class="lab col-md-4 col-4 text-center" for="team">Estado</label>
             <select [(ngModel)]="match.matchStatus" name="team" class="col-md-4 col-4">
-                <option *ngFor="let key of keys; index as i" [value]="i+1" [label]="matchStatus[key]"></option>
+                <option *ngFor="let key of keys; index as i" [value]="i" [label]="matchStatus[key]">
+                    
+                </option>
             </select>
-        </div>-->
+        </div>
         
         <button type="submit" class="btn btn-save btn-block" (click)="save()">Guardar</button>
     </form>

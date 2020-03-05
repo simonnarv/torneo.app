@@ -62,6 +62,10 @@ const routes: Routes = [
     component: FormAddMatchComponent
   },
   {
+    path: 'futbol/competition/:competitionId/group/:id/matches/:matchId/edit',
+    component: FormAddMatchComponent
+  },
+  {
     path: 'futbol/login',
     component: FormLoginComponent
   }

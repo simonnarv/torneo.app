@@ -55,7 +55,7 @@ export class FormAddGroupComponent implements OnInit {
 
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
-    var scoreSheet = this.getScoreSheet(selectedTeam)
+    var scoreSheet = this.getScoreSheet(selectedTeam);
     this.group.scoreSheets.push(scoreSheet);
   }
 

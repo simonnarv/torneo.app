@@ -1,0 +1,82 @@
+/*ngclass PENDING-DELAYED-PLAYED-SUSPENDED*/
+.pending {
+  color: greenyellow;
+}
+.delayed {
+  color: red;
+}
+.played {
+  color: blue;
+}
+.suspended {
+  color: red;
+}
+/*ngclass*/
+.btn-add {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-family: 'poppins', sans-serif;
+  }
+
+  .default-msj {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: 'poppins', sans-serif;
+  }
+
+  .div-match {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 3px;
+  }
+
+  .div-match div p {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
+
+  .div-match div img {
+    height: fit-content;
+    width: fit-content;
+  }
+
+  .div-matches {
+    padding: 0px;
+    margin: 0px;
+  }
+  /*Modal CSS*/
+.modal-content {
+    background-color: white;
+    border: none;
+}
+
+.modal-header{
+    background-color: #86c038ff;
+    color: #F4F4F4;
+    letter-spacing: 1px;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+
+.modal-body {
+    color: #B8B5AE;
+    font-family: 'poppins', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-footer{
+    background-color: #86c038ff;
+    border: none;
+}
+
+.btn-cancel{
+    color: white;
+    background-color: #86c038ff;
+    border: none;
+}
+.btn-accept{
+    color: #86c038ff;
+    border: none;
+}

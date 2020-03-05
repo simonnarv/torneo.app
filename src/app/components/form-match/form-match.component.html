@@ -7,6 +7,17 @@
   <div class="text-left" *ngFor="let match of matches">
     <div class="offset-md-4 col-md-4 div-match">
       <div class="row">
+        <!--show status-->
+        <p [ngClass]="{'pending' : match.matchStatus=='PENDING',
+                       'delayed': match.matchStatus=='DELAYED',
+                       'played' : match.matchStatus=='PLAYED',
+                       'suspended': match.matchStatus=='SUSPENDED'}" class="offset-md-4 offset-4 col-md-5 col-5">
+          {{match.matchStatus=='PENDING'? "POR JUGAR" : "INDETERMINADO"}}
+        </p>
+        <!--show horario-->
+        <p class="col-md-3 col-3">6.30hs</p>
+      </div>
+      <div class="row">
         <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
         <p class="col-md-6 col-6">{{match.homeTeam.team.name}}</p>
         <p class="col-md-2 col-2">{{match.homeScore}}</p>
@@ -17,12 +28,18 @@
         <p class="col-md-2 col-2">{{match.awayScore}}</p>
       </div>
     </div>
-    <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-2 btn btn-success">
+    <button *ngIf="hasAdminPermission()" 
+            class="offset-md-4 col-md-2 btn btn-success"
+            [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches', match.id, 'edit']">
       editar
+      <!--edit routing 'futbol/competition/:competitionId/group/:id/matches/:matchId/edit'-->
     </button>
-    <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" (click)="delete(match.id)">
+    <!--delete-->
+    <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" data-toggle="modal" data-target="#deleteMatch"
+      (click)="deleteMatch(match)">
       eliminar
     </button>
+    <!--delete-->
   </div>
   <!--match-->
 </div>
@@ -31,38 +48,28 @@
   Agregar Partido
 </button>
 
-<style>
-  .btn-add {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    font-size: 18px;
-    font-family: 'poppins', sans-serif;
-  }
-
-  .default-msj {
-    color: #ffffff;
-    font-size: 18px;
-    font-family: 'poppins', sans-serif;
-  }
-
-  .div-match {
-    color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 3px;
-  }
-
-  .div-match div p {
-    margin-bottom: 0;
-    margin-top: 10px;
-  }
-
-  .div-match div img {
-    height: fit-content;
-    width: fit-content;
-  }
-
-  .div-matches {
-    padding: 0px;
-    margin: 0px;
-  }
-</style>
+<!--Delete Modal -->
+<div class="modal fade" id="deleteMatch" tabindex="-1" role="dialog" aria-labelledby="deleteMatchLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteMatchLabel">
+          Eliminar Categoria
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Esta seguro de eliminar este?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger col-md-4" (click)="delete(match.id)" data-dismiss="modal">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -37,7 +37,7 @@ export class FormGroupComponent implements OnInit {
     private loginService: LoginService) { }
 
   ngOnInit() {
-    this.competition = new Competition(this.actRoute.snapshot.params.id); // set group competitionId
+    this.competition = new Competition(this.actRoute.snapshot.params.id);
     this.group = this.newGroup(1);
     this.getCompetition();
     this.setTeams();
@@ -72,8 +72,11 @@ export class FormGroupComponent implements OnInit {
     return this.groupsToDisplay[stage];
   }
 
-  //Group Methods
-  deleteGroup(id: number) {
+  deleteGroup(group: Group){
+    this.group = group;
+  }
+
+  delete(id: number) {
     this.groupsService.delete(id).subscribe(
       res => {
         this.getCompetition();

@@ -17,6 +17,10 @@ export class FormMatchComponent implements OnInit {
   groupId;
   matches: Match[];
 
+  match: Match = {
+    
+  }
+
   constructor(
     private groupService: GroupsService, 
     private actRoute: ActivatedRoute,
@@ -41,13 +45,17 @@ export class FormMatchComponent implements OnInit {
     return true;//this.loginService.isAdmin();
     //return false;
   }
-
+  
   delete(id: number){
     this.matchesService.delete(id).subscribe(
       res=>{
         this.getMatches(this.actRoute.snapshot.params.id);
       }
     );
+  }
+
+  deleteMatch(match : Match){
+    this.match = match;
   }
   //falta agregar el update a los partidos 
 }
