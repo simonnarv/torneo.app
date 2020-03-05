@@ -33,4 +33,8 @@ export class GroupsService {
   update(id: number, updatedTeamGroup: Group) {
     return this.http.put(this.API_URI + id, updatedTeamGroup);
   }
+
+  finish(id: number) {
+    return this.http.put(this.API_URI + id + "/finish", null);
+  }
 }

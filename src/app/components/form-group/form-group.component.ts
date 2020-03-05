@@ -9,7 +9,6 @@ import { LoginService } from 'src/app/services/login.service';
 import { Group } from 'src/app/models/group';
 import { Team } from 'src/app/models/team';
 import { TeamsService } from 'src/app/services/teams.service';
-import { CompetitionStatus } from 'src/app/models/enums/competition-status';
 import { GroupStatus } from 'src/app/models/enums/group-status';
 
 
@@ -19,11 +18,11 @@ import { GroupStatus } from 'src/app/models/enums/group-status';
   styleUrls: ['./form-group.component.css']
 })
 export class FormGroupComponent implements OnInit {
-  
+
   competition: Competition;
   group: Group;
 
-  //team add
+  // team add
   currentTeamId: number;
   teams: Team[];
   scores: Array<ScoreSheet> = [];
@@ -73,7 +72,7 @@ export class FormGroupComponent implements OnInit {
     return this.groupsToDisplay[stage];
   }
 
-  //Group Methods  
+  //Group Methods
   deleteGroup(id: number) {
     this.groupsService.delete(id).subscribe(
       res => {
@@ -83,6 +82,11 @@ export class FormGroupComponent implements OnInit {
 
   createGroup(stage: number) {
     this.group = this.newGroup(stage);
+  }
+
+  finishGroup(toFinish: Group) {
+    toFinish.status = GroupStatus.FINISHED;
+    this.groupsService.finish(toFinish.id).subscribe();
   }
 
   saveGroup() {
@@ -118,13 +122,13 @@ export class FormGroupComponent implements OnInit {
   }
 
   newScoreSheet(selectedTeam: Team): ScoreSheet {
-    return { 
+    return {
       points: 0,
       goalFavor: 0,
       goalAgainst: 0,
       goalDifference: 0,
       group: null,
-      team: selectedTeam 
+      team: selectedTeam
     }
   }
 
@@ -137,13 +141,13 @@ export class FormGroupComponent implements OnInit {
     }
   }
 
-  /*elimina los elementos del array asi no aparecen cuando se abre 
+  /*elimina los elementos del array asi no aparecen cuando se abre
   la pantalla modal para cargar un nuevo group*/
-  CleanModal(){
+  cleanModal(){
     while (this.scores.length > 0) {
-      this.scores.pop(); 
+      this.scores.pop();
     }
-    
+
     this.group.name="";
   }
 
@@ -153,8 +157,8 @@ export class FormGroupComponent implements OnInit {
     location.reload();//added no me parece lo optimo
   }
 
-  /*difierente a cuando edito un grupo porque todavia no se han creado 
-  los scoresheets entonces no tienen id, elijo hacer la busqueda por el 
+  /*difierente a cuando edito un grupo porque todavia no se han creado
+  los scoresheets entonces no tienen id, elijo hacer la busqueda por el
   nombre del team pero queda a*/
   getScoreIndex(id: number) {
     var indice = -1;
