@@ -44,7 +44,7 @@
   <!--match-->
 </div>
 <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-4 btn btn-add btn-success"
-  [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches','add']">
+  [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']" [queryParams]="{ groupId : groupId}">
   Agregar Partido
 </button>
 

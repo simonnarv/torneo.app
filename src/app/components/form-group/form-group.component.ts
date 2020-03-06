@@ -144,6 +144,14 @@ export class FormGroupComponent implements OnInit {
     }
   }
 
+  addMatch(stageId: number) {
+
+  }
+
+  getMatchesByStage(stageId: number) {
+    return [];
+  }
+
   /*elimina los elementos del array asi no aparecen cuando se abre
   la pantalla modal para cargar un nuevo group*/
   cleanModal(){

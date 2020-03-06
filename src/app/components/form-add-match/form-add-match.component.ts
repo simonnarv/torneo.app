@@ -49,7 +49,14 @@ export class FormAddMatchComponent implements OnInit {
 
   ngOnInit() {
     //id group
-    this.groupId = this.actRoute.snapshot.params.id;
+    this.groupId = this.actRoute.snapshot.queryParams.groupId;
+    var stageId = this.actRoute.snapshot.queryParams.stageId;
+    if (this.groupId) {
+      console.log("por Grupo " + this.groupId);
+    } else if (stageId) {
+      console.log("por stage " + stageId);
+    }
+
     //id competition
     this.competitionId = this.actRoute.snapshot.params.competitionId;
     //id match

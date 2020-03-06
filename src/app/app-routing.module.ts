@@ -58,7 +58,7 @@ const routes: Routes = [
     component: FormAddTeamComponent
   },
   {
-    path: 'futbol/competition/:competitionId/group/:id/matches/add',
+    path: 'futbol/competition/:competitionId/add/matches',
     component: FormAddMatchComponent
   },
   {

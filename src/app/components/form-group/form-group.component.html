@@ -86,64 +86,21 @@
                     Copa Oro
                 </button>
             </h2>
-            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
-                data-toggle="modal" data-target="#createGroup" (click)="createGroup('2')">
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;" data-toggle="modal" data-target="#createGroup" 
+                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']" [queryParams]="{ stageId : '2'}">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
 
         <div id="collapseTwo" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
             <div class="row card-body">
-                <div class="col-md-6 col-s-12" *ngFor="let group of getGroupsByStage('2')">
-
-                    <div class="div-table">
-                        <!--Added-->
-                        <div class="col-md-12 row">
-                            <div class="col-md-8">
-                                <h3 class="group-name text-center">{{group?.name}}</h3>
-                            </div>
-                            <div class="col-md-2">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-delete" data-toggle="modal" data-target="#deleteModal">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <table class="table">
-                            <thead>
-                                <tr class=table-header>
-                                    <th scope="col" title="Nombre de equipo">Equipo</th>
-                                    <th scope="col" title="Puntos">PT</th>
-                                    <th scope="col" title="Goles a favor">GF</th>
-                                    <th scope="col" title="Goles en contra">GC</th>
-                                    <th scope="col" title="Diferencia de gol">DG</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let score of group.scoreSheets;">
-                                <th scope="row">{{score.team?.name}}</th>
-                                <td>{{score.points}}</td>
-                                <td>{{score.goalFavor}}</td>
-                                <td>{{score.goalAgainst}}</td>
-                                <td>{{score.goalDifference}}</td>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('2')">
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
                             <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
-                        </div>
-                        <div *ngIf="group.id > 0" class="col-md-6 col-s-12">
-                            <button class="btn btn-outline-success btn-block" (click)="finishGroup(group)">
-                                Finalizar
-                            </button>
-                        </div>                        
+                        </div>      
                     </div>
                 </div>
             </div>
@@ -160,62 +117,20 @@
                 </button>
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
-                data-toggle="modal" data-target="#createGroup" (click)="createGroup('3')">
+                data-toggle="modal" data-target="#createGroup" (click)="addMatch('3')">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="plataId" data-parent="#accordionFilter">
             <div class="row card-body">
-                <div class="col-md-6 col-s-12" *ngFor="let group of getGroupsByStage('3')">
+                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('3')">
 
-                    <div class="div-table">
-                        <!--Added-->
-                        <div class="row col-md-12">
-                            <div class="col-md-8">
-                                <h3 class="group-name text-center">{{group?.name}}</h3>
-                            </div>
-                            <div class="col-md-2">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit btn-block">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-block btn-delete" data-toggle="modal" data-target="#deleteModal">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                        
-                        <table class="table">
-                            <thead>
-                                <tr class=table-header>
-                                    <th scope="col" title="Nombre de equipo">Equipo</th>
-                                    <th scope="col" title="Puntos">PT</th>
-                                    <th scope="col" title="Goles a favor">GF</th>
-                                    <th scope="col" title="Goles en contra">GC</th>
-                                    <th scope="col" title="Diferencia de gol">DG</th>
-                                </tr>
-                            </thead>
-                            <tbody *ngFor="let score of group.scoreSheets;">
-                                <th scope="row">{{score.team?.name}}</th>
-                                <td>{{score.points}}</td>
-                                <td>{{score.goalFavor}}</td>
-                                <td>{{score.goalAgainst}}</td>
-                                <td>{{score.goalDifference}}</td>
-                            </tbody>
-                        </table>
-                    </div>
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
                             <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
-                        </div>
-                        <div *ngIf="group.id > 0" class="col-md-6 col-s-12">
-                            <button class="btn btn-outline-success btn-block" (click)="finishGroup(group)">
-                                Finalizar
-                            </button>
-                        </div>                      
+                        </div>                    
                     </div>
                 </div>
             </div>
