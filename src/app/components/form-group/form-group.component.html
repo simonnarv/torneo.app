@@ -23,17 +23,17 @@
 
                     <div class="div-table">
                         <!--Added-->
-                        <div class="row col-md-12">
-                            <div class="col-md-8">
+                        <div class="row">
+                            <div class="offset-2 offset-md-2 col-md-6 col-6">
                                 <h3 class="group-name text-center">{{group?.name}}</h3>
                             </div>
-                            <div class="col-md-2">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit btn-block">
+                            <div class="col-md-1 col-1">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-block btn-delete" data-toggle="modal" data-target="#deleteModal"
+                            <div class="col-md-1 col-1">
+                                <button class="btn btn-delete" data-toggle="modal" data-target="#deleteModal"
                                     (click)="deleteGroup(group)">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
@@ -60,12 +60,12 @@
                         </table>
                     </div>
                     <div class="row col-md-12 btn-fixture center-block">
-                        <div class="col-md-6 col-s-12">
+                        <div class="col-md-6 col-12">
                             <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
                         </div>
-                        <div *ngIf="group.id > 0" class="col-md-6 col-s-12">
+                        <div *ngIf="group.id > 0" class="col-md-6 col-12">
                             <button class="btn btn-outline-success btn-block" (click)="finishGroup(group)">
                                 Finalizar
                             </button>

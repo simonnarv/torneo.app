@@ -15,7 +15,7 @@
           {{match.matchStatus=='PENDING'? "POR JUGAR" : "INDETERMINADO"}}
         </p>
         <!--show horario-->
-        <p class="col-md-3 col-3">6.30hs</p>
+        <p class="col-md-3 col-3">{{this.match.date}}</p>
       </div>
       <div class="row">
         <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
@@ -55,14 +55,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title text-center col-md-8 offset-md-2" id="deleteMatchLabel">
-          Eliminar Categoria
+          Eliminar Partido
         </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        Esta seguro de eliminar este?
+        Esta seguro de eliminar este partido?
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">Cancelar</button>

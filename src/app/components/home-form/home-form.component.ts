@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 declare var require: any
-//const FileSaver = require('file-saver');
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'app-home-form',
@@ -19,12 +19,12 @@ export class HomeFormComponent implements OnInit {
   getReglamentoPDF() {
     const pdfUrl = '../../../assets/REGLAMENTO.pdf';
     const pdfName = 'REGLAMENTO';
-    //FileSaver.saveAs(pdfUrl, pdfName);
+    FileSaver.saveAs(pdfUrl, pdfName);
   }
   getListaBuenaFePDF(){
     const pdfUrl = '../../../assets/Lista\ de\ buena\ fe.pdf';
     const pdfName = 'Lista de buena fe';
-    //FileSaver.saveAs(pdfUrl, pdfName);
+    FileSaver.saveAs(pdfUrl, pdfName);
   }
 
   

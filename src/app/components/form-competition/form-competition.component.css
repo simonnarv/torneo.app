@@ -1,15 +1,3 @@
-/*.page-container {
-    background: url('../../../assets/grass_bg.jpg');
-    height: 100%;
-    background-size: 450;
-    background-repeat: repeat;
-    font-family: 'poppins', sans-serif;
-    padding-bottom: 10rem;
-    min-height: 100vh;
-    padding-left: 0px;
-    padding-right: 0px;
-}*/
-
 .btn_add_category {
     background: none;
     border: none;
@@ -21,13 +9,15 @@
     background-color: #2087b3;
     margin-top: 20px;
 }
-.btn-team{
+
+.btn-team {
     font-family: 'poppins', sans-serif;
     color: #ffffff;
     background-color: #2087b3;
     margin-top: 20px;
     margin-bottom: 50px;
 }
+
 /*
 .btn-add-cat {
     font-family: 'poppins', sans-serif;
@@ -52,7 +42,14 @@
     padding-bottom: 25px;
     text-align: center;
 }
-.card-modal{
+
+.card a {
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    font-size: 25px;
+}
+
+.card-modal {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
@@ -63,19 +60,18 @@
     font-weight: bold;
     font-family: 'poppins', sans-serif;
     letter-spacing: 3px;
-
     border-bottom: white;
-
     background-color: rgba(255, 255, 255, 0.5);
 }
 
 /*Modal CSS*/
+
 .modal-content {
     background-color: white;
     border: none;
 }
 
-.modal-header{
+.modal-header {
     background-color: #86c038ff;
     color: #F4F4F4;
     letter-spacing: 1px;
@@ -90,18 +86,26 @@
     margin-bottom: 20px;
 }
 
-.modal-footer{
+.modal-footer {
     background-color: #86c038ff;
     border: none;
 }
 
-.btn-cancel{
+.btn-cancel {
     color: white;
     background-color: #86c038ff;
     border: none;
 }
-.btn-accept{
+
+.btn-accept {
     color: #86c038ff;
     border: none;
 }
 
+.btn-edit {
+    color: seagreen;
+}
+
+.btn-delete {
+    color: red;
+}

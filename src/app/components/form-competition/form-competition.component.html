@@ -15,11 +15,11 @@
         <div id="actions" class="card-modal col-md-2 col-2 row" *ngIf="hasAdminPermission() && isMenuOpened()">
             <div class="col-md-6" data-toggle="modal" data-target="#createCompetition"
                 (click)="editCompetition(competition)">
-                <i class="fas fa-edit"></i>
+                <i class="fas fa-edit btn-edit"></i>
             </div>
             <div class="col-md-6" data-toggle="modal" data-target="#deleteCompetition"
                 (click)="deleteCompetition(competition)">
-                <i class="fas fa-trash-alt"></i>
+                <i class="fas fa-trash-alt btn-delete"></i>
             </div>
         </div>
         <!--modal-->
@@ -99,7 +99,7 @@
                     CANCELAR
                 </button>
                 <button type="submit" class="btn btn-accept btn-light col-md-4"
-                    (click)="saveCompetition(); competitionForm.reset()" [disabled]="!competitionForm.form.valid"
+                    (click)="saveCompetition()"
                     data-dismiss="modal">
                     ACEPTAR
                 </button>

@@ -34,14 +34,24 @@
         <!--resultado-->
         <div class="form-group row">
             <label class="lab col-md-4 col-4 text-center" for="homeScore">Goles Local</label>
-            <input [(ngModel)]="match.homeScore" name="homeScore" type="text" class="form-control text-center col-md-1 col-4 "
-                id="homeScore" />
+            <input [(ngModel)]="match.homeScore" name="homeScore" type="text"
+                class="form-control text-center col-md-1 col-4 " id="homeScore" />
         </div>
         <div class="form-group row">
             <label class="lab col-md-4 col-4 text-center" for="awayScore">Goles Visitante</label>
-            <input [(ngModel)]="match.awayScore" name="awayScore" type="text" class="form-control text-center col-md-1 col-4 "
-                id="awayScore" />
+            <input [(ngModel)]="match.awayScore" name="awayScore" type="text"
+                class="form-control text-center col-md-1 col-4 " id="awayScore" />
         </div>
+        <!--Date-->
+        <div class="form-group row">
+            <label class="lab col-md-4 col-4 text-center" for="hours">hora</label>
+            <input [(ngModel)]="hours" name="hours" type="text" class="form-control text-center col-md-2 col-2 "
+                id="hours" />
+            <label class="lab col-md-3 col-3 text-center" for="minutes">min</label>
+            <input [(ngModel)]="minutes" name="minutes" type="text" class="form-control text-center col-md-2 col-2 "
+                id="minutes" />
+        </div>
+
         <!--cancha-->
         <div class="row form-group">
             <label class="lab col-md-4 col-4 text-center" for="pitch">cancha</label>
@@ -54,11 +64,11 @@
             <label class="lab col-md-4 col-4 text-center" for="team">Estado</label>
             <select [(ngModel)]="match.matchStatus" name="team" class="col-md-4 col-4">
                 <option *ngFor="let key of keys; index as i" [value]="i" [label]="matchStatus[key]">
-                    
+
                 </option>
             </select>
         </div>
-        
+
         <button type="submit" class="btn btn-save btn-block" (click)="save()">Guardar</button>
     </form>
 </div>

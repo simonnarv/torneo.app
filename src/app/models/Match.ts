@@ -10,5 +10,5 @@ export interface Match {
     homeTeam?: ScoreSheet;
     awayTeam?: ScoreSheet;
     matchStatus?: MatchStatus;
-    date?: string;
+    date?: Date;
 }

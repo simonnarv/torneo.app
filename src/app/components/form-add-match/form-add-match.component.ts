@@ -22,6 +22,9 @@ export class FormAddMatchComponent implements OnInit {
     pitch: ""
   };
 
+  hours;
+  minutes;
+
   //enum
   matchStatus = MatchStatus;
   keys = [];
@@ -51,7 +54,9 @@ export class FormAddMatchComponent implements OnInit {
     this.competitionId = this.actRoute.snapshot.params.competitionId;
     //id match
     this.matchId = this.actRoute.snapshot.params.matchId;
-    if(this.matchId){this.getMatch(this.matchId);}
+    if (this.matchId) {
+      this.getMatch(this.matchId);
+    }
     this.setTeamScoreSheets(this.actRoute.snapshot.params.competitionId);
     // setear el enum
     this.keys = Object.keys(this.matchStatus);
@@ -61,6 +66,9 @@ export class FormAddMatchComponent implements OnInit {
     this.matchService.getById(id).subscribe(
       (match: Match) => {
         this.match = match
+
+        this.hours = this.match.date.getHours();
+        this.minutes = this.match.date.getMinutes();
       });
   }
 
@@ -71,7 +79,12 @@ export class FormAddMatchComponent implements OnInit {
       });
   }
 
+  setDate() {
+    this.match.date = new Date(2020, 5, 15, this.hours, this.minutes);
+  }
+
   save() {
+    this.setDate();
     //var awayTeamId = this.awayTeamId;
     !this.matchId
       ? this.getScoreSheetById(this.homeTeamId).subscribe(
@@ -92,6 +105,7 @@ export class FormAddMatchComponent implements OnInit {
           this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
           console.log(this.match)//delete
         });
+    console.log(this.match)
   }
   getScoreSheetById(teamId: number): Observable<ScoreSheet> {
     return this.scoreSheetService.getById(teamId)

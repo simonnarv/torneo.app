@@ -20,7 +20,7 @@ export class FormMatchComponent implements OnInit {
   match: Match = {
     
   }
-
+  
   constructor(
     private groupService: GroupsService, 
     private actRoute: ActivatedRoute,
@@ -42,8 +42,7 @@ export class FormMatchComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return true;//this.loginService.isAdmin();
-    //return false;
+    return this.loginService.isAdmin();
   }
   
   delete(id: number){
@@ -57,5 +56,4 @@ export class FormMatchComponent implements OnInit {
   deleteMatch(match : Match){
     this.match = match;
   }
-  //falta agregar el update a los partidos 
 }

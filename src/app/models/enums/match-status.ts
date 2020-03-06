@@ -1,6 +1,6 @@
 export enum MatchStatus {
-    PENDING,
-    DELAYED,
-    PLAYED,
-    SUSPENDED
+    PENDING = 'POR JUGAR',
+    DELAYED = 'ATRASADO',
+    PLAYED = 'JUGADO',
+    SUSPENDED = 'SUSPENDIDO'
 }
