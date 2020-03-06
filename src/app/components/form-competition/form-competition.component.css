@@ -31,6 +31,7 @@
 
 .card-row {
     padding-top: 20px;
+    margin: 0px;
 }
 
 .card {
@@ -47,6 +48,8 @@
     color: #ffffff;
     font-family: 'poppins', sans-serif;
     font-size: 25px;
+    
+    text-decoration: none;
 }
 
 .card-modal {
