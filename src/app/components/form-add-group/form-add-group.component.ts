@@ -6,6 +6,7 @@ import { TeamsService } from 'src/app/services/teams.service';
 import { Team } from 'src/app/models/team';
 import { ScoreSheet } from 'src/app/models/score-sheet';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
+import { GroupName } from 'src/app/models/enums/group-name';
 
 @Component({
   selector: 'app-form-add-group',
@@ -19,11 +20,14 @@ export class FormAddGroupComponent implements OnInit {
 
   //group
   group: Group = {
-    name: "",
   }
 
   //team
   teams: Team[];
+  
+  //enum
+  groupName = GroupName;
+  keys = [];
 
   constructor(private groupService: GroupsService,
     private teamService: TeamsService,
@@ -36,6 +40,7 @@ export class FormAddGroupComponent implements OnInit {
     this.competitionId = this.actRoute.snapshot.params.competitionId;
     this.getGroup(id);
     this.setTeams();
+    this.keys = Object.keys(this.groupName);
   }
 
   setTeams() {

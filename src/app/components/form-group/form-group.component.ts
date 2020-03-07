@@ -10,6 +10,7 @@ import { Group } from 'src/app/models/group';
 import { Team } from 'src/app/models/team';
 import { TeamsService } from 'src/app/services/teams.service';
 import { GroupStatus } from 'src/app/models/enums/group-status';
+import { GroupName } from 'src/app/models/enums/group-name';
 
 
 @Component({
@@ -28,6 +29,10 @@ export class FormGroupComponent implements OnInit {
   scores: Array<ScoreSheet> = [];
   groupsToDisplay: Dictionary<Array<Group>> = {};
 
+  //enum
+  groupName = GroupName;
+  keys = [];
+
   constructor(
     private actRoute: ActivatedRoute,
     private competitionService: CompetitionService,
@@ -41,6 +46,7 @@ export class FormGroupComponent implements OnInit {
     this.group = this.newGroup(1);
     this.getCompetition();
     this.setTeams();
+    this.keys = Object.keys(this.groupName);
   }
 
   hasAdminPermission() {

@@ -28,7 +28,8 @@
                                 <h3 class="group-name text-center">{{group?.name}}</h3>
                             </div>
                             <div class="col-md-1 col-1">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']"
+                                    class="btn btn-edit"> 
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </div>
@@ -61,7 +62,8 @@
                     </div>
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
+                                class="btn btn-success btn-block">
                                 Fixture
                             </button>
                         </div>
@@ -86,8 +88,10 @@
                     Copa Oro
                 </button>
             </h2>
-            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;" data-toggle="modal" data-target="#createGroup" 
-                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']" [queryParams]="{ stageId : '2'}">
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
+                data-toggle="modal" data-target="#createGroup"
+                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']"
+                [queryParams]="{ stageId : '2'}">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -97,7 +101,8 @@
                 <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('2')">
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
+                                class="btn btn-success btn-block">
                                 Fixture
                             </button>
                         </div>      
@@ -148,12 +153,23 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <!--
                     <div class="form-group">
-                        <label for="competition-name" class="col-form-label">Nombre:</label>
+                        <label for="group-name" class="col-form-label">Nombre:</label>
                         <input [(ngModel)]="group.name" name="name" type="text" class="form-control"
-                            id="competition-name" placeholder="Ingrese un nombre">
+                            id="group-name" placeholder="Ingrese un nombre">
                     </div>
+                    -->
+                    <!--nombre enum-->
+                    <div class="row form-group">
+                        <label class="lab col-md-4 col-4 text-center" for="name">Nombre:</label>
+                        <select [(ngModel)]="group.name" name="name" class="col-md-4 col-4">
+                          <option *ngFor="let key of keys; index as i" [value]="i" [label]="groupName[key]">
 
+                          </option>
+                        </select>
+                      </div>
+                    <!--nombre enum-->
                     <div class="col-md-12">
                         <div class="row form-group">
                             <label class="lab col-md-4 col-4 text-center" for="team">Equipo</label>
