@@ -28,8 +28,7 @@
                                 <h3 class="group-name text-center">{{group?.name}}</h3>
                             </div>
                             <div class="col-md-1 col-1">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']"
-                                    class="btn btn-edit">
+                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']" class="btn btn-edit">
                                     <i class="fas fa-edit"></i>
                                 </button>
                             </div>
@@ -40,7 +39,7 @@
                                 </button>
                             </div>
                         </div>
-
+                        
                         <table class="table">
                             <thead>
                                 <tr class=table-header>
@@ -62,8 +61,7 @@
                     </div>
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
-                                class="btn btn-success btn-block">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
                         </div>
@@ -71,7 +69,7 @@
                             <button class="btn btn-outline-success btn-block" (click)="finishGroup(group)">
                                 Finalizar
                             </button>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
             </div>
@@ -88,10 +86,8 @@
                     Copa Oro
                 </button>
             </h2>
-            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
-                data-toggle="modal" data-target="#createGroup"
-                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']"
-                [queryParams]="{ stageId : '2'}">
+            <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;" data-toggle="modal" data-target="#createGroup" 
+                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']" [queryParams]="{ stageId : '2'}">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -101,11 +97,10 @@
                 <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('2')">
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
-                                class="btn btn-success btn-block">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
-                        </div>
+                        </div>      
                     </div>
                 </div>
             </div>
@@ -132,11 +127,10 @@
 
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
-                                class="btn btn-success btn-block">
+                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
-                        </div>
+                        </div>                    
                     </div>
                 </div>
             </div>
@@ -145,8 +139,7 @@
 </div>
 
 <!--Create Group-->
-<div class="modal fade" id="createGroup" tabindex="-1" role="dialog" aria-labelledby="createGroupLabel"
-    aria-hidden="true">
+<div class="modal fade" id="createGroup" tabindex="-1" role="dialog" aria-labelledby="createGroupLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,23 +148,12 @@
             </div>
             <div class="modal-body">
                 <form>
-                    <!--
                     <div class="form-group">
-                        <label for="group-name" class="col-form-label">Nombre:</label>
+                        <label for="competition-name" class="col-form-label">Nombre:</label>
                         <input [(ngModel)]="group.name" name="name" type="text" class="form-control"
-                            id="group-name" placeholder="Ingrese un nombre">
+                            id="competition-name" placeholder="Ingrese un nombre">
                     </div>
-                    -->
-                    <!--nombre enum-->
-                    <div class="row form-group">
-                        <label class="lab col-md-4 col-4 text-center" for="name">Nombre:</label>
-                        <select [(ngModel)]="group.name" name="name" class="col-md-4 col-4">
-                          <option *ngFor="let key of keys; index as i" [value]="i" [label]="groupName[key]">
-                  
-                          </option>
-                        </select>
-                      </div>
-                    <!--nombre enum-->
+
                     <div class="col-md-12">
                         <div class="row form-group">
                             <label class="lab col-md-4 col-4 text-center" for="team">Equipo</label>
@@ -221,8 +203,7 @@
 </div>
 
 <!--Delete Modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -236,10 +217,12 @@
                 Esta seguro de eliminar este grupo?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary col-md-4 mr-auto"
+                    data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-danger col-md-4 " (click)="delete(group.id)" data-dismiss="modal">
+                <button type="button" class="btn btn-danger col-md-4 "
+                    (click)="delete(group.id)" data-dismiss="modal">
                     Eliminar
                 </button>
             </div>

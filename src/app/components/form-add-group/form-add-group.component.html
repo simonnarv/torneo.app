@@ -5,26 +5,11 @@
 <div class="div-form col-md-6 offset-md-3">
   <form>
     <h1 class="h1-cat">Editar Grupo</h1>
-    <!--
     <div class="form-group">
       <label class="lab" for="groupName">Nombre:</label>
       <input [(ngModel)]="group.name" name="name" type="text" class="form-control" id="groupName"
         placeholder="Ingrese un nombre" />
     </div>
-    DIV-->
-
-    <!--OPTION NAME-->
-    <div class="row form-group">
-      <label class="lab col-md-4 col-4 text-center" for="name">Nombre:</label>
-      <select [(ngModel)]="group.name" name="name" class="col-md-4 col-4">
-        <option *ngFor="let key of keys; index as i" [value]="i" [label]="groupName[key]">
-
-        </option>
-      </select>
-    </div>
-    <!--OPTION NAME-->
-
-
 
     <div class="col-md-12">
       <div class="row form-group">
