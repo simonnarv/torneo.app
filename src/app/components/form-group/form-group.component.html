@@ -1,4 +1,4 @@
-<button class="btn btn-back" routerLink="/futbol/competition">
+<button class="btn btn-back" routerLink="/losmorenitos/competition">
     <img src="../../../assets/left_arrow_icon.png">
 </button>
 
@@ -12,7 +12,7 @@
                 </button>
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
-                data-toggle="modal" data-target="#createGroup" (click)="createGroup('1')">
+                data-toggle="modal" data-target="#createGroup" (click)="createGroup(1)">
                 <img src="../../../assets/plus_icon.png">
             </button>
         </div>
@@ -28,7 +28,7 @@
                                 <h3 class="group-name text-center">{{group?.name}}</h3>
                             </div>
                             <div class="col-md-1 col-1">
-                                <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id, 'edit']"
+                                <button [routerLink]="['/losmorenitos/competition/',competition.id,'group', group.id, 'edit']"
                                     class="btn btn-edit"> 
                                     <i class="fas fa-edit"></i>
                                 </button>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
+                            <button [routerLink]="['/losmorenitos/competition/',competition.id,'group', group.id,'matches']"
                                 class="btn btn-success btn-block">
                                 Fixture
                             </button>
@@ -90,7 +90,7 @@
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
                 data-toggle="modal" data-target="#createGroup"
-                [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']"
+                [routerLink]="['/losmorenitos/competition/', competition.id, 'add', 'matches']"
                 [queryParams]="{ stageId : '2'}">
                 <img src="../../../assets/plus_icon.png">
             </button>
@@ -98,10 +98,10 @@
 
         <div id="collapseTwo" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
             <div class="row card-body">
-                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('2')">
+                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage(2)">
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']"
+                            <button [routerLink]="['/losmorenitos/competition/',competition.id,'group', group.id,'matches']"
                                 class="btn btn-success btn-block">
                                 Fixture
                             </button>
@@ -122,17 +122,18 @@
                 </button>
             </h2>
             <button *ngIf="hasAdminPermission()" class="btn btn-sm" style="position:absolute; right: 20px;"
-                data-toggle="modal" data-target="#createGroup" (click)="addMatch('3')">
-                <img src="../../../assets/plus_icon.png">
+            data-toggle="modal" data-target="#createGroup"
+            [routerLink]="['/losmorenitos/competition/', competition.id, 'add', 'matches']"
+            [queryParams]="{ stageId : '3'}">
             </button>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="plataId" data-parent="#accordionFilter">
             <div class="row card-body">
-                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage('3')">
+                <div class="col-md-6 col-s-12" *ngFor="let match of getMatchesByStage(3)">
 
                     <div class="row col-md-12 btn-fixture center-block">
                         <div class="col-md-6 col-s-12">
-                            <button [routerLink]="['/futbol/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
+                            <button [routerLink]="['/losmorenitos/competition/',competition.id,'group', group.id,'matches']" class="btn btn-success btn-block">
                                 Fixture
                             </button>
                         </div>                    

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'http://localhost:8080',
-  eventId: 129
+  apiEndpoint: 'https://eldeportivo-svc.herokuapp.com/',
+  eventId: 1
 };
 
 /*

@@ -102,14 +102,14 @@ export class FormAddMatchComponent implements OnInit {
               this.match.awayTeam = awayTeam;
               this.matchService.create(this.match).subscribe(
                 res => {
-                  this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
+                  this.router.navigate(['/losmorenitos/competition/', this.competitionId, 'group', this.groupId, 'matches']);
                   console.log(this.match)//delete
                 });
             })
         })
       : this.matchService.update(this.match.id, this.match).subscribe(
         res => {
-          this.router.navigate(['/futbol/competition/', this.competitionId, 'group', this.groupId, 'matches']);
+          this.router.navigate(['/losmorenitos/competition/', this.competitionId, 'group', this.groupId, 'matches']);
           console.log(this.match)//delete
         });
     console.log(this.match)

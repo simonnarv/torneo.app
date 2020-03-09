@@ -3,7 +3,7 @@
     <div class="row col-md-12 card-row" *ngFor="let competition of competitions">
 
         <div class="card col-md-8 offset-md-2 col-8 offset-2">
-            <a [routerLink]="['/futbol/competition', competition?.id, 'groups']">
+            <a [routerLink]="['/losmorenitos/competition', competition?.id, 'groups']">
                 {{competition ? competition?.name : "Presione agregar..."}}
             </a>
         </div>
@@ -77,7 +77,7 @@
             </div>
             <!--validation-->
             <div class="modal-body">
-                <form (ngSubmit)="onSubmit()" #competitionForm="ngForm">
+                <form #competitionForm="ngForm">
                     <div class="form-group">
                         <label for="competition-name" class="col-form-label">Nombre</label>
                         <input type="text" class="form-control" id="competition-name" required
@@ -134,8 +134,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal"
-                    (click)="cleanTeamModal()">
+                <button type="button" class="btn btn-cancel col-md-4 mr-auto" data-dismiss="modal">
                     CANCELAR
                 </button>
                 <button type="button" class="btn btn-accept btn-light col-md-4" (click)="saveTeam(); teamForm.reset()"

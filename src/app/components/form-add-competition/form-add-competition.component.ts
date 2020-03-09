@@ -37,12 +37,12 @@ export class FormAddCompetitionComponent implements OnInit {
     !this.competition.id
       ? this.competitionService.create(this.competition).subscribe(
         res=>{
-          this.router.navigate(['futbol/competition']);
+          this.router.navigate(['losmorenitos/competition']);
         }
       )
       : this.competitionService.update(this.competition.id, this.competition).subscribe(  
         res=>{
-        this.router.navigate(['futbol/competition']);
+        this.router.navigate(['losmorenitos/competition']);
       });
   };
 

@@ -14,59 +14,59 @@ import { FormAddMatchComponent } from './components/form-add-match/form-add-matc
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/teams',
+    redirectTo: 'losmorenitos/home',
     pathMatch: 'full'
   },
   {
-    path: 'teams',
+    path: 'lomorenitos/home',
     component: HomeFormComponent
   },
   {
-    path: 'futbol/competition',
+    path: 'losmorenitos/competition',
     component: FormCompetitionComponent
   },
   {
-    path: 'futbol/competition/:id/groups',
+    path: 'losmorenitos/competition/:id/groups',
     component: FormGroupComponent
   },
   {
-    path: 'futbol/matches',
+    path: 'losmorenitos/matches',
     component: FormMatchComponent
   },
   {
-    path: 'futbol/competition/:competitionId/group/:id/matches',
+    path: 'losmorenitos/competition/:competitionId/group/:id/matches',
     component: FormMatchComponent
   },
   {//no se usa
-    path: 'futbol/add/competition',
+    path: 'losmorenitos/add/competition',
     component: FormAddCompetitionComponent
   },
   {//no se usa
-    path: 'futbol/add/competition/:id',
+    path: 'losmorenitos/add/competition/:id',
     component: FormAddCompetitionComponent
   },
   {//editar un grupo
-    path: 'futbol/competition/:competitionId/group/:id/edit',
+    path: 'losmorenitos/competition/:competitionId/group/:id/edit',
     component: FormAddGroupComponent
   },
   {//no se usa
-    path: 'futbol/competition/:competitionId/add/group',
+    path: 'losmorenitos/competition/:competitionId/add/group',
     component: FormAddGroupComponent
   },
   {//no se usa
-    path: 'futbol/add/team',
+    path: 'losmorenitos/add/team',
     component: FormAddTeamComponent
   },
   {
-    path: 'futbol/competition/:competitionId/add/matches',
+    path: 'losmorenitos/competition/:competitionId/add/matches',
     component: FormAddMatchComponent
   },
   {
-    path: 'futbol/competition/:competitionId/group/:id/matches/:matchId/edit',
+    path: 'losmorenitos/competition/:competitionId/group/:id/matches/:matchId/edit',
     component: FormAddMatchComponent
   },
   {
-    path: 'futbol/login',
+    path: 'losmorenitos/login',
     component: FormLoginComponent
   }
 ];

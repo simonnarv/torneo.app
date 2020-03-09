@@ -90,7 +90,7 @@ export class FormAddGroupComponent implements OnInit {
   updateGroup() {
     this.groupService.update(this.group.id, this.group).subscribe(
       res => {
-        this.router.navigate(['/futbol/competition/' + this.competitionId + '/groups']);
+        this.router.navigate(['/losmorenitos/competition/' + this.competitionId + '/groups']);
       })
   }
 

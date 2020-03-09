@@ -1,4 +1,4 @@
-<button class="btn btn-back ml-auto" [routerLink]="['/futbol/competition',competitionId, 'groups']">
+<button class="btn btn-back ml-auto" [routerLink]="['/losmorenitos/competition',competitionId, 'groups']">
   <img src="../../../assets/left_arrow_icon.png">
 </button>
 
@@ -53,9 +53,9 @@
     <!--New Match-->
     <button *ngIf="hasAdminPermission()" 
             class="offset-md-4 col-md-2 btn btn-success"
-            [routerLink]="['/futbol/competition/', competitionId, 'group', groupId ,'matches', match.id, 'edit']">
+            [routerLink]="['/losmorenitos/competition/', competitionId, 'group', groupId ,'matches', match.id, 'edit']">
       editar
-      <!--edit routing 'futbol/competition/:competitionId/group/:id/matches/:matchId/edit'-->
+      <!--edit routing 'losmorenitos/competition/:competitionId/group/:id/matches/:matchId/edit'-->
     </button>
     <!--delete-->
     <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" data-toggle="modal" data-target="#deleteMatch"
@@ -67,7 +67,7 @@
   <!--match-->
 </div>
 <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-4 btn btn-add btn-success"
-  [routerLink]="['/futbol/competition/', competitionId, 'add', 'matches']" [queryParams]="{ groupId : groupId}">
+  [routerLink]="['/losmorenitos/competition/', competitionId, 'add', 'matches']" [queryParams]="{ groupId : groupId}">
   Agregar Partido
 </button>
 
