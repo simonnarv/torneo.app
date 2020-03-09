@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamsService } from 'src/app/services/teams.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Team } from 'src/app/models/Team';
+import { Team } from 'src/app/models/team';
 
 @Component({
   selector: 'app-form-add-team',
