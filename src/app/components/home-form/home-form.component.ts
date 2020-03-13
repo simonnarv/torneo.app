@@ -26,7 +26,11 @@ export class HomeFormComponent implements OnInit {
     const pdfName = 'Lista de buena fe';
     FileSaver.saveAs(pdfUrl, pdfName);
   }
-
+  getMapa(){
+    const jpegUrl = '../../../assets/mapa.jpeg';
+    const jpegName = 'Mapa Canchas';
+    FileSaver.saveAs(jpegUrl, jpegName);
+  }
   
 
 }

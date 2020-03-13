@@ -4,6 +4,7 @@ import { Match } from '../models/match';
 import { environment } from 'src/environments/environment';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { SingleMatch } from '../models/single-match';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,6 +19,7 @@ const httpOptions = {
 export class MatchesService {
 
   API_URI = environment.apiEndpoint + '/matches/';
+  API_URI_SINGLE = environment.apiEndpoint + '/matches/single';
 
   constructor(private http: HttpClient) { }
 
@@ -40,6 +42,16 @@ export class MatchesService {
 
   create(match: Match): Observable<Match> {
     return this.http.post<Match>(this.API_URI, match,httpOptions)
+    .pipe(
+      catchError((err: HttpErrorResponse) => {
+        console.log(err)
+        return throwError(err);
+      })
+    );
+  }
+
+  createSingleMatch(singleMatch : SingleMatch): Observable<SingleMatch>{
+    return this.http.post<SingleMatch>(this.API_URI_SINGLE,singleMatch,httpOptions)
     .pipe(
       catchError((err: HttpErrorResponse) => {
         console.log(err)

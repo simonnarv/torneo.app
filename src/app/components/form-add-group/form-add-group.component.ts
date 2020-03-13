@@ -7,6 +7,7 @@ import { Team } from 'src/app/models/team';
 import { ScoreSheet } from 'src/app/models/score-sheet';
 import { ScoresheetService } from 'src/app/services/scoresheet.service';
 import { GroupName } from 'src/app/models/enums/group-name';
+import { SingleMatch } from 'src/app/models/single-match';
 
 @Component({
   selector: 'app-form-add-group',

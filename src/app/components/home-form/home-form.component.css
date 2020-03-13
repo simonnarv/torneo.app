@@ -33,3 +33,41 @@
 .btn-info{
     margin-bottom: 5px;
 }
+
+/*Modal CSS*/
+.modal-content{
+    background-color: #86c038ff;
+}
+
+.modal-body{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.modal-body table{
+    color: #ffffff;
+}
+
+.modal-header{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+
+.modal-footer{
+    border: none;
+}
+
+.btn-cancel{
+    color: #ffffff;
+    font-family: 'poppins', sans-serif;
+    border: none;
+}
+
+.btn-accept{
+    font-family: 'poppins', sans-serif;
+    border: none;
+    color:  #86c038ff;
+}

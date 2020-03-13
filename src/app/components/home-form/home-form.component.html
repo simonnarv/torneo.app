@@ -33,48 +33,82 @@
         <img class="img col-md-1 col-6" src="../../../assets/Auspiciantes/Fondo oscuro/JB Diseños.png">
         <img class="img col-md-2 col-6" src="../../../assets/Auspiciantes/Fondo oscuro/l'elite.png">
         <img class="img col-md-1 col-6" src="../../../assets/Auspiciantes/Fondo oscuro/La Capital.png">
-        <img class="img col-md-2 offset-md-0 col-6 offset-3 " src="../../../assets/Auspiciantes/Fondo oscuro/Zanahoria & Plaza.png">
+        <img class="img col-md-2 offset-md-0 col-6 offset-3 "
+            src="../../../assets/Auspiciantes/Fondo oscuro/Zanahoria & Plaza.png">
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-s-12 text-center">
+        <div class="col-md-4 col-s-12 text-center">
             <a class="btn btn-info" (click)="getReglamentoPDF()">
                 DESCARGAR REGLAMENTO
             </a>
         </div>
-        <div class="col-md-6 col-s-12 text-center">
+        <div class="col-md-4 col-s-12 text-center">
+            <button class="btn btn-info" data-toggle="modal" data-target="#Map">
+                MAPA CANCHAS
+            </button>
+        </div>
+        <div class="col-md-4 col-s-12 text-center">
             <a class="btn btn-info" (click)="getListaBuenaFePDF()">
                 DESCARGAR LISTA DE BUENA FE
             </a>
         </div>
     </div>
 
-    
+
+    <div class="modal fade" id="Map" tabindex="-1" role="dialog" aria-labelledby="MapLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-center col-md-8 offset-md-2" id="MapLabel">
+                        Mapa Canchas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="../../../assets/mapa.jpeg" style="height: 100%; width: 100%; object-fit: contain">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary col-md-4 mr-auto" data-dismiss="modal">
+                        ACEPTAR
+                    </button>
+                    <button type="button" class="btn btn-accept btn-light col-md-4" (click)="getMapa()"
+                        data-dismiss="modal">
+                        DESCARGAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
 <div>
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Aguilas.jpeg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Ascd River.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Belgrano.png">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/boca de tigre.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Cañadita.png">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Club Atletico Pilar.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Club Neuquen.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Cosmo FC.jpeg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Diamantino.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Don Bosco.png">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Esc Ruso y Late.jpeg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/escuela boca.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Ferro de Rafaela.jpeg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Filial River Parana.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Litoral Maria Grande.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Ministerio.png">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Moreno.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Naranjitos.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Palermo.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Peñarol.jpg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/San Martin de Diamante.jpeg">
-    <img class="col-md-4 col-4" src="../../../assets/escudos/Sarmiento de Crespo.png">
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Aguilas.jpeg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Atletico Maria Grande.jpg">
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Ascd River.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Belgrano.png">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/boca de tigre.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Cañadita.png">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Club Atletico Pilar.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Club Neuquen.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Cosmo FC.jpeg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Diamantino.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Don Bosco.png">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Esc Ruso y Late.jpeg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/escuela boca.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Ferro de Rafaela.jpeg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Filial River Parana.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Litoral Maria Grande.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Ministerio.png">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Mirage.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Moreno.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Naranjitos.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Palermo.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Peñarol.jpg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/San Martin de Diamante.jpeg">//
+    <img class="col-md-4 col-4" src="../../../assets/escudos/Sarmiento de Crespo.png">//
     <img class="col-md-4 col-4" src="../../../assets/escudos/Sarmiento de Humbolt.jpg">
     <img class="col-md-4 col-4" src="../../../assets/escudos/Taladro.jpg">
     <img class="col-md-4 col-4" src="../../../assets/escudos/Union de Crespo.jpg">
     <img class="col-md-4 col-4" src="../../../assets/escudos/Union de Santa Fe.jpg">
-</div> 
+</div> -->

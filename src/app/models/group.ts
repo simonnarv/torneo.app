@@ -1,4 +1,3 @@
-import { Match } from "./match";
 import { ScoreSheet } from './score-sheet';
 import { Competition } from './competition';
 import { GroupStatus } from './enums/group-status';

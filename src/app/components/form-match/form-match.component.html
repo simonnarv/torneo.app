@@ -7,27 +7,7 @@
   <div class="text-left" *ngFor="let match of matches">
     <!---->
     <div class="offset-md-4 col-md-4 div-match">
-      <div class="row">
-        <!--show status
-        <p [ngClass]="{'pending' : match.matchStatus=='PENDING',
-                       'delayed': match.matchStatus=='DELAYED',
-                       'played' : match.matchStatus=='PLAYED',
-                       'suspended': match.matchStatus=='SUSPENDED'}" class="offset-md-4 offset-4 col-md-5 col-5">
-          {{match.matchStatus=='PENDING'? "POR JUGAR" : "INDETERMINADO"}}
-        </p>
-        <p class="col-md-3 col-3">{{match.date | date : "h':'mm"}}</p>
-      </div>
-      <div class="row">
-        <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
-        <p class="col-md-6 col-6">{{match.homeTeam.team.name}}</p>
-        <p class="col-md-2 col-2">{{match.homeScore}}</p>
-      </div>
-      <div class="row">
-        <img class="col-md-4 col-4" src="../../../assets/ShirtIcon48.png">
-        <p class="col-md-6 col-6">{{match.awayTeam.team.name}}</p>
-        <p class="col-md-2 col-2">{{match.awayScore}}</p>
-      </div>
-    </div>-->
+      <div class="row">      
     <!--New Match-->
     <div class="div-match text-center offset-md-3 col-md-6">
       <p [ngClass]="{'pending' : match.matchStatus=='PENDING',
@@ -49,13 +29,12 @@
         <p class="col-md-4 col-4">{{match.awayTeam.team.name}}</p>
       </div>
     </div>
-
     <!--New Match-->
+
     <button *ngIf="hasAdminPermission()" 
             class="offset-md-4 col-md-2 btn btn-success"
             [routerLink]="['/losmorenitos/competition/', competitionId, 'group', groupId ,'matches', match.id, 'edit']">
       editar
-      <!--edit routing 'losmorenitos/competition/:competitionId/group/:id/matches/:matchId/edit'-->
     </button>
     <!--delete-->
     <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" data-toggle="modal" data-target="#deleteMatch"
@@ -71,7 +50,7 @@
   Agregar Partido
 </button>
 
-<!--Delete Modal -->
+<!--Delete Match Modal -->
 <div class="modal fade" id="deleteMatch" tabindex="-1" role="dialog" aria-labelledby="deleteMatchLabel"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -96,3 +75,4 @@
     </div>
   </div>
 </div>
+<!--Delete Match Modal -->

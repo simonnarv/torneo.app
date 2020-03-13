@@ -11,6 +11,10 @@ import { Team } from 'src/app/models/team';
 import { TeamsService } from 'src/app/services/teams.service';
 import { GroupStatus } from 'src/app/models/enums/group-status';
 import { GroupName } from 'src/app/models/enums/group-name';
+import { MatchesService } from 'src/app/services/matches.service';
+import { Match } from 'src/app/models/match';
+import { SingleMatch } from 'src/app/models/single-match';
+import { MatchStatus } from 'src/app/models/enums/match-status';
 
 
 @Component({
@@ -33,13 +37,28 @@ export class FormGroupComponent implements OnInit {
   groupName = GroupName;
   keys = [];
 
+   //enum
+   matchStatus = MatchStatus;
+   Statuskeys = [];
+
+  //NUEVA ENRTIDAD
+  singleMatch: SingleMatch;
+  
+  //single hour 
+  hours;
+  minutes;
+  
+  //match to delete
+  match;
+
   constructor(
     private actRoute: ActivatedRoute,
     private competitionService: CompetitionService,
     private teamService: TeamsService,
     private scoreService: ScoresheetService,
     private groupsService: GroupsService,
-    private loginService: LoginService) { }
+    private loginService: LoginService,
+    private matchesService: MatchesService) { }
 
   ngOnInit() {
     this.competition = new Competition(this.actRoute.snapshot.params.id);
@@ -47,6 +66,7 @@ export class FormGroupComponent implements OnInit {
     this.getCompetition();
     this.setTeams();
     this.keys = Object.keys(this.groupName);
+    this.Statuskeys = Object.keys(this.matchStatus);
   }
 
   hasAdminPermission() {
@@ -154,8 +174,11 @@ export class FormGroupComponent implements OnInit {
 
   }
 
-  getMatchesByStage(stageId: number) {
-    return [];
+  getMatches(groupId: number){
+    this.matchesService.getByGroupId(groupId).subscribe(
+      (response: Match[]) =>{
+        return response;
+      });
   }
 
   /*elimina los elementos del array asi no aparecen cuando se abre
@@ -164,7 +187,6 @@ export class FormGroupComponent implements OnInit {
     while (this.scores.length > 0) {
       this.scores.pop();
     }
-
     this.group.name="";
   }
 
@@ -193,5 +215,38 @@ export class FormGroupComponent implements OnInit {
         this.teams = response
       })
   }
+  
+  //MATCH METHODS
 
+  deleteMatch(match : Match){
+    this.match = match;
+  }
+
+  deleteSingleMatch(id: number){
+    this.matchesService.delete(id).subscribe(
+      res=>{
+        this.getCompetition();
+      }
+    );
+  }
+
+  setDate() {
+    this.singleMatch.date = new Date(2020, 5, 15, this.hours, this.minutes);
+  }
+
+  singleMatchGroup(group : Group){
+    this.group = group;
+  }
+
+  saveSingleMatch(){
+    this.setDate();
+    this.singleMatch.group = this.group;
+    this.singleMatch.groupId = this.group.id;
+    this.singleMatch.stage = this.group.stage;
+    this.singleMatch.competitionId = this.group.competition.id;
+    this.matchesService.createSingleMatch(this.singleMatch).subscribe(
+      res => {
+        this.getCompetition();
+      });
+  }
 }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://eldeportivo-svc.herokuapp.com/',
+  apiEndpoint: 'https://eldeportivo-svc.herokuapp.com',
   eventId: 1
 };
 

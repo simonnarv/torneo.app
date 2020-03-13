@@ -18,7 +18,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'lomorenitos/home',
+    path: 'losmorenitos/home',
     component: HomeFormComponent
   },
   {
