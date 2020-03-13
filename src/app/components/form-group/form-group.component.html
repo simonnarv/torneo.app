@@ -101,14 +101,14 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="oroId" data-parent="#accordionFilter">
             <div class="row card-body">
 
-
+                <!--
                 <div class="col-md-6 col-s-12" *ngFor="let group of getGroupsByStage('2')">
 
 
                     <div class="col-md-6 col-s-12" *ngFor="let match of getMatches(group.id)">
                         <div class="row col-md-12 btn-fixture center-block">
 
-                            <!--New Match-->
+                            
                             <div class="div-match text-center offset-md-3 col-md-6">
                                 <p [ngClass]="{'pending' : match.matchStatus=='PENDING',
                                 'delayed': match.matchStatus=='DELAYED',
@@ -129,30 +129,22 @@
                                     <p class="col-md-4 col-4">{{match.awayTeam.team.name}}</p>
                                 </div>
                             </div>
-                            <!--New Match-->
-                            <!--editar partido-->
+
                             <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-2 btn btn-success"
                                 [routerLink]="['/losmorenitos/competition/', competition.id, 'group', group.id ,'matches', match.id, 'edit']">
                                 editar
                             </button>
-                            <!--editar partido-->
-                            <!--delete-->
                             <button *ngIf="hasAdminPermission()" class="col-md-2 btn btn-danger" data-toggle="modal"
                                 data-target="#deleteMatch" (click)="deleteMatch(match)">
                                 eliminar
                             </button>
-                            <!--delete-->
-                            <!--añadir partido-->
                             <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-4 btn btn-add btn-success"
                                 data-toggle="modal" data-target="#createMatch" (click)="singleMatchGroup(group)">
                                 Agregar Partido
                             </button>
-                            <!--añadir partido-->
                         </div>
                     </div>
-
-
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -172,6 +164,7 @@
                 [queryParams]="{ stageId : '3'}">
             </button>
         </div>
+        <!--
         <div id="collapseThree" class="collapse" aria-labelledby="plataId" data-parent="#accordionFilter">
             <div class="row card-body">
                 <div class="col-md-6 col-s-12" *ngFor="let match of getMatches(group.id)">
@@ -187,7 +180,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
+
     </div>
 </div>
 
