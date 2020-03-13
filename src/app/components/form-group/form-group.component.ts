@@ -62,7 +62,7 @@ export class FormGroupComponent implements OnInit {
 
   ngOnInit() {
     this.competition = new Competition(this.actRoute.snapshot.params.id);
-    this.group = this.newGroup(1);
+    //this.group = this.newGroup(1);
     this.getCompetition();
     this.setTeams();
     this.keys = Object.keys(this.groupName);
@@ -70,7 +70,7 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    return true //this.loginService.isAdmin();
+    this.loginService.isAdmin();
   }
 
   //Competition Methods
@@ -112,6 +112,15 @@ export class FormGroupComponent implements OnInit {
   createGroup(stage: number) {
     this.group = this.newGroup(stage);
   }
+  
+  newGroup(stage: number) : Group {
+    return {
+      name: "",
+      stage: stage,
+      competition: this.competition,
+      status: GroupStatus.ACTIVE
+    }
+  }
 
   finishGroup(toFinish: Group) {
     toFinish.status = GroupStatus.FINISHED;
@@ -135,18 +144,14 @@ export class FormGroupComponent implements OnInit {
   //Team Methods
   addTeam() {
     var selectedTeam = this.teams.find(team => team.id == this.currentTeamId);
-
-    // var scoreSheet;
     if (!this.group.scoreSheets) {
       this.group.scoreSheets = [];
     }
-
     var scoreSheet = this.group.scoreSheets.find(sc => sc.team.id == this.currentTeamId);
 
     if (!scoreSheet) {
       scoreSheet = this.newScoreSheet(selectedTeam)
     }
-
     this.group.scoreSheets.push(scoreSheet);
   }
 
@@ -160,20 +165,6 @@ export class FormGroupComponent implements OnInit {
       team: selectedTeam
     }
   }
-
-  newGroup(stage: number) : Group {
-    return {
-      name: "",
-      stage: stage,
-      competition: this.competition,
-      status: GroupStatus.ACTIVE
-    }
-  }
-
-  addMatch(stageId: number) {
-
-  }
-
   getMatches(groupId: number){
     this.matchesService.getByGroupId(groupId).subscribe(
       (response: Match[]) =>{
@@ -181,8 +172,6 @@ export class FormGroupComponent implements OnInit {
       });
   }
 
-  /*elimina los elementos del array asi no aparecen cuando se abre
-  la pantalla modal para cargar un nuevo group*/
   cleanModal(){
     while (this.scores.length > 0) {
       this.scores.pop();
@@ -217,11 +206,9 @@ export class FormGroupComponent implements OnInit {
   }
   
   //MATCH METHODS
-
   deleteMatch(match : Match){
     this.match = match;
   }
-
   deleteSingleMatch(id: number){
     this.matchesService.delete(id).subscribe(
       res=>{
@@ -229,15 +216,12 @@ export class FormGroupComponent implements OnInit {
       }
     );
   }
-
   setDate() {
     this.singleMatch.date = new Date(2020, 5, 15, this.hours, this.minutes);
   }
-
   singleMatchGroup(group : Group){
     this.group = group;
   }
-
   saveSingleMatch(){
     this.setDate();
     this.singleMatch.group = this.group;
