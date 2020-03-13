@@ -72,7 +72,7 @@ export class FormGroupComponent implements OnInit {
   }
 
   hasAdminPermission() {
-    this.loginService.isAdmin();
+    return this.loginService.isAdmin();
   }
 
   //Competition Methods
