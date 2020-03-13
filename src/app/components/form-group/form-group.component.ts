@@ -25,7 +25,9 @@ import { MatchStatus } from 'src/app/models/enums/match-status';
 export class FormGroupComponent implements OnInit {
 
   competition: Competition;
-  group: Group;
+  group: Group = {
+    name : ""
+  };
 
   // team add
   currentTeamId: number;
