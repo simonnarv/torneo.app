@@ -210,7 +210,7 @@
                             <label class="lab col-md-4 col-4 text-center" for="team">Equipo</label>
                             <select [(ngModel)]="currentTeamId" name="team" class="col-md-4 col-4">
                                 <option *ngFor="let team of teams" [value]="team.id">
-                                    {{team?.name}}
+                                    {{team.name}}
                                 </option>
                             </select>
                             <button type="button" class="col-md-4 col-4 btn btn-sm btn-secondary" (click)="addTeam()">
@@ -279,7 +279,8 @@
     </div>
 </div>
 
-<!--añadir partido modal-->
+
+<!--añadir partido modal
 <div class="modal fade" id="createMatch" tabindex="-1" role="dialog"
 aria-labelledby="createMatchLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -292,7 +293,6 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
         </div>
         <div class="modal-body">
             <form>
-                <!--homeTeam-->
                 <div class="col-md-12">
                     <div class="row form-group">
                         <label class="lab col-md-4 col-4 text-center"
@@ -305,7 +305,6 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
                         </select>
                     </div>
                 </div>
-                <!--awayTeam-->
                 <div class="col-md-12">
                     <div class="row form-group">
                         <label class="lab col-md-4 col-4 text-center"
@@ -318,7 +317,6 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
                         </select>
                     </div>
                 </div>
-                <!--resultado-->
                 <div class="form-group row">
                     <label class="lab col-md-4 col-4 text-center" for="homeScore">Goles
                         Local</label>
@@ -333,8 +331,6 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
                         class="form-control text-center col-md-1 col-4 "
                         id="awayScore" />
                 </div>
-                <!--resultado-->
-                <!--Date-->
                 <div class="form-group row">
                     <label class="lab col-md-4 col-4 text-center"
                         for="hours">hora</label>
@@ -345,17 +341,12 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
                     <input [(ngModel)]="minutes" name="minutes" type="text"
                         class="form-control text-center col-md-2 col-2 " id="minutes" />
                 </div>
-                <!--Date-->
-
-                <!--cancha-->
                 <div class="row form-group">
                     <label class="lab col-md-4 col-4 text-center"
                         for="pitch">cancha</label>
                     <input [(ngModel)]="singleMatch.pitch" name="pitch" type="text"
                         class="form-control col-md-4 col-4 " id="pitch" />
                 </div>
-                <!--cancha-->
-                <!--Match Status-->
                 <div class="row form-group">
                     <label class="lab col-md-4 col-4 text-center"
                         for="team">Estado</label>
@@ -366,7 +357,6 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
                         </option>
                     </select>
                 </div>
-                <!--Match Status-->
             </form>
         </div>
         <div class="modal-footer">
@@ -382,7 +372,7 @@ aria-labelledby="createMatchLabel" aria-hidden="true">
     </div>
 </div>
 </div>
-<!--añadir partido modal-->
+-->
 
 
 <!--Delete Match Modal -->
