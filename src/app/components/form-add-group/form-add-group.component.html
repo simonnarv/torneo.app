@@ -46,7 +46,7 @@
         </thead>
         <tbody *ngFor="let score of group.scoreSheets">
           <th scope="row"><i class="fas fa-asterisk"></i> {{score.team.name}}
-            <button class="btn" (click)="removeTeam(score.id)">
+            <button class="btn btn-delete" (click)="removeTeam(score.id)">
               <i class="fas fa-trash-alt"></i>
             </button>
           </th>

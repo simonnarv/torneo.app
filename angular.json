@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "torneoApp:build"
+            "browserTarget": "torneo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "torneoApp:build:production"
+              "browserTarget": "torneo-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "torneoApp:build"
+            "browserTarget": "torneo-app:build"
           }
         },
         "test": {

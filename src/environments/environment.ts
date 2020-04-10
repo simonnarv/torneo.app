@@ -4,9 +4,12 @@
 
 export const environment = {
   production: false,
-  apiEndpoint: 'https://eldeportivo-svc.herokuapp.com',
-  eventId: 1
+  apiEndpoint: 'http://localhost:8080',
+  eventId: 129
 };
+
+//apiEndpoint: 'https://eldeportivo-svc.herokuapp.com',
+//eventId: 1
 
 /*
  * For easier debugging in development mode, you can import the following file

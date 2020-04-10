@@ -10,63 +10,75 @@ import { FormAddGroupComponent } from './components/form-add-group/form-add-grou
 import { FormAddTeamComponent } from './components/form-add-team/form-add-team.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import { FormAddMatchComponent } from './components/form-add-match/form-add-match.component';
+import { FormEventComponent } from './components/form-event/form-event.component';
+import { FormAddEventComponent } from './components/form-add-event/form-add-event.component';
+
+//notas
+/* 
+-sacar lo de el deportivo porque ya esta incluido en  el dominio
+-agregar una veriable url a evento para evitar usar la id, la url esta basada en el nombre del evento ej: morenitos->torneo-morenitos
+-agregar al servicio evento buscar evento por url 
+-agregamos oninit de competencias guardamos el evento buscando por url en localstorage
+-agregar a evento tanto en front como back, las variables url, texto de home page y noticias.
+*/
+
 
 const routes: Routes = [
+  /*{
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full'
+  },*/
   {
     path: '',
-    redirectTo: 'losmorenitos/home',
-    pathMatch: 'full'
+    component: FormEventComponent // el deportivo pagina principal
   },
   {
-    path: 'losmorenitos/home',
+    path:'add/event', //derberia tener userId algo como :user/add/event
+    component: FormAddEventComponent
+  },
+  {
+    path: ':eventUrl/home', //evento_url home 
     component: HomeFormComponent
   },
   {
-    path: 'losmorenitos/competition',
+    path: ':eventUrl', //evento competencias
     component: FormCompetitionComponent
   },
   {
-    path: 'losmorenitos/competition/:id/groups',
+    path: ':eventUrl/competition/:competitionId/groups', //evento competencias --> grupos
     component: FormGroupComponent
   },
   {
-    path: 'losmorenitos/matches',
+    path: ':eventUrl/matches', 
     component: FormMatchComponent
   },
   {
-    path: 'losmorenitos/competition/:competitionId/group/:id/matches',
+    path: ':eventUrl/competition/:competitionId/group/:groupId/matches',//evento competencias --> grupos --> matches
     component: FormMatchComponent
   },
-  {//no se usa
-    path: 'losmorenitos/add/competition',
-    component: FormAddCompetitionComponent
-  },
-  {//no se usa
-    path: 'losmorenitos/add/competition/:id',
-    component: FormAddCompetitionComponent
-  },
   {//editar un grupo
-    path: 'losmorenitos/competition/:competitionId/group/:id/edit',
+    path: ':eventUrl/competition/:competitionId/group/:groupId/edit',
     component: FormAddGroupComponent
   },
   {//no se usa
-    path: 'losmorenitos/competition/:competitionId/add/group',
+    path: ':eventUrl/competition/:competitionId/add/group',
     component: FormAddGroupComponent
   },
   {//no se usa
-    path: 'losmorenitos/add/team',
+    path: ':eventUrl/add/team',
     component: FormAddTeamComponent
   },
   {
-    path: 'losmorenitos/competition/:competitionId/add/matches',
+    path: ':eventUrl/competition/:competitionId/add/matches',
     component: FormAddMatchComponent
   },
   {
-    path: 'losmorenitos/competition/:competitionId/group/:id/matches/:matchId/edit',
+    path: ':eventUrl/competition/:competitionId/group/:groupId/matches/:matchId/edit',
     component: FormAddMatchComponent
   },
   {
-    path: 'losmorenitos/login',
+    path: 'login',
     component: FormLoginComponent
   }
 ];

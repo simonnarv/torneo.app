@@ -20,6 +20,7 @@ export class FormAddGroupComponent implements OnInit {
   currentTeamId: number;
 
   //group
+  groupId;
   group: Group = {
   }
 
@@ -37,9 +38,9 @@ export class FormAddGroupComponent implements OnInit {
     private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    var id = this.actRoute.snapshot.params.id;
+    this.groupId = this.actRoute.snapshot.params.groupId;
     this.competitionId = this.actRoute.snapshot.params.competitionId;
-    this.getGroup(id);
+    this.getGroup(this.groupId);
     this.setTeams();
     this.keys = Object.keys(this.groupName);
   }

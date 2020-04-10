@@ -25,6 +25,8 @@ import { TeamsService } from './services/teams.service';
 import { GroupsService } from './services/groups.service';
 import { CompetitionService } from './services/competition.service';
 import { ScoresheetService } from './services/scoresheet.service';
+import { FormEventComponent } from './components/form-event/form-event.component';
+import { FormAddEventComponent } from './components/form-add-event/form-add-event.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { ScoresheetService } from './services/scoresheet.service';
     FormAddGroupComponent,
     FormAddTeamComponent,
     FormAddMatchComponent,
-    FormLoginComponent
+    FormLoginComponent,
+    FormEventComponent,
+    FormAddEventComponent
   ],
   imports: [
     BrowserModule,

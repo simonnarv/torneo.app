@@ -30,8 +30,8 @@ export class FormMatchComponent implements OnInit {
 
   ngOnInit() {
     this.competitionId = this.actRoute.snapshot.params.competitionId;
-    this.groupId = this.actRoute.snapshot.params.id;
-    this.getMatches(this.actRoute.snapshot.params.id);
+    this.groupId = this.actRoute.snapshot.params.groupId;
+    this.getMatches(this.actRoute.snapshot.params.groupId);
   }
 
   getMatches(id: number){
@@ -48,7 +48,7 @@ export class FormMatchComponent implements OnInit {
   delete(id: number){
     this.matchesService.delete(id).subscribe(
       res=>{
-        this.getMatches(this.actRoute.snapshot.params.id);
+        this.getMatches(this.actRoute.snapshot.params.groupId);
       }
     );
   }

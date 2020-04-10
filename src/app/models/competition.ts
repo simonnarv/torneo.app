@@ -9,7 +9,7 @@ export class Competition {
     description?: string;
     status: CompetitionStatus;
     type: CompetitionType;
-    event: Event;
+    event?: Event;
     groups?: Array<Group>;
 
     constructor(id: number) {

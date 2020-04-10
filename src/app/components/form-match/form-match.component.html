@@ -45,6 +45,7 @@
   </div>
   <!--match-->
 </div>
+
 <button *ngIf="hasAdminPermission()" class="offset-md-4 col-md-4 btn btn-add btn-success"
   [routerLink]="['/losmorenitos/competition/', competitionId, 'add', 'matches']" [queryParams]="{ groupId : groupId}">
   Agregar Partido

@@ -1,9 +1,13 @@
+<button class="btn btn-back" [routerLink]="['/',eventUrl,'home']">
+    <img src="../../../assets/left_arrow_icon.png">
+</button>
+
 <div class="col-md-12 col-sm-12 page-container">
     <h2 class="h2-title col-md-12">Categorias</h2>
     <div class="row col-md-12 card-row" *ngFor="let competition of competitions">
 
         <div class="card col-md-8 offset-md-2 col-8 offset-2">
-            <a [routerLink]="['/losmorenitos/competition', competition?.id, 'groups']">
+            <a [routerLink]="['/',eventUrl,'competition', competition.id, 'groups']">
                 {{competition ? competition?.name : "Presione agregar..."}}
             </a>
         </div>

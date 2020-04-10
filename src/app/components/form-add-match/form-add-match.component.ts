@@ -52,7 +52,8 @@ export class FormAddMatchComponent implements OnInit {
     private scoreSheetService: ScoresheetService) { }
 
   ngOnInit() {
-    this.groupId = this.actRoute.snapshot.queryParams.groupId;
+    //this.groupId = this.actRoute.snapshot.queryParams.groupId;
+    this.groupId = this.actRoute.snapshot.params.groupId;
     var stageId = this.actRoute.snapshot.queryParams.stageId;
     if (this.groupId) {
     } else if (stageId) {

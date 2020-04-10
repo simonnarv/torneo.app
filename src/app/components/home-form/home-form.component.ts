@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 declare var require: any
 const FileSaver = require('file-saver');
 
@@ -9,11 +10,13 @@ const FileSaver = require('file-saver');
 })
 export class HomeFormComponent implements OnInit {
 
+  //event url
+  eventUrl;
 
-
-  constructor() { }
+  constructor(private actRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.eventUrl = this.actRoute.snapshot.params.eventUrl;
   }
 
   getReglamentoPDF() {
