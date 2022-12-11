@@ -24,7 +24,7 @@
     "@angular/router": "~8.2.14",
     "@types/jwt-decode": "^2.2.1",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "file-saver": "^2.0.2",
     "jquery": "^3.4.1",
     "jwt-decode": "^2.2.0",
